@@ -87,6 +87,16 @@ install/local/fast: preinstall/fast
 	/Applications/CMake.app/Contents/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
 .PHONY : install/local/fast
 
+# Special rule for the target list_install_components
+list_install_components:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Available install components are: \"Unspecified\""
+.PHONY : list_install_components
+
+# Special rule for the target list_install_components
+list_install_components/fast: list_install_components
+
+.PHONY : list_install_components/fast
+
 # Special rule for the target rebuild_cache
 rebuild_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
@@ -133,16 +143,6 @@ install/fast: preinstall/fast
 	/Applications/CMake.app/Contents/bin/cmake -P cmake_install.cmake
 .PHONY : install/fast
 
-# Special rule for the target list_install_components
-list_install_components:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Available install components are: \"Unspecified\""
-.PHONY : list_install_components
-
-# Special rule for the target list_install_components
-list_install_components/fast: list_install_components
-
-.PHONY : list_install_components/fast
-
 # The main all target
 all: cmake_check_build_system
 	$(CMAKE_COMMAND) -E cmake_progress_start /Users/jiaweiguo/Documents/GitHub/SNEW_PandaX/code1/build/CMakeFiles /Users/jiaweiguo/Documents/GitHub/SNEW_PandaX/code1/build//CMakeFiles/progress.marks
@@ -176,6 +176,19 @@ depend:
 .PHONY : depend
 
 #=============================================================================
+# Target rules for targets named code1_lib
+
+# Build rule for target.
+code1_lib: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 code1_lib
+.PHONY : code1_lib
+
+# fast build rule for target.
+code1_lib/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/code1_lib.dir/build.make CMakeFiles/code1_lib.dir/build
+.PHONY : code1_lib/fast
+
+#=============================================================================
 # Target rules for targets named main
 
 # Build rule for target.
@@ -188,32 +201,139 @@ main/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/build
 .PHONY : main/fast
 
-main.o: main.C.o
+#=============================================================================
+# Target rules for targets named numerical_int
 
-.PHONY : main.o
+# Build rule for target.
+numerical_int: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 numerical_int
+.PHONY : numerical_int
+
+# fast build rule for target.
+numerical_int/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/numerical_int.dir/build.make CMakeFiles/numerical_int.dir/build
+.PHONY : numerical_int/fast
+
+#=============================================================================
+# Target rules for targets named graph
+
+# Build rule for target.
+graph: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 graph
+.PHONY : graph
+
+# fast build rule for target.
+graph/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/graph.dir/build.make CMakeFiles/graph.dir/build
+.PHONY : graph/fast
+
+exe/graph.o: exe/graph.C.o
+
+.PHONY : exe/graph.o
 
 # target to build an object file
-main.C.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/main.C.o
-.PHONY : main.C.o
+exe/graph.C.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/graph.dir/build.make CMakeFiles/graph.dir/exe/graph.C.o
+.PHONY : exe/graph.C.o
 
-main.i: main.C.i
+exe/graph.i: exe/graph.C.i
 
-.PHONY : main.i
+.PHONY : exe/graph.i
 
 # target to preprocess a source file
-main.C.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/main.C.i
-.PHONY : main.C.i
+exe/graph.C.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/graph.dir/build.make CMakeFiles/graph.dir/exe/graph.C.i
+.PHONY : exe/graph.C.i
 
-main.s: main.C.s
+exe/graph.s: exe/graph.C.s
 
-.PHONY : main.s
+.PHONY : exe/graph.s
 
 # target to generate assembly for a file
-main.C.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/main.C.s
-.PHONY : main.C.s
+exe/graph.C.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/graph.dir/build.make CMakeFiles/graph.dir/exe/graph.C.s
+.PHONY : exe/graph.C.s
+
+exe/main.o: exe/main.C.o
+
+.PHONY : exe/main.o
+
+# target to build an object file
+exe/main.C.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/exe/main.C.o
+.PHONY : exe/main.C.o
+
+exe/main.i: exe/main.C.i
+
+.PHONY : exe/main.i
+
+# target to preprocess a source file
+exe/main.C.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/exe/main.C.i
+.PHONY : exe/main.C.i
+
+exe/main.s: exe/main.C.s
+
+.PHONY : exe/main.s
+
+# target to generate assembly for a file
+exe/main.C.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/exe/main.C.s
+.PHONY : exe/main.C.s
+
+exe/numerical_int.o: exe/numerical_int.C.o
+
+.PHONY : exe/numerical_int.o
+
+# target to build an object file
+exe/numerical_int.C.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/numerical_int.dir/build.make CMakeFiles/numerical_int.dir/exe/numerical_int.C.o
+.PHONY : exe/numerical_int.C.o
+
+exe/numerical_int.i: exe/numerical_int.C.i
+
+.PHONY : exe/numerical_int.i
+
+# target to preprocess a source file
+exe/numerical_int.C.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/numerical_int.dir/build.make CMakeFiles/numerical_int.dir/exe/numerical_int.C.i
+.PHONY : exe/numerical_int.C.i
+
+exe/numerical_int.s: exe/numerical_int.C.s
+
+.PHONY : exe/numerical_int.s
+
+# target to generate assembly for a file
+exe/numerical_int.C.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/numerical_int.dir/build.make CMakeFiles/numerical_int.dir/exe/numerical_int.C.s
+.PHONY : exe/numerical_int.C.s
+
+src/integral.o: src/integral.cpp.o
+
+.PHONY : src/integral.o
+
+# target to build an object file
+src/integral.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/code1_lib.dir/build.make CMakeFiles/code1_lib.dir/src/integral.cpp.o
+.PHONY : src/integral.cpp.o
+
+src/integral.i: src/integral.cpp.i
+
+.PHONY : src/integral.i
+
+# target to preprocess a source file
+src/integral.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/code1_lib.dir/build.make CMakeFiles/code1_lib.dir/src/integral.cpp.i
+.PHONY : src/integral.cpp.i
+
+src/integral.s: src/integral.cpp.s
+
+.PHONY : src/integral.s
+
+# target to generate assembly for a file
+src/integral.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/code1_lib.dir/build.make CMakeFiles/code1_lib.dir/src/integral.cpp.s
+.PHONY : src/integral.cpp.s
 
 src/spectrum.o: src/spectrum.cpp.o
 
@@ -221,7 +341,7 @@ src/spectrum.o: src/spectrum.cpp.o
 
 # target to build an object file
 src/spectrum.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/spectrum.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/code1_lib.dir/build.make CMakeFiles/code1_lib.dir/src/spectrum.cpp.o
 .PHONY : src/spectrum.cpp.o
 
 src/spectrum.i: src/spectrum.cpp.i
@@ -230,7 +350,7 @@ src/spectrum.i: src/spectrum.cpp.i
 
 # target to preprocess a source file
 src/spectrum.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/spectrum.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/code1_lib.dir/build.make CMakeFiles/code1_lib.dir/src/spectrum.cpp.i
 .PHONY : src/spectrum.cpp.i
 
 src/spectrum.s: src/spectrum.cpp.s
@@ -239,7 +359,7 @@ src/spectrum.s: src/spectrum.cpp.s
 
 # target to generate assembly for a file
 src/spectrum.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/spectrum.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/code1_lib.dir/build.make CMakeFiles/code1_lib.dir/src/spectrum.cpp.s
 .PHONY : src/spectrum.cpp.s
 
 src/xsection.o: src/xsection.cpp.o
@@ -248,7 +368,7 @@ src/xsection.o: src/xsection.cpp.o
 
 # target to build an object file
 src/xsection.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/xsection.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/code1_lib.dir/build.make CMakeFiles/code1_lib.dir/src/xsection.cpp.o
 .PHONY : src/xsection.cpp.o
 
 src/xsection.i: src/xsection.cpp.i
@@ -257,7 +377,7 @@ src/xsection.i: src/xsection.cpp.i
 
 # target to preprocess a source file
 src/xsection.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/xsection.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/code1_lib.dir/build.make CMakeFiles/code1_lib.dir/src/xsection.cpp.i
 .PHONY : src/xsection.cpp.i
 
 src/xsection.s: src/xsection.cpp.s
@@ -266,7 +386,7 @@ src/xsection.s: src/xsection.cpp.s
 
 # target to generate assembly for a file
 src/xsection.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/xsection.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/code1_lib.dir/build.make CMakeFiles/code1_lib.dir/src/xsection.cpp.s
 .PHONY : src/xsection.cpp.s
 
 # Help Target
@@ -281,10 +401,22 @@ help:
 	@echo "... install/strip"
 	@echo "... list_install_components"
 	@echo "... rebuild_cache"
+	@echo "... code1_lib"
+	@echo "... graph"
 	@echo "... main"
-	@echo "... main.o"
-	@echo "... main.i"
-	@echo "... main.s"
+	@echo "... numerical_int"
+	@echo "... exe/graph.o"
+	@echo "... exe/graph.i"
+	@echo "... exe/graph.s"
+	@echo "... exe/main.o"
+	@echo "... exe/main.i"
+	@echo "... exe/main.s"
+	@echo "... exe/numerical_int.o"
+	@echo "... exe/numerical_int.i"
+	@echo "... exe/numerical_int.s"
+	@echo "... src/integral.o"
+	@echo "... src/integral.i"
+	@echo "... src/integral.s"
 	@echo "... src/spectrum.o"
 	@echo "... src/spectrum.i"
 	@echo "... src/spectrum.s"

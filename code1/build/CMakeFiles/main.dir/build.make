@@ -76,58 +76,29 @@ include CMakeFiles/main.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/main.dir/flags.make
 
-CMakeFiles/main.dir/main.C.o: CMakeFiles/main.dir/flags.make
-CMakeFiles/main.dir/main.C.o: ../main.C
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/jiaweiguo/Documents/GitHub/SNEW_PandaX/code1/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/main.dir/main.C.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/main.dir/main.C.o -c /Users/jiaweiguo/Documents/GitHub/SNEW_PandaX/code1/main.C
+CMakeFiles/main.dir/exe/main.C.o: CMakeFiles/main.dir/flags.make
+CMakeFiles/main.dir/exe/main.C.o: ../exe/main.C
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/jiaweiguo/Documents/GitHub/SNEW_PandaX/code1/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/main.dir/exe/main.C.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/main.dir/exe/main.C.o -c /Users/jiaweiguo/Documents/GitHub/SNEW_PandaX/code1/exe/main.C
 
-CMakeFiles/main.dir/main.C.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/main.dir/main.C.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/jiaweiguo/Documents/GitHub/SNEW_PandaX/code1/main.C > CMakeFiles/main.dir/main.C.i
+CMakeFiles/main.dir/exe/main.C.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/main.dir/exe/main.C.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/jiaweiguo/Documents/GitHub/SNEW_PandaX/code1/exe/main.C > CMakeFiles/main.dir/exe/main.C.i
 
-CMakeFiles/main.dir/main.C.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/main.dir/main.C.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/jiaweiguo/Documents/GitHub/SNEW_PandaX/code1/main.C -o CMakeFiles/main.dir/main.C.s
-
-CMakeFiles/main.dir/src/spectrum.cpp.o: CMakeFiles/main.dir/flags.make
-CMakeFiles/main.dir/src/spectrum.cpp.o: ../src/spectrum.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/jiaweiguo/Documents/GitHub/SNEW_PandaX/code1/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/main.dir/src/spectrum.cpp.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/main.dir/src/spectrum.cpp.o -c /Users/jiaweiguo/Documents/GitHub/SNEW_PandaX/code1/src/spectrum.cpp
-
-CMakeFiles/main.dir/src/spectrum.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/main.dir/src/spectrum.cpp.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/jiaweiguo/Documents/GitHub/SNEW_PandaX/code1/src/spectrum.cpp > CMakeFiles/main.dir/src/spectrum.cpp.i
-
-CMakeFiles/main.dir/src/spectrum.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/main.dir/src/spectrum.cpp.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/jiaweiguo/Documents/GitHub/SNEW_PandaX/code1/src/spectrum.cpp -o CMakeFiles/main.dir/src/spectrum.cpp.s
-
-CMakeFiles/main.dir/src/xsection.cpp.o: CMakeFiles/main.dir/flags.make
-CMakeFiles/main.dir/src/xsection.cpp.o: ../src/xsection.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/jiaweiguo/Documents/GitHub/SNEW_PandaX/code1/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/main.dir/src/xsection.cpp.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/main.dir/src/xsection.cpp.o -c /Users/jiaweiguo/Documents/GitHub/SNEW_PandaX/code1/src/xsection.cpp
-
-CMakeFiles/main.dir/src/xsection.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/main.dir/src/xsection.cpp.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/jiaweiguo/Documents/GitHub/SNEW_PandaX/code1/src/xsection.cpp > CMakeFiles/main.dir/src/xsection.cpp.i
-
-CMakeFiles/main.dir/src/xsection.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/main.dir/src/xsection.cpp.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/jiaweiguo/Documents/GitHub/SNEW_PandaX/code1/src/xsection.cpp -o CMakeFiles/main.dir/src/xsection.cpp.s
+CMakeFiles/main.dir/exe/main.C.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/main.dir/exe/main.C.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/jiaweiguo/Documents/GitHub/SNEW_PandaX/code1/exe/main.C -o CMakeFiles/main.dir/exe/main.C.s
 
 # Object files for target main
 main_OBJECTS = \
-"CMakeFiles/main.dir/main.C.o" \
-"CMakeFiles/main.dir/src/spectrum.cpp.o" \
-"CMakeFiles/main.dir/src/xsection.cpp.o"
+"CMakeFiles/main.dir/exe/main.C.o"
 
 # External object files for target main
 main_EXTERNAL_OBJECTS =
 
-main: CMakeFiles/main.dir/main.C.o
-main: CMakeFiles/main.dir/src/spectrum.cpp.o
-main: CMakeFiles/main.dir/src/xsection.cpp.o
+main: CMakeFiles/main.dir/exe/main.C.o
 main: CMakeFiles/main.dir/build.make
+main: libcode1_lib.a
 main: /Applications/root_v6.22.06/lib/libCore.so
 main: /Applications/root_v6.22.06/lib/libImt.so
 main: /Applications/root_v6.22.06/lib/libRIO.so
@@ -146,8 +117,9 @@ main: /Applications/root_v6.22.06/lib/libPhysics.so
 main: /Applications/root_v6.22.06/lib/libMathCore.so
 main: /Applications/root_v6.22.06/lib/libThread.so
 main: /Applications/root_v6.22.06/lib/libMultiProc.so
+main: /Applications/root_v6.22.06/lib/libMathMore.so
 main: CMakeFiles/main.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/jiaweiguo/Documents/GitHub/SNEW_PandaX/code1/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking CXX executable main"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/jiaweiguo/Documents/GitHub/SNEW_PandaX/code1/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable main"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/main.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

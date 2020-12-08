@@ -235,6 +235,9 @@ ROOT_Imt_LIBRARY:FILEPATH=/Applications/root_v6.22.06/lib/libImt.so
 ROOT_MathCore_LIBRARY:FILEPATH=/Applications/root_v6.22.06/lib/libMathCore.so
 
 //Path to a library.
+ROOT_MathMore_LIBRARY:FILEPATH=/Applications/root_v6.22.06/lib/libMathMore.so
+
+//Path to a library.
 ROOT_Matrix_LIBRARY:FILEPATH=/Applications/root_v6.22.06/lib/libMatrix.so
 
 //Path to a library.
@@ -466,6 +469,8 @@ ROOT_Hist_LIBRARY-ADVANCED:INTERNAL=1
 ROOT_Imt_LIBRARY-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: ROOT_MathCore_LIBRARY
 ROOT_MathCore_LIBRARY-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: ROOT_MathMore_LIBRARY
+ROOT_MathMore_LIBRARY-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: ROOT_Matrix_LIBRARY
 ROOT_Matrix_LIBRARY-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: ROOT_MultiProc_LIBRARY

@@ -1,7 +1,5 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/main.dir/main.C.o"
-  "CMakeFiles/main.dir/src/spectrum.cpp.o"
-  "CMakeFiles/main.dir/src/xsection.cpp.o"
+  "CMakeFiles/main.dir/exe/main.C.o"
   "main"
   "main.pdb"
 )

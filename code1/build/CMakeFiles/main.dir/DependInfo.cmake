@@ -4,9 +4,7 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/Users/jiaweiguo/Documents/GitHub/SNEW_PandaX/code1/main.C" "/Users/jiaweiguo/Documents/GitHub/SNEW_PandaX/code1/build/CMakeFiles/main.dir/main.C.o"
-  "/Users/jiaweiguo/Documents/GitHub/SNEW_PandaX/code1/src/spectrum.cpp" "/Users/jiaweiguo/Documents/GitHub/SNEW_PandaX/code1/build/CMakeFiles/main.dir/src/spectrum.cpp.o"
-  "/Users/jiaweiguo/Documents/GitHub/SNEW_PandaX/code1/src/xsection.cpp" "/Users/jiaweiguo/Documents/GitHub/SNEW_PandaX/code1/build/CMakeFiles/main.dir/src/xsection.cpp.o"
+  "/Users/jiaweiguo/Documents/GitHub/SNEW_PandaX/code1/exe/main.C" "/Users/jiaweiguo/Documents/GitHub/SNEW_PandaX/code1/build/CMakeFiles/main.dir/exe/main.C.o"
   )
 set(CMAKE_CXX_COMPILER_ID "AppleClang")
 
@@ -18,6 +16,7 @@ set(CMAKE_CXX_TARGET_INCLUDE_PATH
 
 # Targets to which this target links.
 set(CMAKE_TARGET_LINKED_INFO_FILES
+  "/Users/jiaweiguo/Documents/GitHub/SNEW_PandaX/code1/build/CMakeFiles/code1_lib.dir/DependInfo.cmake"
   )
 
 # Fortran module output directory.
