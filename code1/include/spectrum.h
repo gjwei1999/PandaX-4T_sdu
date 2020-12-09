@@ -28,6 +28,8 @@ private:
     double neu_Emin = 0.0;
     double neu_Emax = 300.0;
     
+    int nbin= 300;
+    
     double D = 10.0 * 1000.0 * 206264.8 * 1.49598e11 * 100; //D is the distance between Earth and the SN
                        //10kpc = 10 * 1k * 206264.8 * 1.49598e11 * 100 cm
     

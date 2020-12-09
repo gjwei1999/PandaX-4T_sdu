@@ -51,8 +51,8 @@ void Integral::numerical_int(TString hist_name, TFile * root_name){
     
     ROOT::Math::Interpolator * interpolation = new ROOT::Math::Interpolator(E_point, flux_point, ROOT::Math::Interpolation::kLINEAR);
     
-    int nbin1 = 300;//neuE
-    int nbin2 = 100;//recoil
+    int nbin1 = 1000;//neuE
+    int nbin2 = 10000;//recoil
     
     TString flux_neuE_name = hist_name + "_flux";
     TString spectrum_recE_name = hist_name + "_recoil";
@@ -84,7 +84,7 @@ void Integral::numerical_int(TString hist_name, TFile * root_name){
     Double_t mass_xenon = 131.293 * 1.66e-24 /1.8 * 1e27 * 1e3;//unit: keV
     
     TH1D * temp = new TH1D("temp", "temp", nbin1, 0.0, 300.0);
-    temp->SetDirectory(root_name);
+//    temp->SetDirectory(root_name);
     
     Double_t integral;
     
@@ -117,6 +117,8 @@ void Integral::numerical_int(TString hist_name, TFile * root_name){
     
     h_spectrum_recE->GetXaxis()->SetTitle("E_{r} (keV)");
     h_spectrum_recE->GetYaxis()->SetTitle("Event rate (ton.s.MeV)^{-1}");
+    
+    std::cout<<"The recoil energy spectrum is finished."<<std::endl;
     
 }
 

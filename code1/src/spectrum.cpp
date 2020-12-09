@@ -49,9 +49,9 @@ void Spectrum::time_spectrum(TString filename, TFile *rootfile){
 //    TString hist_time_energy_name_antie = hist_name1 + "T-E-" + "antie";
 //    TString hist_time_energy_name_x = hist_name1 + "T-E-" + "x";
     
-    TH1D* h_time_e = new TH1D(hist_time_name_e, hist_time_name_e, 500, tmin, tmax);
-    TH1D* h_time_antie = new TH1D(hist_time_name_antie, hist_time_name_antie, 500, tmin, tmax);
-    TH1D* h_time_x = new TH1D(hist_time_name_x, hist_time_name_x, 500, tmin, tmax);
+    TH1D* h_time_e = new TH1D(hist_time_name_e, hist_time_name_e, nbin, tmin, tmax);
+    TH1D* h_time_antie = new TH1D(hist_time_name_antie, hist_time_name_antie, nbin, tmin, tmax);
+    TH1D* h_time_x = new TH1D(hist_time_name_x, hist_time_name_x, nbin, tmin, tmax);
     
 //    TH2D * h_time_energy_e = new TH2D(hist_time_energy_name_e, hist_time_energy_name_e, 500, tmin, tmax, 50, neu_Emin, neu_Emax); 
 //    TH2D * h_time_energy_antie = new TH2D(hist_time_energy_name_e, hist_time_energy_name_e, 500, tmin, tmax, 50, neu_Emin, neu_Emax); 
@@ -117,6 +117,11 @@ void Spectrum::time_spectrum(TString filename, TFile *rootfile){
     h_time_antie->Scale(num_Xe_ton);
     h_time_x->Scale(num_Xe_ton);
     
+    for(int i=0; i<nbin; i++){
+        h_time_e->SetBinError(i, 0.0);
+        h_time_antie->SetBinError(i, 0.0);
+        h_time_x->SetBinError(i, 0.0);
+    }
 //    h_time_energy_e->Scale(num_Xe_ton);
 //    h_time_energy_antie->Scale(num_Xe_ton);
 //    h_time_energy_x->Scale(num_Xe_ton);
@@ -150,9 +155,9 @@ void Spectrum::flux_time(TString filename, TFile *rootfile){//_flux, TFile *root
     TString hist_flux_T_inter_antie = hist_name1 + "anti-elec";
     TString hist_flux_T_inter_x = hist_name1 + "x-type";
     
-    TH1D * h_flux_T_e = new TH1D(hist_flux_T_name_e, hist_flux_T_name_e, 500, tmin, tmax);
-    TH1D * h_flux_T_antie = new TH1D(hist_flux_T_name_antie, hist_flux_T_name_antie, 500, tmin, tmax);
-    TH1D * h_flux_T_x = new TH1D(hist_flux_T_name_x, hist_flux_T_name_x, 500, tmin, tmax);
+    TH1D * h_flux_T_e = new TH1D(hist_flux_T_name_e, hist_flux_T_name_e, nbin, tmin, tmax);
+    TH1D * h_flux_T_antie = new TH1D(hist_flux_T_name_antie, hist_flux_T_name_antie, nbin, tmin, tmax);
+    TH1D * h_flux_T_x = new TH1D(hist_flux_T_name_x, hist_flux_T_name_x, nbin, tmin, tmax);
    
 //    //flux_time of linear interpolation
 //    TH1D* h_flux_T_inter_e = new TH1D(hist_flux_T_inter_e, hist_flux_T_inter_e, 500, tmin, tmax);
@@ -234,11 +239,74 @@ void Spectrum::flux_time(TString filename, TFile *rootfile){//_flux, TFile *root
     infile.close();
 
     
+    for(int i=0; i<nbin; i++){
+        h_flux_T_e->SetBinError(i, 0.0);
+        h_flux_T_antie->SetBinError(i, 0.0);
+        h_flux_T_x->SetBinError(i, 0.0);
+    }
+/*
+    std::vector<Double_t> time_point_e = {-0.2};
+    std::vector<Double_t> flux_point_e = {0.0};
+    std::vector<Double_t> time_point_antie = {-0.2};
+    std::vector<Double_t> flux_point_antie = {0.0};
+    std::vector<Double_t> time_point_x = {-0.2};
+    std::vector<Double_t> flux_point_x = {0.0};
     
+    for(int i=0; i<nbin; i++){
+        
+        if(h_flux_T_e->GetBinContent(i)>0.0){
+            time_point_e.push_back(-0.2 + i*(1.5+0.2)/nbin);
+            flux_point_e.push_back(h_flux_T_e->GetBinContent(i));
+            
+            std::cout<<"the value of i is "<<i<<std::endl;
+            std::cout<<"the value of Time is "<<-0.2 + i*(1.5+0.2)/nbin<<std::endl;
+            std::cout<<"the value of Flux is "<<h_flux_T_e->GetBinContent(i)<<std::endl;
+        }
+        
+    if(h_flux_T_antie->GetBinContent(i)>0){
+            time_point_antie.push_back(-0.2 + i*(1.5+0.2)/nbin);
+            flux_point_antie.push_back(h_flux_T_e->GetBinContent(i));
+        }
+        
+    if(h_flux_T_x->GetBinContent(i)>0){
+            time_point_x.push_back(-0.2 + i*(1.5+0.2)/nbin);
+            flux_point_x.push_back(h_flux_T_e->GetBinContent(i));
+        }
+        
+    }
     
+    h_flux_T_e->Reset();
+    h_flux_T_antie->Reset();
+    h_flux_T_x->Reset();
     
+    ROOT::Math::Interpolator * interpolation_e = new ROOT::Math::Interpolator(time_point_e, flux_point_e, ROOT::Math::Interpolation::kLINEAR);
+    ROOT::Math::Interpolator * interpolation_antie = new ROOT::Math::Interpolator(time_point_antie, flux_point_antie, ROOT::Math::Interpolation::kLINEAR);
+    ROOT::Math::Interpolator * interpolation_x = new ROOT::Math::Interpolator(time_point_x, flux_point_x, ROOT::Math::Interpolation::kLINEAR);
     
+    Double_t x;
+    Double_t y;
     
+    for(int i=0; i<nbin; i++){
+        x = i * (1.5+0.2)/nbin;
+        y = interpolation_e->Eval(x);
+        h_flux_T_e->Fill(x, y);
+
+        x = i * (1.5+0.2)/nbin;
+        y = interpolation_antie->Eval(x);
+        h_flux_T_antie->Fill(x, y);
+        
+        x = i * (1.5+0.2)/nbin;
+        y = interpolation_x->Eval(x);
+        h_flux_T_x->Fill(x, y);
+    }
+    
+    for(int i=0; i<nbin; i++){
+        h_flux_T_e->SetBinError(i, 0.0);
+        h_flux_T_antie->SetBinError(i, 0.0);
+        h_flux_T_x->SetBinError(i, 0.0);
+    }
+    
+*/
 }
 
 
