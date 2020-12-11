@@ -30,7 +30,7 @@
 
 Double_t fitf(Double_t *x, Double_t *par) {
     
-    Double_t fitval = par[0] * x[0] * x[0] / (TMath::Exp(x[0]/par[1]) + 1) ;
+    Double_t fitval = par[0] / (TMath::Exp(x[0]/par[1]) + 1) ;
     
     return fitval;
 }
@@ -44,12 +44,12 @@ int main(){
     TFile *fs = new TFile(loadpath + "flux_neuE.root", "r");
     TH1D * h0 = (TH1D *) fs->Get("1301electron");
 
-    //TF1 *func = new TF1("fit", fitf, 0.0, 250.0, 2);
+    TF1 *func = new TF1("fit", fitf, 0.0, 250.0, 2);
     
-    //func->SetParameters(1e4, 2);
-    //h0->Scale(1/1e6);
+    func->SetParameters(1e4, 2);
+    h0->Scale(1/1e6);
     
-    h0->Fit("pol6");
+    h0->Fit("fit");
     
     TCanvas * c0 = new TCanvas("c0", "", 800, 600);
     h0->Draw();
