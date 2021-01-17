@@ -4,6 +4,7 @@
 
 #include "integral.h"
 
+void get_total(TFile * root_name, TString hist_name_total, TString hist_name_electron, TString hist_name_antielectron, TString hist_name_x);
 
 int main(){
     
@@ -42,9 +43,36 @@ int main(){
     std::cout<<number<<" is finished."<<std::endl;
     std::cout<<"----------------------------"<<std::endl;
     
+    std::string hist_name_total = Form("%d_total", number);
+    
+    get_total(fs1, hist_name_total.c_str(), hist_name_electron.c_str(), hist_name_antielectron.c_str(), hist_name_x.c_str());
+        
     }
     
     fs1->Write();
     
     return 1;
+}
+
+void get_total(TFile * root_name, TString hist_name_total, TString hist_name_electron, TString hist_name_antielectron, TString hist_name_x){
+    
+    TString spectrum_recE_name = hist_name_total + "_recoil";
+    
+    int nbin2 = 10000;//the value should be equal to "nbin2" of "Integral::numerical_int" in src/integral.cpp
+    TH1D * h_spectrum_recE_total = new TH1D(spectrum_recE_name, spectrum_recE_name, nbin2, 1.0e-3, 100.0);//unit keV
+    
+    TString hist_name_electron_1 = hist_name_electron + "_recoil";
+    TString hist_name_antielectron_1 = hist_name_antielectron + "_recoil";
+    TString hist_name_x_1 = hist_name_x + "_recoil";
+    
+    TH1D * hist_ele = (TH1D *) root_name->Get(hist_name_electron_1);
+    TH1D * hist_antie = (TH1D *) root_name->Get(hist_name_antielectron_1);
+    TH1D * hist_x = (TH1D *) root_name->Get(hist_name_x_1);
+    
+    h_spectrum_recE_total->Add(hist_ele, hist_antie);
+    h_spectrum_recE_total->Add(hist_x, 4);
+    
+    h_spectrum_recE_total->Scale(0.001);//convert the unit from MeV^{-1} to keV^{-1}
+    
+    h_spectrum_recE_total->SetDirectory(root_name);
 }

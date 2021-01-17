@@ -621,7 +621,7 @@ int main(const int argc, const char * argv[]){
         
     }
 
-    //event rate_neuEnergy with interpolation
+    //event rate_recoilEnergy with interpolation
     if(opt == 4){
         
         TFile *fs = new TFile(loadpath + "recE_spec.root", "r");
@@ -698,7 +698,7 @@ int main(const int argc, const char * argv[]){
         h1301antie->DrawClone("Hist same");
         h1301x->DrawClone("Hist same");
         leg->DrawClone("same");
-        c0->Print(savepath + "rate_neuE.pdf(","pdf");//
+        c0->Print(savepath + "rate_recoilE.pdf(","pdf");//
         TCanvas * c1 = new TCanvas("c1", "", 800, 600);
         c1->SetLogy();
         c1->SetLogx();
@@ -710,7 +710,7 @@ int main(const int argc, const char * argv[]){
         h1302antie->DrawClone("Hist same");
         h1302x->DrawClone("Hist same");
         leg->DrawClone("same");
-        c1->Print(savepath + "rate_neuE.pdf","pdf");//
+        c1->Print(savepath + "rate_recoilE.pdf","pdf");//
         TCanvas * c2 = new TCanvas("c2", "", 800, 600);
         c2->SetLogy();
         c2->SetLogx();
@@ -722,7 +722,7 @@ int main(const int argc, const char * argv[]){
         h1303antie->DrawClone("Hist same");
         h1303x->DrawClone("Hist same");
         leg->DrawClone("same");
-        c2->Print(savepath + "rate_neuE.pdf","pdf");//
+        c2->Print(savepath + "rate_recoilE.pdf","pdf");//
         TCanvas * c3 = new TCanvas("c3", "", 800, 600);
         c3->SetLogy();
         c3->SetLogx();
@@ -734,7 +734,7 @@ int main(const int argc, const char * argv[]){
         h2001antie->DrawClone("Hist same");
         h2001x->DrawClone("Hist same");
         leg->DrawClone("same");
-        c3->Print(savepath + "rate_neuE.pdf","pdf");//
+        c3->Print(savepath + "rate_recoilE.pdf","pdf");//
         TCanvas * c4 = new TCanvas("c4", "", 800, 600);
         c4->SetLogy();
         c4->SetLogx();
@@ -746,7 +746,7 @@ int main(const int argc, const char * argv[]){
         h2002antie->DrawClone("Hist same");
         h2002x->DrawClone("Hist same");
         leg->DrawClone("same");
-        c4->Print(savepath + "rate_neuE.pdf","pdf");//
+        c4->Print(savepath + "rate_recoilE.pdf","pdf");//
         TCanvas * c5 = new TCanvas("c5", "", 800, 600);
         c5->SetLogy();
         c5->SetLogx();
@@ -758,7 +758,7 @@ int main(const int argc, const char * argv[]){
         h2003antie->DrawClone("Hist same");
         h2003x->DrawClone("Hist same");
         leg->DrawClone("same");
-        c5->Print(savepath + "rate_neuE.pdf","pdf");//
+        c5->Print(savepath + "rate_recoilE.pdf","pdf");//
         TCanvas * c6 = new TCanvas("c6", "", 800, 600);
         c6->SetLogy();
         c6->SetLogx();
@@ -770,7 +770,7 @@ int main(const int argc, const char * argv[]){
         h3001antie->DrawClone("Hist same");
         h3001x->DrawClone("Hist same");
         leg->DrawClone("same");
-        c6->Print(savepath + "rate_neuE.pdf","pdf");//
+        c6->Print(savepath + "rate_recoilE.pdf","pdf");//
         TCanvas * c7 = new TCanvas("c7", "", 800, 600);
         c7->SetLogy();
         c7->SetLogx();
@@ -782,7 +782,7 @@ int main(const int argc, const char * argv[]){
         h3002antie->DrawClone("Hist same");
         h3002x->DrawClone("Hist same");
         leg->DrawClone("same");
-        c7->Print(savepath + "rate_neuE.pdf","pdf");//
+        c7->Print(savepath + "rate_recoilE.pdf","pdf");//
         TCanvas * c8 = new TCanvas("c8", "", 800, 600);
         c8->SetLogy();
         c8->SetLogx();
@@ -794,7 +794,7 @@ int main(const int argc, const char * argv[]){
         h3003antie->DrawClone("Hist same");
         h3003x->DrawClone("Hist same");
         leg->DrawClone("same");
-        c8->Print(savepath + "rate_neuE.pdf","pdf");//
+        c8->Print(savepath + "rate_recoilE.pdf","pdf");//
         TCanvas * c9 = new TCanvas("c9", "", 800, 600);
         c9->SetLogy();
         c9->SetLogx();
@@ -806,7 +806,7 @@ int main(const int argc, const char * argv[]){
         h5001antie->DrawClone("Hist same");
         h5001x->DrawClone("Hist same");
         leg->DrawClone("same");
-        c9->Print(savepath + "rate_neuE.pdf","pdf");//
+        c9->Print(savepath + "rate_recoilE.pdf","pdf");//
         h5002e->GetXaxis()->SetTitle("E_{r} (keV)");
         h5002e->GetYaxis()->SetTitle("Event rate (ton^{-1}s^{-1}MeV^{-1})");
         TCanvas * c10 = new TCanvas("c10", "", 800, 600);
@@ -818,7 +818,7 @@ int main(const int argc, const char * argv[]){
         h5002antie->DrawClone("Hist same");
         h5002x->DrawClone("Hist same");
         leg->DrawClone("same");
-        c10->Print(savepath + "rate_neuE.pdf","pdf");//
+        c10->Print(savepath + "rate_recoilE.pdf","pdf");//
         TCanvas * c11 = new TCanvas("c11", "", 800, 600);
         c11->SetLogy();
         c11->SetLogx();
@@ -830,7 +830,77 @@ int main(const int argc, const char * argv[]){
         h5003antie->DrawClone("Hist same");
         h5003x->DrawClone("Hist same");
         leg->DrawClone("same");
-        c11->Print(savepath + "rate_neuE.pdf)","pdf");//
+        c11->Print(savepath + "rate_recoilE.pdf)","pdf");//
+        
+    }
+    
+    //event rate_recoilEnergy
+    if(opt==5){
+        
+        TFile *fs = new TFile(loadpath + "recE_spec.root", "r");
+        
+        TH1D * h1301 = (TH1D *) fs->Get("1301_total_recoil");
+        TH1D * h1302 = (TH1D *) fs->Get("1302_total_recoil");
+        TH1D * h1303 = (TH1D *) fs->Get("1303_total_recoil");
+        TH1D * h2001 = (TH1D *) fs->Get("2001_total_recoil");
+        TH1D * h2002 = (TH1D *) fs->Get("2002_total_recoil");
+        TH1D * h2003 = (TH1D *) fs->Get("2003_total_recoil");
+        TH1D * h3001 = (TH1D *) fs->Get("3001_total_recoil");
+        TH1D * h3002 = (TH1D *) fs->Get("3002_total_recoil");
+        TH1D * h3003 = (TH1D *) fs->Get("3003_total_recoil");
+        TH1D * h5001 = (TH1D *) fs->Get("5001_total_recoil");
+        TH1D * h5002 = (TH1D *) fs->Get("5002_total_recoil");
+        TH1D * h5003 = (TH1D *) fs->Get("5003_total_recoil");
+        
+        
+        h1301->SetLineColor(3); h1302->SetLineColor(3); h1303->SetLineColor(3);
+        h2001->SetLineColor(4); h2002->SetLineColor(4); h2003->SetLineColor(4);
+        h3001->SetLineColor(2); h3002->SetLineColor(2); h3003->SetLineColor(2);
+        h5001->SetLineColor(6); h5002->SetLineColor(6); h5003->SetLineColor(6);
+        
+        h1301->SetLineStyle(1); h1302->SetLineStyle(2); h1303->SetLineStyle(4);
+        h2001->SetLineStyle(1); h2002->SetLineStyle(2); h2003->SetLineStyle(4);
+        h3001->SetLineStyle(1); h3002->SetLineStyle(2); h3003->SetLineStyle(4);
+        h5001->SetLineStyle(1); h5002->SetLineStyle(2); h5003->SetLineStyle(4);
+        
+        
+        TLegend * leg = new TLegend(0.7, 0.7, 0.9, 0.9);
+        leg->AddEntry(h1301, "13M, t_{revive}=100ms", "l");
+        leg->AddEntry(h1302, "13M, t_{revive}=200ms", "l");
+        leg->AddEntry(h1303, "13M, t_{revive}=300ms", "l");
+        leg->AddEntry(h2001, "20M, t_{revive}=100ms", "l");
+        leg->AddEntry(h2002, "20M, t_{revive}=200ms", "l");
+        leg->AddEntry(h2003, "20M, t_{revive}=300ms", "l");
+        leg->AddEntry(h3001, "30M, t_{revive}=100ms", "l");
+        leg->AddEntry(h3002, "30M, t_{revive}=200ms", "l");
+        leg->AddEntry(h3003, "30M, t_{revive}=300ms", "l");
+        leg->AddEntry(h5001, "50M, t_{revive}=100ms", "l");
+        leg->AddEntry(h5002, "50M, t_{revive}=200ms", "l");
+        leg->AddEntry(h5003, "50M, t_{revive}=300ms", "l");
+        
+        TCanvas * c0 = new TCanvas("c0", "", 800, 600);
+        c0->SetLogy();
+        c0->SetLogx();
+        h1301->GetXaxis()->SetTitle("E_{r} (keV)");
+        h1301->GetYaxis()->SetTitle("Event rate (ton^{-1}s^{-1}keV^{-1})");
+        h1301->SetTitle("Total Event Rate");
+        h1301->SetMaximum(1.0);
+        h1301->DrawClone("Hist same");
+        h1302->DrawClone("Hist same");
+        h1303->DrawClone("Hist same");
+        h2001->DrawClone("Hist same");
+        h2002->DrawClone("Hist same");
+        h2003->DrawClone("Hist same");
+        h3001->DrawClone("Hist same");
+        h3002->DrawClone("Hist same");
+        h3003->DrawClone("Hist same");
+        h5001->DrawClone("Hist same");
+        h5002->DrawClone("Hist same");
+        h5003->DrawClone("Hist same");
+        leg->DrawClone("same");
+        c0->Print(savepath + "total_rate_recoilE.pdf(","pdf");//
+        
+        
         
     }
 }
