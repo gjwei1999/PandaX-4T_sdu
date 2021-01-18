@@ -837,7 +837,7 @@ int main(const int argc, const char * argv[]){
     //event rate_recoilEnergy
     if(opt==5){
         
-        TFile *fs = new TFile(loadpath + "recE_spec.root", "r");
+        TFile *fs = new TFile(loadpath + "recE_spec_total.root", "r");
         
         TH1D * h1301 = (TH1D *) fs->Get("1301_total_recoil");
         TH1D * h1302 = (TH1D *) fs->Get("1302_total_recoil");
@@ -898,7 +898,7 @@ int main(const int argc, const char * argv[]){
         h5002->DrawClone("Hist same");
         h5003->DrawClone("Hist same");
         leg->DrawClone("same");
-        c0->Print(savepath + "total_rate_recoilE.pdf(","pdf");//
+        c0->Print(savepath + "total_rate_recoilE.pdf","pdf");//
         
         
         

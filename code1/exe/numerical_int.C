@@ -4,14 +4,16 @@
 
 #include "integral.h"
 
-void get_total(TFile * root_name, TString hist_name_total, TString hist_name_electron, TString hist_name_antielectron, TString hist_name_x);
+void get_total(TFile * root_name1, TFile * root_name2, TString hist_name_total, TString hist_name_electron, TString hist_name_antielectron, TString hist_name_x);
 
 int main(){
     
     TString path2 = "/Users/jiaweiguo/Documents/GitHub/SNEW_PandaX/code1/build/";
     TString root_recE_spec = path2 + "recE_spec.root";
+    TString root_recE_spec_total = path2 + "recE_spec_total.root";
     
     TFile * fs1 = new TFile(root_recE_spec.Data(), "RECREATE");
+    TFile * fs2 = new TFile(root_recE_spec_total.Data(), "RECREATE");
     
     Integral * int_1301e = new Integral();
     Integral * int_1301antie = new Integral();
@@ -45,16 +47,19 @@ int main(){
     
     std::string hist_name_total = Form("%d_total", number);
     
-    get_total(fs1, hist_name_total.c_str(), hist_name_electron.c_str(), hist_name_antielectron.c_str(), hist_name_x.c_str());
+    get_total(fs1, fs2, hist_name_total.c_str(), hist_name_electron.c_str(), hist_name_antielectron.c_str(), hist_name_x.c_str());
         
     }
     
     fs1->Write();
+    fs2->Write();
     
     return 1;
 }
 
-void get_total(TFile * root_name, TString hist_name_total, TString hist_name_electron, TString hist_name_antielectron, TString hist_name_x){
+//get histogram from root_name1
+//write the histogram of the total rate to root_name2
+void get_total(TFile * root_name1, TFile * root_name2, TString hist_name_total, TString hist_name_electron, TString hist_name_antielectron, TString hist_name_x){
     
     TString spectrum_recE_name = hist_name_total + "_recoil";
     
@@ -65,14 +70,14 @@ void get_total(TFile * root_name, TString hist_name_total, TString hist_name_ele
     TString hist_name_antielectron_1 = hist_name_antielectron + "_recoil";
     TString hist_name_x_1 = hist_name_x + "_recoil";
     
-    TH1D * hist_ele = (TH1D *) root_name->Get(hist_name_electron_1);
-    TH1D * hist_antie = (TH1D *) root_name->Get(hist_name_antielectron_1);
-    TH1D * hist_x = (TH1D *) root_name->Get(hist_name_x_1);
+    TH1D * hist_ele = (TH1D *) root_name1->Get(hist_name_electron_1);
+    TH1D * hist_antie = (TH1D *) root_name1->Get(hist_name_antielectron_1);
+    TH1D * hist_x = (TH1D *) root_name1->Get(hist_name_x_1);
     
     h_spectrum_recE_total->Add(hist_ele, hist_antie);
     h_spectrum_recE_total->Add(hist_x, 4);
     
     h_spectrum_recE_total->Scale(0.001);//convert the unit from MeV^{-1} to keV^{-1}
     
-    h_spectrum_recE_total->SetDirectory(root_name);
+    h_spectrum_recE_total->SetDirectory(root_name2);
 }
