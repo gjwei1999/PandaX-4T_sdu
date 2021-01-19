@@ -39,7 +39,7 @@ int main(){
 
     gStyle->SetPalette(53);
 
-    TString loadpath = "/Users/jiaweiguo/Documents/GitHub/SNEW_PandaX/code1/build/";
+    TString loadpath = "/Users/jiaweiguo/Documents/GitHub/SNEW_PandaX/code1_SN/build/";
         
     TFile *fs = new TFile(loadpath + "flux_neuE.root", "r");
     TH1D * h0 = (TH1D *) fs->Get("1301electron");

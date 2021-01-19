@@ -19,7 +19,7 @@ public:
 private:
     TH1D * h0;
     
-    TString loadpath = "/Users/jiaweiguo/Documents/GitHub/SNEW_PandaX/code1/build/flux_neuE.root";
+    TString loadpath = "/Users/jiaweiguo/Documents/GitHub/SNEW_PandaX/code1_SN/build/flux_neuE.root";
     TFile *fs = new TFile(loadpath, "r");
     
     //number of Xenon nuclei in 1 ton
