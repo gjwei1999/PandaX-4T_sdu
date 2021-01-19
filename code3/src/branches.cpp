@@ -1,9 +1,16 @@
+/*****************************/
+/*                                                      */
+/*       Created by Jiawei Guo          */
+/*        Shandong University            */
+/*                                                      */
+/*****************************/
+
 #include "branches.hpp"
 
 Branches::Branches(){};
 Branches::~Branches(){};
 
-Branches::Branches(const TTree * input_tree){
+Branches::Branches(const std::shared_ptr<TChain> &input_tree){
     
     tree = input_tree;
     Branches::init();
@@ -67,174 +74,174 @@ void Branches::init(){
     
 }
 
-double Branches::energy(int i){
+double Branches::get_energy(int i){
     if(i >= energy->size())
         return NAN;
     else
         return energy->at(i);
 }
 
-int Branches::nQuanta(int i){
+int Branches::get_nQuanta(int i){
     if(i >= energy->size())
         return -999;
     else
         return nQuanta->at(i);
     }
 
-int Branches::Nex(int i){
+int Branches::get_Nex(int i){
     if(i >= energy->size())
         return -999;
     else
         return Nex->at(i);
     }
 
-int Branches::Ni(int i){
+int Branches::get_Ni(int i){
     if(i >= energy->size())
         return -999;
     else
         return Ni->at(i);
     }
 
-int Branches::Nph(int i){
+int Branches::get_Nph(int i){
     if(i >= energy->size())
         return -999;
     else
         return Nph->at(i);
     }
 
-int Branches::Ne(int i){
+int Branches::get_Ne(int i){
     if(i >= energy->size())
         return -999;
     else
         return Ne->at(i);
     }
        
-double Branches::NphRec(int i){
+double Branches::get_NphRec(int i){
     if(i >= energy->size())
         return NAN;
     else
         return NphRec->at(i);
     }
 
-double Branches::NeRec(int i){
+double Branches::get_NeRec(int i){
     if(i >= energy->size())
         return NAN;
     else
         return NeRec->at(i);
     }
 
-double Branches::Ly(int i){
+double Branches::get_Ly(int i){
     if(i >= energy->size())
         return NAN;
     else
         return Ly->at(i);
     }
 
-double Branches::Qy(int i){
+double Branches::get_Qy(int i){
     if(i >= energy->size())
         return NAN;
     else
         return Qy->at(i);
     }
-double Branches::S1(int i){
+double Branches::get_S1(int i){
     if(i >= energy->size())
         return NAN;
     else
         return S1->at(i);
     }
 
-double Branches::S1d(int i){
+double Branches::get_S1d(int i){
     if(i >= energy->size())
         return NAN;
     else
         return S1d->at(i);
     }
 
-double Branches::s1r(int i){
+double Branches::get_s1r(int i){
     if(i >= energy->size())
         return NAN;
     else
         return s1r->at(i);
     }
 
-int Branches::nHitsS1(int i){
+int Branches::get_nHitsS1(int i){
     if(i >= energy->size())
         return -999;
     else
         return nHitsS1->at(i);
     }
 
-int Branches::nHitsS1eff(int i){
+int Branches::get_nHitsS1eff(int i){
     if(i >= energy->size())
         return -999;
     else
         return nHitsS1eff->at(i);
     }
 
-double Branches::S2(int i){
+double Branches::get_S2(int i){
     if(i >= energy->size())
         return NAN;
     else
         return S2->at(i);
     }
 
-double Branches::S2d(int i){
+double Branches::get_S2d(int i){
     if(i >= energy->size())
         return NAN;
     else
         return S2d->at(i);
     }
 
-double Branches::s2r(int i){
+double Branches::get_s2r(int i){
     if(i >= energy->size())
         return NAN;
     else
         return s2r->at(i);
     }
 
-double Branches::S2B(int i){
+double Branches::get_S2B(int i){
     if(i >= energy->size())
         return NAN;
     else
         return S2B->at(i);
     }
 
-double Branches::S2Bd(int i){
+double Branches::get_S2Bd(int i){
     if(i >= energy->size())
         return NAN;
     else
         return S2Bd->at(i);
     }
 
-double Branches::s2r_b(int i){
+double Branches::get_s2r_b(int i){
     if(i >= energy->size())
         return NAN;
     else
         return s2r_b->at(i);
     }
 
-double Branches::dt(int i){
+double Branches::get_dt(int i){
     if(i >= energy->size())
         return NAN;
     else
         return dt->at(i);
     }
 
-double Branches::y(int i){
+double Branches::get_y(int i){
     if(i >= energy->size())
         return NAN;
     else
         return y->at(i);
     }
 
-double Branches::x(int i){
+double Branches::get_x(int i){
     if(i >= energy->size())
         return NAN;
     else
         return x->at(i);
     }
 
-double Branches::lifetime(int i){
+double Branches::get_lifetime(int i){
     if(i >= energy->size())
         return NAN;
     else

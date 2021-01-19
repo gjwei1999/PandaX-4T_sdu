@@ -1,3 +1,10 @@
+/*****************************/
+/*                                                      */
+/*       Created by Jiawei Guo          */
+/*        Shandong University            */
+/*                                                      */
+/*****************************/
+
 #ifndef _SPECTRUM_H
 #define _SPECTRUM_H
 

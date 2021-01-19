@@ -1,3 +1,10 @@
+/*****************************/
+/*                                                      */
+/*       Created by Jiawei Guo          */
+/*        Shandong University            */
+/*                                                      */
+/*****************************/
+
 #include "Math/Functor.h"
 #include "Math/WrappedTF1.h"
 #include "Math/GSLIntegrator.h"

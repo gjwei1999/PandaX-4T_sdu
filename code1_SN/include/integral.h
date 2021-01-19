@@ -1,3 +1,10 @@
+/*****************************/
+/*                                                      */
+/*       Created by Jiawei Guo          */
+/*        Shandong University            */
+/*                                                      */
+/*****************************/
+
 //#ifndef _INTEGRAL_H
 //#define _INTEGRAL_H
 

@@ -1,3 +1,10 @@
+/*****************************/
+/*                                                      */
+/*       Created by Jiawei Guo          */
+/*        Shandong University            */
+/*                                                      */
+/*****************************/
+
 #include <iostream>
 #include <fstream>
 #include <cmath>
