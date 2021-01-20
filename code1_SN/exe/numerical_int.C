@@ -15,7 +15,7 @@ void get_total(TFile * root_name1, TFile * root_name2, TString hist_name_total, 
 
 int main(){
     
-    TString path2 = "/Users/jiaweiguo/Documents/GitHub/SNEW_PandaX/code1_SN/build/";
+    TString path2 = "/Users/jiaweiguo/Documents/GitHub/PandaX-4T_sdu/code1_SN/build/";
     TString root_recE_spec = path2 + "recE_spec.root";
     TString root_recE_spec_total = path2 + "recE_spec_total.root";
     

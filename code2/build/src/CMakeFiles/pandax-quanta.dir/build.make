@@ -62,10 +62,10 @@ RM = /Applications/CMake.app/Contents/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /Users/jiaweiguo/Documents/GitHub/SNEW_PandaX/code2
+CMAKE_SOURCE_DIR = /Users/jiaweiguo/Documents/GitHub/PandaX-4T_sdu/code2
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /Users/jiaweiguo/Documents/GitHub/SNEW_PandaX/code2/build
+CMAKE_BINARY_DIR = /Users/jiaweiguo/Documents/GitHub/PandaX-4T_sdu/code2/build
 
 # Include any dependencies generated for this target.
 include src/CMakeFiles/pandax-quanta.dir/depend.make
@@ -78,16 +78,16 @@ include src/CMakeFiles/pandax-quanta.dir/flags.make
 
 src/CMakeFiles/pandax-quanta.dir/pandax-quanta.cc.o: src/CMakeFiles/pandax-quanta.dir/flags.make
 src/CMakeFiles/pandax-quanta.dir/pandax-quanta.cc.o: ../src/pandax-quanta.cc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/jiaweiguo/Documents/GitHub/SNEW_PandaX/code2/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object src/CMakeFiles/pandax-quanta.dir/pandax-quanta.cc.o"
-	cd /Users/jiaweiguo/Documents/GitHub/SNEW_PandaX/code2/build/src && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/pandax-quanta.dir/pandax-quanta.cc.o -c /Users/jiaweiguo/Documents/GitHub/SNEW_PandaX/code2/src/pandax-quanta.cc
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/jiaweiguo/Documents/GitHub/PandaX-4T_sdu/code2/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object src/CMakeFiles/pandax-quanta.dir/pandax-quanta.cc.o"
+	cd /Users/jiaweiguo/Documents/GitHub/PandaX-4T_sdu/code2/build/src && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/pandax-quanta.dir/pandax-quanta.cc.o -c /Users/jiaweiguo/Documents/GitHub/PandaX-4T_sdu/code2/src/pandax-quanta.cc
 
 src/CMakeFiles/pandax-quanta.dir/pandax-quanta.cc.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/pandax-quanta.dir/pandax-quanta.cc.i"
-	cd /Users/jiaweiguo/Documents/GitHub/SNEW_PandaX/code2/build/src && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/jiaweiguo/Documents/GitHub/SNEW_PandaX/code2/src/pandax-quanta.cc > CMakeFiles/pandax-quanta.dir/pandax-quanta.cc.i
+	cd /Users/jiaweiguo/Documents/GitHub/PandaX-4T_sdu/code2/build/src && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/jiaweiguo/Documents/GitHub/PandaX-4T_sdu/code2/src/pandax-quanta.cc > CMakeFiles/pandax-quanta.dir/pandax-quanta.cc.i
 
 src/CMakeFiles/pandax-quanta.dir/pandax-quanta.cc.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/pandax-quanta.dir/pandax-quanta.cc.s"
-	cd /Users/jiaweiguo/Documents/GitHub/SNEW_PandaX/code2/build/src && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/jiaweiguo/Documents/GitHub/SNEW_PandaX/code2/src/pandax-quanta.cc -o CMakeFiles/pandax-quanta.dir/pandax-quanta.cc.s
+	cd /Users/jiaweiguo/Documents/GitHub/PandaX-4T_sdu/code2/build/src && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/jiaweiguo/Documents/GitHub/PandaX-4T_sdu/code2/src/pandax-quanta.cc -o CMakeFiles/pandax-quanta.dir/pandax-quanta.cc.s
 
 # Object files for target pandax-quanta
 pandax__quanta_OBJECTS = \
@@ -99,9 +99,9 @@ pandax__quanta_EXTERNAL_OBJECTS =
 src/libpandax-quanta.a: src/CMakeFiles/pandax-quanta.dir/pandax-quanta.cc.o
 src/libpandax-quanta.a: src/CMakeFiles/pandax-quanta.dir/build.make
 src/libpandax-quanta.a: src/CMakeFiles/pandax-quanta.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/jiaweiguo/Documents/GitHub/SNEW_PandaX/code2/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX static library libpandax-quanta.a"
-	cd /Users/jiaweiguo/Documents/GitHub/SNEW_PandaX/code2/build/src && $(CMAKE_COMMAND) -P CMakeFiles/pandax-quanta.dir/cmake_clean_target.cmake
-	cd /Users/jiaweiguo/Documents/GitHub/SNEW_PandaX/code2/build/src && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/pandax-quanta.dir/link.txt --verbose=$(VERBOSE)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/jiaweiguo/Documents/GitHub/PandaX-4T_sdu/code2/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX static library libpandax-quanta.a"
+	cd /Users/jiaweiguo/Documents/GitHub/PandaX-4T_sdu/code2/build/src && $(CMAKE_COMMAND) -P CMakeFiles/pandax-quanta.dir/cmake_clean_target.cmake
+	cd /Users/jiaweiguo/Documents/GitHub/PandaX-4T_sdu/code2/build/src && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/pandax-quanta.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
 src/CMakeFiles/pandax-quanta.dir/build: src/libpandax-quanta.a
@@ -109,10 +109,10 @@ src/CMakeFiles/pandax-quanta.dir/build: src/libpandax-quanta.a
 .PHONY : src/CMakeFiles/pandax-quanta.dir/build
 
 src/CMakeFiles/pandax-quanta.dir/clean:
-	cd /Users/jiaweiguo/Documents/GitHub/SNEW_PandaX/code2/build/src && $(CMAKE_COMMAND) -P CMakeFiles/pandax-quanta.dir/cmake_clean.cmake
+	cd /Users/jiaweiguo/Documents/GitHub/PandaX-4T_sdu/code2/build/src && $(CMAKE_COMMAND) -P CMakeFiles/pandax-quanta.dir/cmake_clean.cmake
 .PHONY : src/CMakeFiles/pandax-quanta.dir/clean
 
 src/CMakeFiles/pandax-quanta.dir/depend:
-	cd /Users/jiaweiguo/Documents/GitHub/SNEW_PandaX/code2/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /Users/jiaweiguo/Documents/GitHub/SNEW_PandaX/code2 /Users/jiaweiguo/Documents/GitHub/SNEW_PandaX/code2/src /Users/jiaweiguo/Documents/GitHub/SNEW_PandaX/code2/build /Users/jiaweiguo/Documents/GitHub/SNEW_PandaX/code2/build/src /Users/jiaweiguo/Documents/GitHub/SNEW_PandaX/code2/build/src/CMakeFiles/pandax-quanta.dir/DependInfo.cmake --color=$(COLOR)
+	cd /Users/jiaweiguo/Documents/GitHub/PandaX-4T_sdu/code2/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /Users/jiaweiguo/Documents/GitHub/PandaX-4T_sdu/code2 /Users/jiaweiguo/Documents/GitHub/PandaX-4T_sdu/code2/src /Users/jiaweiguo/Documents/GitHub/PandaX-4T_sdu/code2/build /Users/jiaweiguo/Documents/GitHub/PandaX-4T_sdu/code2/build/src /Users/jiaweiguo/Documents/GitHub/PandaX-4T_sdu/code2/build/src/CMakeFiles/pandax-quanta.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : src/CMakeFiles/pandax-quanta.dir/depend
 

@@ -13,6 +13,8 @@ vector
 -
 TChain.h
 ../include/TChain.h
+TTree.h
+../include/TTree.h
 
 /Applications/root_v6.22.06/include/Bytes.h
 Rtypes.h

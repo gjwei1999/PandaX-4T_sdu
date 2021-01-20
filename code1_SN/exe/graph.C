@@ -38,8 +38,8 @@ int main(const int argc, const char * argv[]){
     
     const int opt = atoi(argv[1]);
     
-    TString loadpath = "/Users/jiaweiguo/Documents/GitHub/SNEW_PandaX/code1_SN/build/";
-    TString savepath = "/Users/jiaweiguo/Documents/GitHub/SNEW_PandaX/code1_SN/plots/";
+    TString loadpath = "/Users/jiaweiguo/Documents/GitHub/PandaX-4T_sdu/code1_SN/build/";
+    TString savepath = "/Users/jiaweiguo/Documents/GitHub/PandaX-4T_sdu/code1_SN/plots/";
     
     //flux vs time
     if(opt == 1){

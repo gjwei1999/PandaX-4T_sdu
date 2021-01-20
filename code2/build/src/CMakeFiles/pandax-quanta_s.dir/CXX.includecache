@@ -1482,9 +1482,9 @@ unistd.h
 sys/types.h
 -
 
-/Users/jiaweiguo/Documents/GitHub/SNEW_PandaX/code2/src/pandax-quanta.cc
+/Users/jiaweiguo/Documents/GitHub/PandaX-4T_sdu/code2/src/pandax-quanta.cc
 pandax-quanta.h
-/Users/jiaweiguo/Documents/GitHub/SNEW_PandaX/code2/src/pandax-quanta.h
+/Users/jiaweiguo/Documents/GitHub/PandaX-4T_sdu/code2/src/pandax-quanta.h
 TRandom.h
 -
 

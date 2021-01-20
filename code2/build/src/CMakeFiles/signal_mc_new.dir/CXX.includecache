@@ -2158,11 +2158,11 @@ unistd.h
 sys/types.h
 -
 
-/Users/jiaweiguo/Documents/GitHub/SNEW_PandaX/code2/src/signal_mc_new.cc
+/Users/jiaweiguo/Documents/GitHub/PandaX-4T_sdu/code2/src/signal_mc_new.cc
 det-sim.h
-/Users/jiaweiguo/Documents/GitHub/SNEW_PandaX/code2/src/det-sim.h
+/Users/jiaweiguo/Documents/GitHub/PandaX-4T_sdu/code2/src/det-sim.h
 pandax-quanta.h
-/Users/jiaweiguo/Documents/GitHub/SNEW_PandaX/code2/src/pandax-quanta.h
+/Users/jiaweiguo/Documents/GitHub/PandaX-4T_sdu/code2/src/pandax-quanta.h
 iostream
 -
 sstream
@@ -2188,5 +2188,5 @@ TF1.h
 TRandom.h
 -
 json.hpp
-/Users/jiaweiguo/Documents/GitHub/SNEW_PandaX/code2/src/json.hpp
+/Users/jiaweiguo/Documents/GitHub/PandaX-4T_sdu/code2/src/json.hpp
 

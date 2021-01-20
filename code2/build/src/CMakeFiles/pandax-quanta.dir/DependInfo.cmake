@@ -4,7 +4,7 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/Users/jiaweiguo/Documents/GitHub/SNEW_PandaX/code2/src/pandax-quanta.cc" "/Users/jiaweiguo/Documents/GitHub/SNEW_PandaX/code2/build/src/CMakeFiles/pandax-quanta.dir/pandax-quanta.cc.o"
+  "/Users/jiaweiguo/Documents/GitHub/PandaX-4T_sdu/code2/src/pandax-quanta.cc" "/Users/jiaweiguo/Documents/GitHub/PandaX-4T_sdu/code2/build/src/CMakeFiles/pandax-quanta.dir/pandax-quanta.cc.o"
   )
 set(CMAKE_CXX_COMPILER_ID "AppleClang")
 

@@ -4,7 +4,7 @@
 # compile CXX with /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++
 CXX_DEFINES = -Dpandax_quanta_s_EXPORTS
 
-CXX_INCLUDES = -I/Applications/root_v6.22.06/include -I/Users/jiaweiguo/Documents/GitHub/SNEW_PandaX/code2/include
+CXX_INCLUDES = -I/Applications/root_v6.22.06/include -I/Users/jiaweiguo/Documents/GitHub/PandaX-4T_sdu/code2/include
 
 CXX_FLAGS =  -std=c++14 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk -fPIC -std=c++14
 

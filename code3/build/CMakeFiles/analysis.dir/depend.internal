@@ -9,10 +9,13 @@ CMakeFiles/analysis.dir/exe/analysis.cpp.o
  /Applications/root_v6.22.06/include/DllImport.h
  /Applications/root_v6.22.06/include/ESTLType.h
  /Applications/root_v6.22.06/include/RConfigure.h
+ /Applications/root_v6.22.06/include/ROOT/RConcurrentHashColl.hxx
  /Applications/root_v6.22.06/include/ROOT/RConfig.hxx
  /Applications/root_v6.22.06/include/ROOT/RStringView.hxx
  /Applications/root_v6.22.06/include/ROOT/RWrap_libcpp_string_view.h
  /Applications/root_v6.22.06/include/ROOT/TIOFeatures.hxx
+ /Applications/root_v6.22.06/include/ROOT/TRWSpinLock.hxx
+ /Applications/root_v6.22.06/include/ROOT/TSpinMutex.hxx
  /Applications/root_v6.22.06/include/ROOT/TypeTraits.hxx
  /Applications/root_v6.22.06/include/ROOT/libcpp_string_view.h
  /Applications/root_v6.22.06/include/RVersion.h
@@ -32,12 +35,17 @@ CMakeFiles/analysis.dir/exe/analysis.cpp.o
  /Applications/root_v6.22.06/include/TClass.h
  /Applications/root_v6.22.06/include/TCollection.h
  /Applications/root_v6.22.06/include/TDataType.h
+ /Applications/root_v6.22.06/include/TDatime.h
  /Applications/root_v6.22.06/include/TDictionary.h
  /Applications/root_v6.22.06/include/TDirectory.h
+ /Applications/root_v6.22.06/include/TDirectoryFile.h
+ /Applications/root_v6.22.06/include/TFile.h
  /Applications/root_v6.22.06/include/TGenericClassInfo.h
+ /Applications/root_v6.22.06/include/THashTable.h
  /Applications/root_v6.22.06/include/TIsAProxy.h
  /Applications/root_v6.22.06/include/TIterator.h
  /Applications/root_v6.22.06/include/TList.h
+ /Applications/root_v6.22.06/include/TMap.h
  /Applications/root_v6.22.06/include/TMathBase.h
  /Applications/root_v6.22.06/include/TNamed.h
  /Applications/root_v6.22.06/include/TObjArray.h
@@ -48,6 +56,7 @@ CMakeFiles/analysis.dir/exe/analysis.cpp.o
  /Applications/root_v6.22.06/include/TString.h
  /Applications/root_v6.22.06/include/TTree.h
  /Applications/root_v6.22.06/include/TUUID.h
+ /Applications/root_v6.22.06/include/TUrl.h
  /Applications/root_v6.22.06/include/TVersionCheck.h
  /Applications/root_v6.22.06/include/TVirtualIsAProxy.h
  /Applications/root_v6.22.06/include/TVirtualMutex.h

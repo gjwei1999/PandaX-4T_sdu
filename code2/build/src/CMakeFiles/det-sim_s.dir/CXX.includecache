@@ -1564,9 +1564,9 @@ unistd.h
 sys/types.h
 -
 
-/Users/jiaweiguo/Documents/GitHub/SNEW_PandaX/code2/src/det-sim.cc
+/Users/jiaweiguo/Documents/GitHub/PandaX-4T_sdu/code2/src/det-sim.cc
 det-sim.h
-/Users/jiaweiguo/Documents/GitHub/SNEW_PandaX/code2/src/det-sim.h
+/Users/jiaweiguo/Documents/GitHub/PandaX-4T_sdu/code2/src/det-sim.h
 TRandom.h
 -
 map

@@ -16,7 +16,7 @@
 int main(){
     
      //define path of root
-     TString path2 = "/Users/jiaweiguo/Documents/GitHub/SNEW_PandaX/code1_SN/build/";
+     TString path2 = "/Users/jiaweiguo/Documents/GitHub/PandaX-4T_sdu/code1_SN/build/";
      
      //define root file name
      TString root_time_spec = path2 + "time_spec.root";

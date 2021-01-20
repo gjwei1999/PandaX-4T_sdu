@@ -28,7 +28,7 @@ public:
 
 private:
     //path of data
-    TString path1 = "/Users/jiaweiguo/Documents/GitHub/SNEW_PandaX/SN_database/";
+    TString path1 = "/Users/jiaweiguo/Documents/GitHub/PandaX-4T_sdu/SN_database/";
     
     double tmin =  -2.0e-1; //unit of second
     double tmax = 1.0;

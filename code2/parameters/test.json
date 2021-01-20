@@ -34,14 +34,14 @@
       "func": "[&](double *x, double *p) -> double {double e=x[0]; if(e<= p[0]) {return p[4]*exp(e/p[1])+p[2]*e+p[3]*e*e;} else if (e <= p[5]) {return p[9]*exp(e/p[6])+p[7]*e+p[8]*e*e - (p[9]*exp(p[0]/p[6])+p[7]*p[0]+p[8]*pow(p[0],2)) +(p[4]*exp(p[0]/p[1])+p[2]*p[0]+p[3]*pow(p[0],2) ) ;}  else {double f_end = p[10] * (e - p[5]) + 261.65; if( f_end > 0){  return f_end;} else return 0.;} }",
       "par": [23, -5.53154, 5.33664, -0.183386, 423.376, 65, 4.32687, -5.5925, 0.0880627, 4.14918e-05, -73.872],
       "TH1F": true,
-      "TH1Ffile": "/Users/jiaweiguo/Documents/GitHub/SNEW_PandaX/code1/build/recE_spec_total.root",
+      "TH1Ffile": "/Users/jiaweiguo/Documents/GitHub/PandaX-4T_sdu/code1_SN/build/recE_spec_total.root",
     
             "TH1Ffile_juno": "/Users/danzhang/pandax-4ddata/AmBe/simu/combined_cut_ana_AmBe_juno_3_0.08_16_eSpec.root",
     
       "TH1Fname": "3003_total_recoil"
     },
     
-    "home_path": "/Users/jiaweiguo/Documents/GitHub/SNEW_PandaX/code2/output",
+    "home_path": "/Users/jiaweiguo/Documents/GitHub/PandaX-4T_sdu/code2/output",
     
     
         "lowEQyTxt": "parameters/p4_run1_AmBe_fine.txt",
