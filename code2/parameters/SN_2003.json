@@ -13,6 +13,8 @@
     "s1min": 2, "s1max": 500, "s1u_c": 110, "s2u_c": 10000, 
     "s2minRaw": 400, "s2min": 400, "s2max": 10000,
     "Bin_s1": 120, "Bin_s2": 120,
+    "supernova": true,
+    
     "elife":
     {
       "lifetime":[672.9,658.4,640.0],
@@ -38,10 +40,14 @@
     
             "TH1Ffile_juno": "/Users/danzhang/pandax-4ddata/AmBe/simu/combined_cut_ana_AmBe_juno_3_0.08_16_eSpec.root",
     
-      "TH1Fname": "3003_total_recoil"
+      "TH1Fname": "2003_total_recoil"
     },
     
     "home_path": "/Users/jiaweiguo/Documents/GitHub/PandaX-4T_sdu/code2/output",
+    
+    
+    "simuRootFile": "2003_simu.root",
+    "event_rate": 6.898,
     
     
         "lowEQyTxt": "parameters/p4_run1_AmBe_fine.txt",
@@ -51,11 +57,9 @@
         
         "quantaDataRootFile": "tmp/data_quanta_p4_run1_AmBe_05.root",
         "yieldRootFile": "tmp/yield_test.root",
+        "simuHistPDForRoot": "tmp/simu_hist_AmBe_p4_run1_05_1",
     
-    "simuRootFile": "test.root",
     
-    
-    "simuHistPDForRoot": "tmp/simu_hist_AmBe_p4_run1_05_1",
     "g1g2Map":{
       "fileName": "parameters/g1g2_map.root",
       "histName": "h",

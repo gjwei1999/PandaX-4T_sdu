@@ -44,6 +44,7 @@ private:
     double y;
     double x;
     double lifetime;
+    double event_time;
     
     
 public:
@@ -78,6 +79,7 @@ public:
     double get_y();
     double get_x();
     double get_lifetime();
+    double get_event_time();
     
 };
 

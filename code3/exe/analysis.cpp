@@ -25,20 +25,43 @@ int main(int argc, char* argv[]){
     
     int num_of_events;
     num_of_events = (int)t1->GetEntries();
-    
-    //std::cout<<"the number of events is "<<num_of_events<<std::endl;
+
     
     Branches * branch1 = new Branches();
     branch1->init(t1);
+    
+    
+    int n_s1d = 0;
+    int n_s2d = 0;
+    int n_s1d_s2d = 0;
     
     for (int current_event = 0; current_event < num_of_events; current_event++) {
         
         // Get current event
         t1->GetEntry(current_event);
         
-        std::cout<<"current event energy is "<<branch1->get_nQuanta()<<std::endl;
+        
+        if(branch1->get_S1d() > 0.0){
+            n_s1d++;
+        }
+        
+        if(branch1->get_S2d() > 0.0){
+            n_s2d++;
+        }
+        
+        if( (branch1->get_S2d() > 0.0) && (branch1->get_S2d() > 0.0)){
+            n_s1d_s2d++;
+        }
+        
+        //std::cout<<"current event energy is "<<branch1->get_nQuanta()<<std::endl;
         
         
     }
+    
+    std::cout<<"input "<< num_of_events <<" events "<<std::endl;
+    std::cout<<"detected "<< n_s1d <<" S1 signal "<<std::endl;
+    std::cout<<"detected "<< n_s2d <<" S2 signal "<<std::endl;
+    std::cout<<"detected "<< n_s1d_s2d <<" S1 S2 signal "<<std::endl;
+    
     return 1;
 }

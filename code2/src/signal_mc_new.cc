@@ -18,8 +18,9 @@
 using namespace std;
 
 int main(int argc, char *argv[]) {
-  if (argc!=3) {
+  if (argc != 3) {
     std::cerr << "Usage: " << argv[0] << "confFile n"<<endl;
+    std::cerr << "If SN: " << argv[0] << "confFile t"<<endl;
     //std::cerr << "Usage: " << argv[0] << " lifetime_file yield g1g2 outfile run [n]" << std::endl;
     return 1;
   }
@@ -28,6 +29,19 @@ int main(int argc, char *argv[]) {
   int n=atoi(argv[2]);
   nlohmann::json j;
   fpar >> j;
+  
+  double event_rate = 0;
+  int total_time = 0;
+  
+  bool supernova = j["supernova"];//if supernoa is true, the simulation is for supernova
+  if(supernova){
+      
+      event_rate = j["event_rate"];
+      total_time = atoi(argv[2]);
+      n = total_time * event_rate;
+
+}
+  
   string homePath=j["home_path"];
   string oname=j["simuRootFile"];
 //  string yieldName=j["yieldRootFile"];
@@ -60,6 +74,7 @@ int main(int argc, char *argv[]) {
   double E_eeMax=j["E_eeMax"];
   double E_eeTh=j["E_eeTh"];
   double v_e=j["v_e"];
+  
 
 
   if (NR) 
@@ -179,8 +194,13 @@ int main(int argc, char *argv[]) {
   tree->Branch("lifetime", &lifetime, "lifetime/D");
 //  tree->Branch("energyRec", &energy_rec, "energyRec/D");
 //  tree->Branch("energyRecNoZLE", &energy_rec_nozle, "energyRecNoZLE/D");
+  
+  double event_time;
+  if(supernova){
+      tree->Branch("event_time", &event_time, "event_time/D");
+}
 
-
+  
 
 
   for (int i = 0; i < n; ++i) {
@@ -238,6 +258,13 @@ int main(int argc, char *argv[]) {
     NphRec=0;
     NeRec=0;
       
+    if(supernova){
+        
+        event_time = gRandom->Uniform(0., total_time);
+//        if(event_time<10.0 && event_time>9.0){
+//        std::cout<<"the event_time is "<<event_time<<std::endl;
+//        }
+    }
 //no mapname input so cannot do reconstruction
 /*
     if (S1d< fs1->GetMinimum(0,100) || S2d < fs2->GetMinimum(0,1000))
