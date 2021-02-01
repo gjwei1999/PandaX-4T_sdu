@@ -1,5 +1,6 @@
 file(REMOVE_RECURSE
   "CMakeFiles/code3_lib.dir/src/branches.cpp.o"
+  "CMakeFiles/code3_lib.dir/src/histogram.cpp.o"
   "libcode3_lib.a"
   "libcode3_lib.pdb"
 )

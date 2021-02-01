@@ -249,6 +249,33 @@ src/branches.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/code3_lib.dir/build.make CMakeFiles/code3_lib.dir/src/branches.cpp.s
 .PHONY : src/branches.cpp.s
 
+src/histogram.o: src/histogram.cpp.o
+
+.PHONY : src/histogram.o
+
+# target to build an object file
+src/histogram.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/code3_lib.dir/build.make CMakeFiles/code3_lib.dir/src/histogram.cpp.o
+.PHONY : src/histogram.cpp.o
+
+src/histogram.i: src/histogram.cpp.i
+
+.PHONY : src/histogram.i
+
+# target to preprocess a source file
+src/histogram.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/code3_lib.dir/build.make CMakeFiles/code3_lib.dir/src/histogram.cpp.i
+.PHONY : src/histogram.cpp.i
+
+src/histogram.s: src/histogram.cpp.s
+
+.PHONY : src/histogram.s
+
+# target to generate assembly for a file
+src/histogram.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/code3_lib.dir/build.make CMakeFiles/code3_lib.dir/src/histogram.cpp.s
+.PHONY : src/histogram.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -269,6 +296,9 @@ help:
 	@echo "... src/branches.o"
 	@echo "... src/branches.i"
 	@echo "... src/branches.s"
+	@echo "... src/histogram.o"
+	@echo "... src/histogram.i"
+	@echo "... src/histogram.s"
 .PHONY : help
 
 

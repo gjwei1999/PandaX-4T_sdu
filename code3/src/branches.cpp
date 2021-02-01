@@ -46,6 +46,7 @@ void Branches::init(TTree *tree){
     tree->SetBranchAddress("x", &x);
     tree->SetBranchAddress("lifetime", &lifetime);
     tree->SetBranchAddress("event_time", &event_time);
+    tree->SetBranchAddress("total_time", &total_time);
     
 }
 
@@ -149,6 +150,10 @@ double Branches::get_lifetime(){
     }
 
 double Branches::get_event_time(){
-        return lifetime;
+        return event_time;
     }
+    
+int Branches::get_total_time(){
+    return total_time;
+}
 

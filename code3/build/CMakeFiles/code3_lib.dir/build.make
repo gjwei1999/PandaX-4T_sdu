@@ -89,17 +89,32 @@ CMakeFiles/code3_lib.dir/src/branches.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/code3_lib.dir/src/branches.cpp.s"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/jiaweiguo/Documents/GitHub/PandaX-4T_sdu/code3/src/branches.cpp -o CMakeFiles/code3_lib.dir/src/branches.cpp.s
 
+CMakeFiles/code3_lib.dir/src/histogram.cpp.o: CMakeFiles/code3_lib.dir/flags.make
+CMakeFiles/code3_lib.dir/src/histogram.cpp.o: ../src/histogram.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/jiaweiguo/Documents/GitHub/PandaX-4T_sdu/code3/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/code3_lib.dir/src/histogram.cpp.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/code3_lib.dir/src/histogram.cpp.o -c /Users/jiaweiguo/Documents/GitHub/PandaX-4T_sdu/code3/src/histogram.cpp
+
+CMakeFiles/code3_lib.dir/src/histogram.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/code3_lib.dir/src/histogram.cpp.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/jiaweiguo/Documents/GitHub/PandaX-4T_sdu/code3/src/histogram.cpp > CMakeFiles/code3_lib.dir/src/histogram.cpp.i
+
+CMakeFiles/code3_lib.dir/src/histogram.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/code3_lib.dir/src/histogram.cpp.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/jiaweiguo/Documents/GitHub/PandaX-4T_sdu/code3/src/histogram.cpp -o CMakeFiles/code3_lib.dir/src/histogram.cpp.s
+
 # Object files for target code3_lib
 code3_lib_OBJECTS = \
-"CMakeFiles/code3_lib.dir/src/branches.cpp.o"
+"CMakeFiles/code3_lib.dir/src/branches.cpp.o" \
+"CMakeFiles/code3_lib.dir/src/histogram.cpp.o"
 
 # External object files for target code3_lib
 code3_lib_EXTERNAL_OBJECTS =
 
 libcode3_lib.a: CMakeFiles/code3_lib.dir/src/branches.cpp.o
+libcode3_lib.a: CMakeFiles/code3_lib.dir/src/histogram.cpp.o
 libcode3_lib.a: CMakeFiles/code3_lib.dir/build.make
 libcode3_lib.a: CMakeFiles/code3_lib.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/jiaweiguo/Documents/GitHub/PandaX-4T_sdu/code3/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX static library libcode3_lib.a"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/jiaweiguo/Documents/GitHub/PandaX-4T_sdu/code3/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking CXX static library libcode3_lib.a"
 	$(CMAKE_COMMAND) -P CMakeFiles/code3_lib.dir/cmake_clean_target.cmake
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/code3_lib.dir/link.txt --verbose=$(VERBOSE)
 

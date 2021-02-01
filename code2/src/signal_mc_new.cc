@@ -198,6 +198,7 @@ int main(int argc, char *argv[]) {
   double event_time;
   if(supernova){
       tree->Branch("event_time", &event_time, "event_time/D");
+      tree->Branch("total_time", &total_time, "total_time/I");//save the total_time which is used as the bin number 
 }
 
   
