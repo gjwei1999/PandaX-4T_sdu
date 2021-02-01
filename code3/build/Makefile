@@ -130,6 +130,19 @@ depend:
 .PHONY : depend
 
 #=============================================================================
+# Target rules for targets named func_cal
+
+# Build rule for target.
+func_cal: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 func_cal
+.PHONY : func_cal
+
+# fast build rule for target.
+func_cal/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/func_cal.dir/build.make CMakeFiles/func_cal.dir/build
+.PHONY : func_cal/fast
+
+#=============================================================================
 # Target rules for targets named analysis
 
 # Build rule for target.
@@ -182,6 +195,33 @@ exe/analysis.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/analysis.dir/build.make CMakeFiles/analysis.dir/exe/analysis.cpp.s
 .PHONY : exe/analysis.cpp.s
 
+exe/func_cal.o: exe/func_cal.cpp.o
+
+.PHONY : exe/func_cal.o
+
+# target to build an object file
+exe/func_cal.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/func_cal.dir/build.make CMakeFiles/func_cal.dir/exe/func_cal.cpp.o
+.PHONY : exe/func_cal.cpp.o
+
+exe/func_cal.i: exe/func_cal.cpp.i
+
+.PHONY : exe/func_cal.i
+
+# target to preprocess a source file
+exe/func_cal.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/func_cal.dir/build.make CMakeFiles/func_cal.dir/exe/func_cal.cpp.i
+.PHONY : exe/func_cal.cpp.i
+
+exe/func_cal.s: exe/func_cal.cpp.s
+
+.PHONY : exe/func_cal.s
+
+# target to generate assembly for a file
+exe/func_cal.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/func_cal.dir/build.make CMakeFiles/func_cal.dir/exe/func_cal.cpp.s
+.PHONY : exe/func_cal.cpp.s
+
 src/branches.o: src/branches.cpp.o
 
 .PHONY : src/branches.o
@@ -219,9 +259,13 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... analysis"
 	@echo "... code3_lib"
+	@echo "... func_cal"
 	@echo "... exe/analysis.o"
 	@echo "... exe/analysis.i"
 	@echo "... exe/analysis.s"
+	@echo "... exe/func_cal.o"
+	@echo "... exe/func_cal.i"
+	@echo "... exe/func_cal.s"
 	@echo "... src/branches.o"
 	@echo "... src/branches.i"
 	@echo "... src/branches.s"

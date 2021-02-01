@@ -1,3 +1,4 @@
+/Users/jiaweiguo/Documents/GitHub/PandaX-4T_sdu/code3/build/CMakeFiles/func_cal.dir
 /Users/jiaweiguo/Documents/GitHub/PandaX-4T_sdu/code3/build/CMakeFiles/rebuild_cache.dir
 /Users/jiaweiguo/Documents/GitHub/PandaX-4T_sdu/code3/build/CMakeFiles/edit_cache.dir
 /Users/jiaweiguo/Documents/GitHub/PandaX-4T_sdu/code3/build/CMakeFiles/analysis.dir

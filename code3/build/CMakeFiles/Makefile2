@@ -72,6 +72,7 @@ CMAKE_BINARY_DIR = /Users/jiaweiguo/Documents/GitHub/PandaX-4T_sdu/code3/build
 # Directory level rules for the build root directory
 
 # The main recursive "all" target.
+all: CMakeFiles/func_cal.dir/all
 all: CMakeFiles/analysis.dir/all
 all: CMakeFiles/code3_lib.dir/all
 
@@ -83,10 +84,38 @@ preinstall:
 .PHONY : preinstall
 
 # The main recursive "clean" target.
+clean: CMakeFiles/func_cal.dir/clean
 clean: CMakeFiles/analysis.dir/clean
 clean: CMakeFiles/code3_lib.dir/clean
 
 .PHONY : clean
+
+#=============================================================================
+# Target rules for target CMakeFiles/func_cal.dir
+
+# All Build rule for target.
+CMakeFiles/func_cal.dir/all: CMakeFiles/code3_lib.dir/all
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/func_cal.dir/build.make CMakeFiles/func_cal.dir/depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/func_cal.dir/build.make CMakeFiles/func_cal.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/jiaweiguo/Documents/GitHub/PandaX-4T_sdu/code3/build/CMakeFiles --progress-num=5,6 "Built target func_cal"
+.PHONY : CMakeFiles/func_cal.dir/all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/func_cal.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/jiaweiguo/Documents/GitHub/PandaX-4T_sdu/code3/build/CMakeFiles 4
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/func_cal.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/jiaweiguo/Documents/GitHub/PandaX-4T_sdu/code3/build/CMakeFiles 0
+.PHONY : CMakeFiles/func_cal.dir/rule
+
+# Convenience name for target.
+func_cal: CMakeFiles/func_cal.dir/rule
+
+.PHONY : func_cal
+
+# clean rule for target.
+CMakeFiles/func_cal.dir/clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/func_cal.dir/build.make CMakeFiles/func_cal.dir/clean
+.PHONY : CMakeFiles/func_cal.dir/clean
 
 #=============================================================================
 # Target rules for target CMakeFiles/analysis.dir
