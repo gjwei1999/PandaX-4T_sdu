@@ -104,7 +104,18 @@ int main(const int argc, const char * argv[]){
         h_eff_r_4->DrawClone("same");
         h_eff_r_5->DrawClone("same");
         leg2->DrawClone("same");
-        c1->Print(savepath + "trigger_eff.pdf)","pdf");//
+        c1->Print(savepath + "trigger_eff.pdf","pdf");//
+        TCanvas * c2 = new TCanvas("c2", "", 800, 600);
+        c2->SetGrid();
+        h_eff_r_2->GetXaxis()->SetTitle("Rate(Hz)");
+        h_eff_r_2->GetYaxis()->SetTitle("trigger efficiency ");
+        h_eff_r_2->SetMaximum(1.02);
+        h_eff_r_2->SetMinimum(0.98);
+        h_eff_r_2->DrawClone("same");
+        h_eff_r_3->DrawClone("same");
+        h_eff_r_4->DrawClone("same");
+        h_eff_r_5->DrawClone("same");
+        c2->Print(savepath + "trigger_eff.pdf)","pdf");//
         
     }
     

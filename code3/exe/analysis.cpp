@@ -98,6 +98,8 @@ int main(int argc, char* argv[]){
     eff_value = eff_far1->trigger_effeciency(3, 1.0, n_s1d_s2d/total_time_simu);
     std::cout<<"The trigger efficiency for it is "<<eff_value<<"with N_thr = 3, T_SN = 1s"<<std::endl;
     
+    eff_value = eff_far1->trigger_effeciency(4, 1.0, n_s1d_s2d/total_time_simu);
+    std::cout<<"The trigger efficiency for it is "<<eff_value<<"with N_thr = 4, T_SN = 1s"<<std::endl;
     
     return 1;
 }
