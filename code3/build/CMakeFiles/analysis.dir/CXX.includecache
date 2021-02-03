@@ -16,6 +16,16 @@ TChain.h
 TTree.h
 ../include/TTree.h
 
+../include/eff_far.hpp
+TH1D.h
+../include/TH1D.h
+TH2D.h
+../include/TH2D.h
+TMath.h
+../include/TMath.h
+TFile.h
+../include/TFile.h
+
 ../include/histogram.hpp
 branches.hpp
 ../include/branches.hpp
@@ -348,6 +358,12 @@ TDatime.h
 TList.h
 /Applications/root_v6.22.06/include/TList.h
 
+/Applications/root_v6.22.06/include/TError.h
+RtypesCore.h
+/Applications/root_v6.22.06/include/RtypesCore.h
+stdarg.h
+-
+
 /Applications/root_v6.22.06/include/TFile.h
 atomic
 -
@@ -460,6 +476,24 @@ TCollection.h
 THashTable.h
 /Applications/root_v6.22.06/include/THashTable.h
 iterator
+-
+
+/Applications/root_v6.22.06/include/TMath.h
+Rtypes.h
+/Applications/root_v6.22.06/include/Rtypes.h
+TMathBase.h
+/Applications/root_v6.22.06/include/TMathBase.h
+TError.h
+/Applications/root_v6.22.06/include/TError.h
+algorithm
+-
+limits
+-
+cmath
+-
+float.h
+-
+math.h
 -
 
 /Applications/root_v6.22.06/include/TMathBase.h
@@ -635,8 +669,14 @@ sys/types.h
 /Users/jiaweiguo/Documents/GitHub/PandaX-4T_sdu/code3/exe/analysis.cpp
 TFile.h
 /Users/jiaweiguo/Documents/GitHub/PandaX-4T_sdu/code3/exe/TFile.h
+TMath.h
+/Users/jiaweiguo/Documents/GitHub/PandaX-4T_sdu/code3/exe/TMath.h
+TH1D.h
+/Users/jiaweiguo/Documents/GitHub/PandaX-4T_sdu/code3/exe/TH1D.h
 branches.hpp
 /Users/jiaweiguo/Documents/GitHub/PandaX-4T_sdu/code3/exe/branches.hpp
 histogram.hpp
 /Users/jiaweiguo/Documents/GitHub/PandaX-4T_sdu/code3/exe/histogram.hpp
+eff_far.hpp
+/Users/jiaweiguo/Documents/GitHub/PandaX-4T_sdu/code3/exe/eff_far.hpp
 

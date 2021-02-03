@@ -13,11 +13,14 @@
 Histogram::Histogram(){};
 Histogram::~Histogram(){};
 
-void Histogram::Set_event_time(int nbin){
+void Histogram::Set_h_event_time(int nbin){
+    
+    nbin_event_time = nbin;
     h_event_time = new TH1D("event_time", "event_time", nbin, 0.0, nbin);
 }
 
-void Histogram::Set_detected_event_time(int nbin){
+void Histogram::Set_h_detected_event_time(int nbin){
+    
     h_detected_event_time = new TH1D("detected_event_time", "detected_event_time", nbin, 0.0, nbin);
 }
 
@@ -39,6 +42,15 @@ void Histogram::Fill_logs2s1_s1(Branches * branch){
     double temp;
     temp = TMath::Log(branch->get_S2d()/branch->get_S1d());
     h_logs2s1_s1->Fill(branch->get_S1d(), temp);
+    
+}
+
+void Histogram::Set_h_error(){
+    
+    for(int i; i<nbin_event_time; i++){
+        h_event_time->SetBinError(i, 0.0);
+        h_detected_event_time->SetBinError(i, 0.0);
+    }
     
 }
 

@@ -6,23 +6,15 @@
 
 #IncludeRegexTransform: 
 
-../include/branches.hpp
-iostream
--
-vector
--
-TChain.h
-../include/TChain.h
-TTree.h
-../include/TTree.h
-
-../include/histogram.hpp
-branches.hpp
-../include/branches.hpp
+../include/eff_far.hpp
 TH1D.h
 ../include/TH1D.h
 TH2D.h
 ../include/TH2D.h
+TMath.h
+../include/TMath.h
+TFile.h
+../include/TFile.h
 
 /Applications/root_v6.22.06/include/Bytes.h
 Rtypes.h
@@ -97,10 +89,6 @@ stdexcept
 -
 libcpp_string_view.h
 /Applications/root_v6.22.06/include/ROOT/libcpp_string_view.h
-
-/Applications/root_v6.22.06/include/ROOT/TIOFeatures.hxx
-Rtypes.h
-/Applications/root_v6.22.06/include/ROOT/Rtypes.h
 
 /Applications/root_v6.22.06/include/ROOT/TRWSpinLock.hxx
 TSpinMutex.hxx
@@ -218,42 +206,6 @@ TAttAxis.h
 TArrayD.h
 /Applications/root_v6.22.06/include/TArrayD.h
 
-/Applications/root_v6.22.06/include/TBits.h
-Rtypes.h
-/Applications/root_v6.22.06/include/Rtypes.h
-TObject.h
-/Applications/root_v6.22.06/include/TObject.h
-string.h
--
-
-/Applications/root_v6.22.06/include/TBranch.h
-memory
--
-Compression.h
-/Applications/root_v6.22.06/include/Compression.h
-TAttFill.h
-/Applications/root_v6.22.06/include/TAttFill.h
-TBranchCacheInfo.h
-/Applications/root_v6.22.06/include/TBranchCacheInfo.h
-TDataType.h
-/Applications/root_v6.22.06/include/TDataType.h
-TNamed.h
-/Applications/root_v6.22.06/include/TNamed.h
-TObjArray.h
-/Applications/root_v6.22.06/include/TObjArray.h
-ROOT/TIOFeatures.hxx
-/Applications/root_v6.22.06/include/ROOT/TIOFeatures.hxx
-
-/Applications/root_v6.22.06/include/TBranchCacheInfo.h
-Rtypes.h
-/Applications/root_v6.22.06/include/Rtypes.h
-TBits.h
-/Applications/root_v6.22.06/include/TBits.h
-TString.h
-/Applications/root_v6.22.06/include/TString.h
-vector
--
-
 /Applications/root_v6.22.06/include/TBuffer.h
 TDataType.h
 /Applications/root_v6.22.06/include/TDataType.h
@@ -266,12 +218,6 @@ Bytes.h
 vector
 -
 typeinfo
--
-
-/Applications/root_v6.22.06/include/TChain.h
-TTree.h
-/Applications/root_v6.22.06/include/TTree.h
-iosfwd
 -
 
 /Applications/root_v6.22.06/include/TClass.h
@@ -564,40 +510,6 @@ stdio.h
 string
 -
 
-/Applications/root_v6.22.06/include/TTree.h
-Compression.h
-/Applications/root_v6.22.06/include/Compression.h
-ROOT/TIOFeatures.hxx
-/Applications/root_v6.22.06/include/ROOT/TIOFeatures.hxx
-TArrayD.h
-/Applications/root_v6.22.06/include/TArrayD.h
-TArrayI.h
-/Applications/root_v6.22.06/include/TArrayI.h
-TAttFill.h
-/Applications/root_v6.22.06/include/TAttFill.h
-TAttLine.h
-/Applications/root_v6.22.06/include/TAttLine.h
-TAttMarker.h
-/Applications/root_v6.22.06/include/TAttMarker.h
-TClass.h
-/Applications/root_v6.22.06/include/TClass.h
-TDataType.h
-/Applications/root_v6.22.06/include/TDataType.h
-TDirectory.h
-/Applications/root_v6.22.06/include/TDirectory.h
-TObjArray.h
-/Applications/root_v6.22.06/include/TObjArray.h
-TVirtualTreePlayer.h
-/Applications/root_v6.22.06/include/TVirtualTreePlayer.h
-TBranch.h
-/Applications/root_v6.22.06/include/TBranch.h
-TList.h
-/Applications/root_v6.22.06/include/TList.h
-array
--
-atomic
--
-
 /Applications/root_v6.22.06/include/TUUID.h
 Rtypes.h
 /Applications/root_v6.22.06/include/Rtypes.h
@@ -634,12 +546,6 @@ memory
 TVirtualMutex.h
 /Applications/root_v6.22.06/include/TVirtualMutex.h
 
-/Applications/root_v6.22.06/include/TVirtualTreePlayer.h
-TObject.h
-/Applications/root_v6.22.06/include/TObject.h
-limits
--
-
 /Applications/root_v6.22.06/include/snprintf.h
 ROOT/RConfig.hxx
 -
@@ -656,11 +562,7 @@ unistd.h
 sys/types.h
 -
 
-/Users/jiaweiguo/Documents/GitHub/PandaX-4T_sdu/code3/src/histogram.cpp
-TMath.h
-/Users/jiaweiguo/Documents/GitHub/PandaX-4T_sdu/code3/src/TMath.h
-TFile.h
-/Users/jiaweiguo/Documents/GitHub/PandaX-4T_sdu/code3/src/TFile.h
-histogram.hpp
-/Users/jiaweiguo/Documents/GitHub/PandaX-4T_sdu/code3/src/histogram.hpp
+/Users/jiaweiguo/Documents/GitHub/PandaX-4T_sdu/code3/src/eff_far.cpp
+eff_far.hpp
+/Users/jiaweiguo/Documents/GitHub/PandaX-4T_sdu/code3/src/eff_far.hpp
 

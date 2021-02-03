@@ -72,7 +72,8 @@ CMAKE_BINARY_DIR = /Users/jiaweiguo/Documents/GitHub/PandaX-4T_sdu/code3/build
 # Directory level rules for the build root directory
 
 # The main recursive "all" target.
-all: CMakeFiles/func_cal.dir/all
+all: CMakeFiles/plotter.dir/all
+all: CMakeFiles/eff_hist.dir/all
 all: CMakeFiles/analysis.dir/all
 all: CMakeFiles/code3_lib.dir/all
 
@@ -84,38 +85,66 @@ preinstall:
 .PHONY : preinstall
 
 # The main recursive "clean" target.
-clean: CMakeFiles/func_cal.dir/clean
+clean: CMakeFiles/plotter.dir/clean
+clean: CMakeFiles/eff_hist.dir/clean
 clean: CMakeFiles/analysis.dir/clean
 clean: CMakeFiles/code3_lib.dir/clean
 
 .PHONY : clean
 
 #=============================================================================
-# Target rules for target CMakeFiles/func_cal.dir
+# Target rules for target CMakeFiles/plotter.dir
 
 # All Build rule for target.
-CMakeFiles/func_cal.dir/all: CMakeFiles/code3_lib.dir/all
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/func_cal.dir/build.make CMakeFiles/func_cal.dir/depend
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/func_cal.dir/build.make CMakeFiles/func_cal.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/jiaweiguo/Documents/GitHub/PandaX-4T_sdu/code3/build/CMakeFiles --progress-num=6,7 "Built target func_cal"
-.PHONY : CMakeFiles/func_cal.dir/all
+CMakeFiles/plotter.dir/all: CMakeFiles/code3_lib.dir/all
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/plotter.dir/build.make CMakeFiles/plotter.dir/depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/plotter.dir/build.make CMakeFiles/plotter.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/jiaweiguo/Documents/GitHub/PandaX-4T_sdu/code3/build/CMakeFiles --progress-num=10,11 "Built target plotter"
+.PHONY : CMakeFiles/plotter.dir/all
 
 # Build rule for subdir invocation for target.
-CMakeFiles/func_cal.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/jiaweiguo/Documents/GitHub/PandaX-4T_sdu/code3/build/CMakeFiles 5
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/func_cal.dir/all
+CMakeFiles/plotter.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/jiaweiguo/Documents/GitHub/PandaX-4T_sdu/code3/build/CMakeFiles 7
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/plotter.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /Users/jiaweiguo/Documents/GitHub/PandaX-4T_sdu/code3/build/CMakeFiles 0
-.PHONY : CMakeFiles/func_cal.dir/rule
+.PHONY : CMakeFiles/plotter.dir/rule
 
 # Convenience name for target.
-func_cal: CMakeFiles/func_cal.dir/rule
+plotter: CMakeFiles/plotter.dir/rule
 
-.PHONY : func_cal
+.PHONY : plotter
 
 # clean rule for target.
-CMakeFiles/func_cal.dir/clean:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/func_cal.dir/build.make CMakeFiles/func_cal.dir/clean
-.PHONY : CMakeFiles/func_cal.dir/clean
+CMakeFiles/plotter.dir/clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/plotter.dir/build.make CMakeFiles/plotter.dir/clean
+.PHONY : CMakeFiles/plotter.dir/clean
+
+#=============================================================================
+# Target rules for target CMakeFiles/eff_hist.dir
+
+# All Build rule for target.
+CMakeFiles/eff_hist.dir/all: CMakeFiles/code3_lib.dir/all
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/eff_hist.dir/build.make CMakeFiles/eff_hist.dir/depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/eff_hist.dir/build.make CMakeFiles/eff_hist.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/jiaweiguo/Documents/GitHub/PandaX-4T_sdu/code3/build/CMakeFiles --progress-num=8,9 "Built target eff_hist"
+.PHONY : CMakeFiles/eff_hist.dir/all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/eff_hist.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/jiaweiguo/Documents/GitHub/PandaX-4T_sdu/code3/build/CMakeFiles 7
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/eff_hist.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/jiaweiguo/Documents/GitHub/PandaX-4T_sdu/code3/build/CMakeFiles 0
+.PHONY : CMakeFiles/eff_hist.dir/rule
+
+# Convenience name for target.
+eff_hist: CMakeFiles/eff_hist.dir/rule
+
+.PHONY : eff_hist
+
+# clean rule for target.
+CMakeFiles/eff_hist.dir/clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/eff_hist.dir/build.make CMakeFiles/eff_hist.dir/clean
+.PHONY : CMakeFiles/eff_hist.dir/clean
 
 #=============================================================================
 # Target rules for target CMakeFiles/analysis.dir
@@ -129,7 +158,7 @@ CMakeFiles/analysis.dir/all: CMakeFiles/code3_lib.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/analysis.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/jiaweiguo/Documents/GitHub/PandaX-4T_sdu/code3/build/CMakeFiles 5
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/jiaweiguo/Documents/GitHub/PandaX-4T_sdu/code3/build/CMakeFiles 7
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/analysis.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /Users/jiaweiguo/Documents/GitHub/PandaX-4T_sdu/code3/build/CMakeFiles 0
 .PHONY : CMakeFiles/analysis.dir/rule
@@ -151,12 +180,12 @@ CMakeFiles/analysis.dir/clean:
 CMakeFiles/code3_lib.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/code3_lib.dir/build.make CMakeFiles/code3_lib.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/code3_lib.dir/build.make CMakeFiles/code3_lib.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/jiaweiguo/Documents/GitHub/PandaX-4T_sdu/code3/build/CMakeFiles --progress-num=3,4,5 "Built target code3_lib"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/jiaweiguo/Documents/GitHub/PandaX-4T_sdu/code3/build/CMakeFiles --progress-num=3,4,5,6,7 "Built target code3_lib"
 .PHONY : CMakeFiles/code3_lib.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/code3_lib.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/jiaweiguo/Documents/GitHub/PandaX-4T_sdu/code3/build/CMakeFiles 3
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/jiaweiguo/Documents/GitHub/PandaX-4T_sdu/code3/build/CMakeFiles 5
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/code3_lib.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /Users/jiaweiguo/Documents/GitHub/PandaX-4T_sdu/code3/build/CMakeFiles 0
 .PHONY : CMakeFiles/code3_lib.dir/rule

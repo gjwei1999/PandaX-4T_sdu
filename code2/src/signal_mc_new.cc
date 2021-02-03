@@ -19,8 +19,8 @@ using namespace std;
 
 int main(int argc, char *argv[]) {
   if (argc != 3) {
-    std::cerr << "Usage: " << argv[0] << "confFile n"<<endl;
-    std::cerr << "If SN: " << argv[0] << "confFile t"<<endl;
+    std::cerr << "Usage: " << argv[0] << " confFile n"<<endl;
+    std::cerr << "If SN: " << argv[0] << " confFile t"<<endl;
     //std::cerr << "Usage: " << argv[0] << " lifetime_file yield g1g2 outfile run [n]" << std::endl;
     return 1;
   }

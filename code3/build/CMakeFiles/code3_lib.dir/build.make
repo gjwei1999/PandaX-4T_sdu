@@ -76,9 +76,22 @@ include CMakeFiles/code3_lib.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/code3_lib.dir/flags.make
 
+CMakeFiles/code3_lib.dir/src/bkg.cpp.o: CMakeFiles/code3_lib.dir/flags.make
+CMakeFiles/code3_lib.dir/src/bkg.cpp.o: ../src/bkg.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/jiaweiguo/Documents/GitHub/PandaX-4T_sdu/code3/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/code3_lib.dir/src/bkg.cpp.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/code3_lib.dir/src/bkg.cpp.o -c /Users/jiaweiguo/Documents/GitHub/PandaX-4T_sdu/code3/src/bkg.cpp
+
+CMakeFiles/code3_lib.dir/src/bkg.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/code3_lib.dir/src/bkg.cpp.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/jiaweiguo/Documents/GitHub/PandaX-4T_sdu/code3/src/bkg.cpp > CMakeFiles/code3_lib.dir/src/bkg.cpp.i
+
+CMakeFiles/code3_lib.dir/src/bkg.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/code3_lib.dir/src/bkg.cpp.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/jiaweiguo/Documents/GitHub/PandaX-4T_sdu/code3/src/bkg.cpp -o CMakeFiles/code3_lib.dir/src/bkg.cpp.s
+
 CMakeFiles/code3_lib.dir/src/branches.cpp.o: CMakeFiles/code3_lib.dir/flags.make
 CMakeFiles/code3_lib.dir/src/branches.cpp.o: ../src/branches.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/jiaweiguo/Documents/GitHub/PandaX-4T_sdu/code3/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/code3_lib.dir/src/branches.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/jiaweiguo/Documents/GitHub/PandaX-4T_sdu/code3/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/code3_lib.dir/src/branches.cpp.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/code3_lib.dir/src/branches.cpp.o -c /Users/jiaweiguo/Documents/GitHub/PandaX-4T_sdu/code3/src/branches.cpp
 
 CMakeFiles/code3_lib.dir/src/branches.cpp.i: cmake_force
@@ -89,9 +102,22 @@ CMakeFiles/code3_lib.dir/src/branches.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/code3_lib.dir/src/branches.cpp.s"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/jiaweiguo/Documents/GitHub/PandaX-4T_sdu/code3/src/branches.cpp -o CMakeFiles/code3_lib.dir/src/branches.cpp.s
 
+CMakeFiles/code3_lib.dir/src/eff_far.cpp.o: CMakeFiles/code3_lib.dir/flags.make
+CMakeFiles/code3_lib.dir/src/eff_far.cpp.o: ../src/eff_far.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/jiaweiguo/Documents/GitHub/PandaX-4T_sdu/code3/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/code3_lib.dir/src/eff_far.cpp.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/code3_lib.dir/src/eff_far.cpp.o -c /Users/jiaweiguo/Documents/GitHub/PandaX-4T_sdu/code3/src/eff_far.cpp
+
+CMakeFiles/code3_lib.dir/src/eff_far.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/code3_lib.dir/src/eff_far.cpp.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/jiaweiguo/Documents/GitHub/PandaX-4T_sdu/code3/src/eff_far.cpp > CMakeFiles/code3_lib.dir/src/eff_far.cpp.i
+
+CMakeFiles/code3_lib.dir/src/eff_far.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/code3_lib.dir/src/eff_far.cpp.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/jiaweiguo/Documents/GitHub/PandaX-4T_sdu/code3/src/eff_far.cpp -o CMakeFiles/code3_lib.dir/src/eff_far.cpp.s
+
 CMakeFiles/code3_lib.dir/src/histogram.cpp.o: CMakeFiles/code3_lib.dir/flags.make
 CMakeFiles/code3_lib.dir/src/histogram.cpp.o: ../src/histogram.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/jiaweiguo/Documents/GitHub/PandaX-4T_sdu/code3/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/code3_lib.dir/src/histogram.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/jiaweiguo/Documents/GitHub/PandaX-4T_sdu/code3/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/code3_lib.dir/src/histogram.cpp.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/code3_lib.dir/src/histogram.cpp.o -c /Users/jiaweiguo/Documents/GitHub/PandaX-4T_sdu/code3/src/histogram.cpp
 
 CMakeFiles/code3_lib.dir/src/histogram.cpp.i: cmake_force
@@ -104,17 +130,21 @@ CMakeFiles/code3_lib.dir/src/histogram.cpp.s: cmake_force
 
 # Object files for target code3_lib
 code3_lib_OBJECTS = \
+"CMakeFiles/code3_lib.dir/src/bkg.cpp.o" \
 "CMakeFiles/code3_lib.dir/src/branches.cpp.o" \
+"CMakeFiles/code3_lib.dir/src/eff_far.cpp.o" \
 "CMakeFiles/code3_lib.dir/src/histogram.cpp.o"
 
 # External object files for target code3_lib
 code3_lib_EXTERNAL_OBJECTS =
 
+libcode3_lib.a: CMakeFiles/code3_lib.dir/src/bkg.cpp.o
 libcode3_lib.a: CMakeFiles/code3_lib.dir/src/branches.cpp.o
+libcode3_lib.a: CMakeFiles/code3_lib.dir/src/eff_far.cpp.o
 libcode3_lib.a: CMakeFiles/code3_lib.dir/src/histogram.cpp.o
 libcode3_lib.a: CMakeFiles/code3_lib.dir/build.make
 libcode3_lib.a: CMakeFiles/code3_lib.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/jiaweiguo/Documents/GitHub/PandaX-4T_sdu/code3/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking CXX static library libcode3_lib.a"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/jiaweiguo/Documents/GitHub/PandaX-4T_sdu/code3/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Linking CXX static library libcode3_lib.a"
 	$(CMAKE_COMMAND) -P CMakeFiles/code3_lib.dir/cmake_clean_target.cmake
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/code3_lib.dir/link.txt --verbose=$(VERBOSE)
 

@@ -130,17 +130,30 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named func_cal
+# Target rules for targets named plotter
 
 # Build rule for target.
-func_cal: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 func_cal
-.PHONY : func_cal
+plotter: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 plotter
+.PHONY : plotter
 
 # fast build rule for target.
-func_cal/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/func_cal.dir/build.make CMakeFiles/func_cal.dir/build
-.PHONY : func_cal/fast
+plotter/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/plotter.dir/build.make CMakeFiles/plotter.dir/build
+.PHONY : plotter/fast
+
+#=============================================================================
+# Target rules for targets named eff_hist
+
+# Build rule for target.
+eff_hist: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 eff_hist
+.PHONY : eff_hist
+
+# fast build rule for target.
+eff_hist/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/eff_hist.dir/build.make CMakeFiles/eff_hist.dir/build
+.PHONY : eff_hist/fast
 
 #=============================================================================
 # Target rules for targets named analysis
@@ -195,32 +208,86 @@ exe/analysis.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/analysis.dir/build.make CMakeFiles/analysis.dir/exe/analysis.cpp.s
 .PHONY : exe/analysis.cpp.s
 
-exe/func_cal.o: exe/func_cal.cpp.o
+exe/eff_hist.o: exe/eff_hist.cpp.o
 
-.PHONY : exe/func_cal.o
+.PHONY : exe/eff_hist.o
 
 # target to build an object file
-exe/func_cal.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/func_cal.dir/build.make CMakeFiles/func_cal.dir/exe/func_cal.cpp.o
-.PHONY : exe/func_cal.cpp.o
+exe/eff_hist.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/eff_hist.dir/build.make CMakeFiles/eff_hist.dir/exe/eff_hist.cpp.o
+.PHONY : exe/eff_hist.cpp.o
 
-exe/func_cal.i: exe/func_cal.cpp.i
+exe/eff_hist.i: exe/eff_hist.cpp.i
 
-.PHONY : exe/func_cal.i
+.PHONY : exe/eff_hist.i
 
 # target to preprocess a source file
-exe/func_cal.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/func_cal.dir/build.make CMakeFiles/func_cal.dir/exe/func_cal.cpp.i
-.PHONY : exe/func_cal.cpp.i
+exe/eff_hist.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/eff_hist.dir/build.make CMakeFiles/eff_hist.dir/exe/eff_hist.cpp.i
+.PHONY : exe/eff_hist.cpp.i
 
-exe/func_cal.s: exe/func_cal.cpp.s
+exe/eff_hist.s: exe/eff_hist.cpp.s
 
-.PHONY : exe/func_cal.s
+.PHONY : exe/eff_hist.s
 
 # target to generate assembly for a file
-exe/func_cal.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/func_cal.dir/build.make CMakeFiles/func_cal.dir/exe/func_cal.cpp.s
-.PHONY : exe/func_cal.cpp.s
+exe/eff_hist.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/eff_hist.dir/build.make CMakeFiles/eff_hist.dir/exe/eff_hist.cpp.s
+.PHONY : exe/eff_hist.cpp.s
+
+exe/plotter.o: exe/plotter.cpp.o
+
+.PHONY : exe/plotter.o
+
+# target to build an object file
+exe/plotter.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/plotter.dir/build.make CMakeFiles/plotter.dir/exe/plotter.cpp.o
+.PHONY : exe/plotter.cpp.o
+
+exe/plotter.i: exe/plotter.cpp.i
+
+.PHONY : exe/plotter.i
+
+# target to preprocess a source file
+exe/plotter.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/plotter.dir/build.make CMakeFiles/plotter.dir/exe/plotter.cpp.i
+.PHONY : exe/plotter.cpp.i
+
+exe/plotter.s: exe/plotter.cpp.s
+
+.PHONY : exe/plotter.s
+
+# target to generate assembly for a file
+exe/plotter.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/plotter.dir/build.make CMakeFiles/plotter.dir/exe/plotter.cpp.s
+.PHONY : exe/plotter.cpp.s
+
+src/bkg.o: src/bkg.cpp.o
+
+.PHONY : src/bkg.o
+
+# target to build an object file
+src/bkg.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/code3_lib.dir/build.make CMakeFiles/code3_lib.dir/src/bkg.cpp.o
+.PHONY : src/bkg.cpp.o
+
+src/bkg.i: src/bkg.cpp.i
+
+.PHONY : src/bkg.i
+
+# target to preprocess a source file
+src/bkg.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/code3_lib.dir/build.make CMakeFiles/code3_lib.dir/src/bkg.cpp.i
+.PHONY : src/bkg.cpp.i
+
+src/bkg.s: src/bkg.cpp.s
+
+.PHONY : src/bkg.s
+
+# target to generate assembly for a file
+src/bkg.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/code3_lib.dir/build.make CMakeFiles/code3_lib.dir/src/bkg.cpp.s
+.PHONY : src/bkg.cpp.s
 
 src/branches.o: src/branches.cpp.o
 
@@ -248,6 +315,33 @@ src/branches.s: src/branches.cpp.s
 src/branches.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/code3_lib.dir/build.make CMakeFiles/code3_lib.dir/src/branches.cpp.s
 .PHONY : src/branches.cpp.s
+
+src/eff_far.o: src/eff_far.cpp.o
+
+.PHONY : src/eff_far.o
+
+# target to build an object file
+src/eff_far.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/code3_lib.dir/build.make CMakeFiles/code3_lib.dir/src/eff_far.cpp.o
+.PHONY : src/eff_far.cpp.o
+
+src/eff_far.i: src/eff_far.cpp.i
+
+.PHONY : src/eff_far.i
+
+# target to preprocess a source file
+src/eff_far.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/code3_lib.dir/build.make CMakeFiles/code3_lib.dir/src/eff_far.cpp.i
+.PHONY : src/eff_far.cpp.i
+
+src/eff_far.s: src/eff_far.cpp.s
+
+.PHONY : src/eff_far.s
+
+# target to generate assembly for a file
+src/eff_far.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/code3_lib.dir/build.make CMakeFiles/code3_lib.dir/src/eff_far.cpp.s
+.PHONY : src/eff_far.cpp.s
 
 src/histogram.o: src/histogram.cpp.o
 
@@ -286,16 +380,26 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... analysis"
 	@echo "... code3_lib"
-	@echo "... func_cal"
+	@echo "... eff_hist"
+	@echo "... plotter"
 	@echo "... exe/analysis.o"
 	@echo "... exe/analysis.i"
 	@echo "... exe/analysis.s"
-	@echo "... exe/func_cal.o"
-	@echo "... exe/func_cal.i"
-	@echo "... exe/func_cal.s"
+	@echo "... exe/eff_hist.o"
+	@echo "... exe/eff_hist.i"
+	@echo "... exe/eff_hist.s"
+	@echo "... exe/plotter.o"
+	@echo "... exe/plotter.i"
+	@echo "... exe/plotter.s"
+	@echo "... src/bkg.o"
+	@echo "... src/bkg.i"
+	@echo "... src/bkg.s"
 	@echo "... src/branches.o"
 	@echo "... src/branches.i"
 	@echo "... src/branches.s"
+	@echo "... src/eff_far.o"
+	@echo "... src/eff_far.i"
+	@echo "... src/eff_far.s"
 	@echo "... src/histogram.o"
 	@echo "... src/histogram.i"
 	@echo "... src/histogram.s"
