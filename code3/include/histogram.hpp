@@ -1,9 +1,9 @@
-/*****************************/
-/*                                                      */
-/*       Created by Jiawei Guo          */
-/*        Shandong University            */
-/*                                                      */
-/*****************************/
+/***************************/
+/*                         */
+/*  Created by Jiawei Guo  */
+/*   Shandong University   */
+/*                         */
+/***************************/
 
 #ifndef HISTOGRAM_H
 #define HISTOGRAM_H

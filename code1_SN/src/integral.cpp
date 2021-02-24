@@ -1,9 +1,9 @@
-/*****************************/
-/*                                                      */
-/*       Created by Jiawei Guo          */
-/*        Shandong University            */
-/*                                                      */
-/*****************************/
+/***************************/
+/*                         */
+/*  Created by Jiawei Guo  */
+/*   Shandong University   */
+/*                         */
+/***************************/
 
 #include <iostream>
 #include <fstream>
@@ -74,7 +74,7 @@ void Integral::numerical_int(TString hist_name, TFile * root_name){
         
         Double_t x = i * 300.0/nbin1;
         Double_t y = interpolation->Eval(x);
-        h_flux_neuE->Fill(x, y);
+        h_flux_neuE->SetBinContent(i,y);
         
     }
     for(int i=0; i<nbin1; i++){
@@ -112,8 +112,9 @@ void Integral::numerical_int(TString hist_name, TFile * root_name){
             
         }
         
-        integral = temp->Integral(temp->GetBin(neuE_min), temp->GetBin(nbin2));
-        h_spectrum_recE->Fill(recoil_E, integral*num_Xe_ton/1000.0);
+        //integral = temp->Integral(temp->GetBin(neuE_min), temp->GetBin(nbin2));
+        integral = temp->Integral(temp->FindBin(neuE_min), nbin1, "width");
+        h_spectrum_recE->SetBinContent(i, integral*num_Xe_ton/1000.0);//Fill(recoil_E, integral*num_Xe_ton/1000.0); MeV->keV
         
         temp->Reset();
     }

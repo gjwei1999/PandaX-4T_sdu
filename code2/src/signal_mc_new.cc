@@ -20,7 +20,7 @@ using namespace std;
 int main(int argc, char *argv[]) {
   if (argc != 3) {
     std::cerr << "Usage: " << argv[0] << " confFile n"<<endl;
-    std::cerr << "If SN: " << argv[0] << " confFile t"<<endl;
+    std::cerr << "If SN: " << argv[0] << " 'confFile' 'num of simulation' "<<endl;
     //std::cerr << "Usage: " << argv[0] << " lifetime_file yield g1g2 outfile run [n]" << std::endl;
     return 1;
   }
@@ -37,7 +37,7 @@ int main(int argc, char *argv[]) {
   if(supernova){
       
       event_rate = j["event_rate"];
-      total_time = atoi(argv[2]);
+      total_time = atoi(argv[2]) * 20.0;//20 seconds for every SN burst simulation 
       n = total_time * event_rate;
 
 }

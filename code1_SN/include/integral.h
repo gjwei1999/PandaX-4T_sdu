@@ -1,9 +1,9 @@
-/*****************************/
-/*                                                      */
-/*       Created by Jiawei Guo          */
-/*        Shandong University            */
-/*                                                      */
-/*****************************/
+/***************************/
+/*                         */
+/*  Created by Jiawei Guo  */
+/*   Shandong University   */
+/*                         */
+/***************************/
 
 //#ifndef _INTEGRAL_H
 //#define _INTEGRAL_H
@@ -26,8 +26,13 @@ public:
 private:
     TH1D * h0;
     
-    TString loadpath = "/Users/jiaweiguo/Documents/GitHub/PandaX-4T_sdu/code1_SN/build/flux_neuE.root";
+    //in the first second
+    TString loadpath = "/Users/jiaweiguo/Documents/GitHub/PandaX-4T_sdu/code1_SN/output/flux_neuE.root";
+    //20 seconds
+    //TString loadpath2 = "/Users/jiaweiguo/Documents/GitHub/PandaX-4T_sdu/code1_SN/output/energy_spec.root";
+  
     TFile *fs = new TFile(loadpath, "r");
+    //TFile *fs2 = new TFile(loadpath, "r");
     
     //number of Xenon nuclei in 1 ton
     Double_t num_Xe_ton = 1.0e6/131.29 * 6.02e23;
@@ -89,6 +94,8 @@ public:
     void set_flux_point();
     
     void numerical_int(TString hist_name, TFile * root_name);
+    
+    void numerical_int_20s();
     
     
 };

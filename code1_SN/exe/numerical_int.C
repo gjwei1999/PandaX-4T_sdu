@@ -1,9 +1,9 @@
-/*****************************/
-/*                                                      */
-/*       Created by Jiawei Guo          */
-/*        Shandong University            */
-/*                                                      */
-/*****************************/
+/***************************/
+/*                         */
+/*  Created by Jiawei Guo  */
+/*   Shandong University   */
+/*                         */
+/***************************/
 
 #include <iostream>
 #include <fstream>
@@ -15,7 +15,7 @@ void get_total(TFile * root_name1, TFile * root_name2, TString hist_name_total, 
 
 int main(){
     
-    TString path2 = "/Users/jiaweiguo/Documents/GitHub/PandaX-4T_sdu/code1_SN/build/";
+    TString path2 = "/Users/jiaweiguo/Documents/GitHub/PandaX-4T_sdu/code1_SN/output/";
     TString root_recE_spec = path2 + "recE_spec.root";
     TString root_recE_spec_total = path2 + "recE_spec_total.root";
     
@@ -32,10 +32,16 @@ int main(){
         
         int number = name[i];
         
+        //for the 1st second
         std::string hist_name_electron = Form("%delectron", number);
         std::string hist_name_antielectron = Form("%danti-electron", number);
         std::string hist_name_x = Form("%dx", number);
     
+        //for 20-second average
+        //std::string hist_name_electron = Form("%de", number);
+        //std::string hist_name_antielectron = Form("%dantie", number);
+        //std::string hist_name_x = Form("%dx", number);
+        
     int_1301e->set_hist(hist_name_electron.c_str());
     int_1301e->set_flux_point();
     int_1301e->numerical_int(hist_name_electron.c_str(), fs1);
@@ -61,11 +67,12 @@ int main(){
     fs1->Write();
     fs2->Write();
     
+    
     return 1;
 }
 
 //get histogram from root_name1
-//write the histogram of the total rate to root_name2
+//write the histogram of the total rate(neutrino with different flavors) to root_name2
 void get_total(TFile * root_name1, TFile * root_name2, TString hist_name_total, TString hist_name_electron, TString hist_name_antielectron, TString hist_name_x){
     
     TString spectrum_recE_name = hist_name_total + "_recoil";
@@ -84,7 +91,7 @@ void get_total(TFile * root_name1, TFile * root_name2, TString hist_name_total, 
     h_spectrum_recE_total->Add(hist_ele, hist_antie);
     h_spectrum_recE_total->Add(hist_x, 4);
     
-    h_spectrum_recE_total->Scale(0.001);//convert the unit from MeV^{-1} to keV^{-1}
+    //h_spectrum_recE_total->Scale(0.001);//convert the unit from MeV^{-1} to keV^{-1}
     
     h_spectrum_recE_total->SetDirectory(root_name2);
 }

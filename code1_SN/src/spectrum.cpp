@@ -1,9 +1,9 @@
-/*****************************/
-/*                                                      */
-/*       Created by Jiawei Guo          */
-/*        Shandong University            */
-/*                                                      */
-/*****************************/
+/***************************/
+/*                         */
+/*  Created by Jiawei Guo  */
+/*   Shandong University   */
+/*                         */
+/***************************/
 
 #include <iostream>
 #include <fstream>
@@ -320,7 +320,7 @@ void Spectrum::flux_time(TString filename, TFile *rootfile){//_flux, TFile *root
 
 
 
-
+//average in 20 seconds
 void Spectrum::energy_spectrum(TString filename, TFile *rootfile){
     
     TString hist_name2(filename(5,4)); //get 
@@ -362,7 +362,6 @@ void Spectrum::energy_spectrum(TString filename, TFile *rootfile){
              h_energy_e->Fill(neu_energy1, N_energy[0]);
              h_energy_antie->Fill(neu_energy1, N_energy[1]);
              h_energy_x->Fill(neu_energy1, N_energy[2]);
-         
              
         }
         
@@ -380,15 +379,17 @@ void Spectrum::energy_spectrum(TString filename, TFile *rootfile){
     h_energy_antie->GetXaxis()->SetTitle("E_{#nu} (MeV)");
     h_energy_x->GetXaxis()->SetTitle("E_{#nu} (MeV)");
     
-    h_energy_e->GetYaxis()->SetTitle("Event rate (ton.MeV)^{-1}");
-    h_energy_antie->GetYaxis()->SetTitle("Event rate (ton.MeV)^{-1}");
-    h_energy_x->GetYaxis()->SetTitle("Event rate (ton.MeV)^{-1}");
+    h_energy_e->GetYaxis()->SetTitle("events in 20s (ton.MeV)^{-1}");
+    h_energy_antie->GetYaxis()->SetTitle("events in 20s (ton.MeV)^{-1}");
+    h_energy_x->GetYaxis()->SetTitle("events in 20s (ton.MeV)^{-1}");
     
     infile.close();
     
 }
 
-//get "neutrino flux vs neutrino energy" and fit the curve with Fermi-Dirac distribution
+
+
+//flux_neuE in the first n second
 void Spectrum::flux_neuE(TString filename, TFile *rootfile){
     
     
@@ -419,7 +420,7 @@ void Spectrum::flux_neuE(TString filename, TFile *rootfile){
      
      while(infile >> time)
      {
-         if(time<1.0){
+         if(time< 1.0){//the first tmax second after SN burst
              
             for(int i = 1; i <21; i++)
             {
@@ -455,9 +456,9 @@ void Spectrum::flux_neuE(TString filename, TFile *rootfile){
     h_flux_neuE_antie->GetXaxis()->SetTitle("E_{#nu} (MeV)");
     h_flux_neuE_x->GetXaxis()->SetTitle("E_{#nu} (MeV)");
     
-    h_flux_neuE_e->GetYaxis()->SetTitle("Flux (s.MeV)^{-1}(cm)^{-2}");
-    h_flux_neuE_antie->GetYaxis()->SetTitle("Flux (s.MeV)^{-1}(cm)^{-2}");
-    h_flux_neuE_x->GetYaxis()->SetTitle("Flux (s.MeV)^{-1}(cm)^{-2}");
+    h_flux_neuE_e->GetYaxis()->SetTitle("Total flux in 20s (MeV)^{-1}(cm)^{-2}");
+    h_flux_neuE_antie->GetYaxis()->SetTitle("Total flux in 20s (MeV)^{-1}(cm)^{-2}");
+    h_flux_neuE_x->GetYaxis()->SetTitle("Total flux in 20s (MeV)^{-1}(cm)^{-2}");
     
     
 //    TF1 *func = new TF1("fit",fitf, neu_Emin, neu_Emax, 2);

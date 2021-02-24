@@ -1,9 +1,9 @@
-/*****************************/
-/*                                                      */
-/*       Created by Jiawei Guo          */
-/*        Shandong University            */
-/*                                                      */
-/*****************************/
+/***************************/
+/*                         */
+/*  Created by Jiawei Guo  */
+/*   Shandong University   */
+/*                         */
+/***************************/
 
 #ifndef _SPECTRUM_H
 #define _SPECTRUM_H
@@ -31,11 +31,11 @@ private:
     TString path1 = "/Users/jiaweiguo/Documents/GitHub/PandaX-4T_sdu/SN_database/";
     
     double tmin =  -2.0e-1; //unit of second
-    double tmax = 1.0;
+    double tmax = 20.0;
     double neu_Emin = 0.0;
     double neu_Emax = 300.0;
     
-    int nbin= 300;
+    int nbin= 5000;
     
     double D = 10.0 * 1000.0 * 206264.8 * 1.49598e11 * 100; //D is the distance between Earth and the SN
                        //10kpc = 10 * 1k * 206264.8 * 1.49598e11 * 100 cm

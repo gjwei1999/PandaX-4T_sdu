@@ -1,9 +1,9 @@
-/*****************************/
-/*                                                      */
-/*       Created by Jiawei Guo          */
-/*        Shandong University            */
-/*                                                      */
-/*****************************/
+/***************************/
+/*                         */
+/*  Created by Jiawei Guo  */
+/*   Shandong University   */
+/*                         */
+/***************************/
 
 #include "Math/Functor.h"
 #include "Math/WrappedTF1.h"
@@ -39,9 +39,11 @@ double Xsection::cross_section(double neu_energy){
 double Xsection::xs_recE(double neu_energy, double recoil_energy){//neu_energy in MeV, recoil_energy in keV
     
     double xs_recE = G_f*G_f * ( Z*(4.0*sin2theta-1.0)+N )*( Z*(4.0*sin2theta-1.0)+N ) * mass_xenon * (1-(mass_xenon*recoil_energy/2.0/1000.0/neu_energy/neu_energy))/4.0/M_PI;
+    //unit: MeV^{-3}
     
     //convert MeV^{-2} to cm^2
     xs_recE = xs_recE * 0.197e-10 * 0.197e-10;
+    //unit: cm^2/MeV
     
     return xs_recE;
 

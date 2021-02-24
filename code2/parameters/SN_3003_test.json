@@ -40,14 +40,14 @@
     
             "TH1Ffile_juno": "/Users/danzhang/pandax-4ddata/AmBe/simu/combined_cut_ana_AmBe_juno_3_0.08_16_eSpec.root",
     
-      "TH1Fname": "1301_total_recoil"
+      "TH1Fname": "3003_total_recoil"
     },
     
     "home_path": "/Users/jiaweiguo/Documents/GitHub/PandaX-4T_sdu/code2/output",
     
     
-    "simuRootFile": "1301_simu.root",
-    "event_rate": 6.191,
+    "simuRootFile": "3003_simu.root",
+    "event_rate": 1.04802,
     
     
         "lowEQyTxt": "parameters/p4_run1_AmBe_fine.txt",

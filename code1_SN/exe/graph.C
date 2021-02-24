@@ -1,9 +1,9 @@
-/*****************************/
-/*                                                      */
-/*       Created by Jiawei Guo          */
-/*        Shandong University            */
-/*                                                      */
-/*****************************/
+/***************************/
+/*                         */
+/*  Created by Jiawei Guo  */
+/*   Shandong University   */
+/*                         */
+/***************************/
 
 #include <iostream>
 #include <fstream>
@@ -38,7 +38,7 @@ int main(const int argc, const char * argv[]){
     
     const int opt = atoi(argv[1]);
     
-    TString loadpath = "/Users/jiaweiguo/Documents/GitHub/PandaX-4T_sdu/code1_SN/build/";
+    TString loadpath = "/Users/jiaweiguo/Documents/GitHub/PandaX-4T_sdu/code1_SN/output/";
     TString savepath = "/Users/jiaweiguo/Documents/GitHub/PandaX-4T_sdu/code1_SN/plots/";
     
     //flux vs time
