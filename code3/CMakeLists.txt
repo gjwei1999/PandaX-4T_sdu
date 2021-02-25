@@ -24,7 +24,7 @@ find_package(ROOT 6.0 REQUIRED COMPONENTS)
 ###include(${Geant4_USE_FILE})
 find_package(ROOT COMPONENTS MathMore)
 include(${ROOT_USE_FILE})
-include_directories(${PROJECT_SOURCE_DIR}/include)
+include_directories(${PROJECT_SOURCE_DIR}/src/include)
 
 
 #----------------------------------------------------------------------------
@@ -32,7 +32,7 @@ include_directories(${PROJECT_SOURCE_DIR}/include)
 # NB: headers are included so they will show up in IDEs
 #
 file(GLOB sources ${PROJECT_SOURCE_DIR}/src/*.cpp)
-file(GLOB headers ${PROJECT_SOURCE_DIR}/include/*.hpp)
+file(GLOB headers ${PROJECT_SOURCE_DIR}/src/include/*.hpp)
 file(GLOB executers ${PROJECT_SOURCE_DIR}/exe/*.cpp)
 
 add_library(code3_lib STATIC ${sources})

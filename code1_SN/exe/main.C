@@ -20,12 +20,15 @@ int main(){
      
      //define root file name
      TString root_time_spec = path2 + "time_spec.root";
+     TString root_time_spec_total = path2 + "time_spec_total.root";
      TString root_energy_spec = path2 + "energy_spec.root";
      TString root_flux_neuE = path2 + "flux_neuE.root";
      TString root_flux_time = path2 + "flux.root";
      
      //files for time and energy spec
      TFile * fs1 = new TFile(root_time_spec.Data(), "RECREATE");
+     TFile * fs1_1 = new TFile(root_time_spec_total.Data(), "RECREATE");
+     
      TFile * fs2 = new TFile(root_energy_spec.Data(), "RECREATE");
      TFile * fs3 = new TFile(root_flux_neuE.Data(), "RECREATE");
      TFile * fs4 = new TFile(root_flux_time.Data(), "RECREATE");
@@ -64,20 +67,21 @@ int main(){
      TString filename_time_5002 = "intp5002.data";
      TString filename_time_5003 = "intp5003.data";
      
-     Spec_1301->time_spectrum(filename_time_1301, fs1);
-     Spec_1302->time_spectrum(filename_time_1302, fs1);
-     Spec_1303->time_spectrum(filename_time_1303, fs1);
-     Spec_2001->time_spectrum(filename_time_2001, fs1);
-     Spec_2002->time_spectrum(filename_time_2002, fs1);
-     Spec_2003->time_spectrum(filename_time_2003, fs1);
-     Spec_3001->time_spectrum(filename_time_3001, fs1);
-     Spec_3002->time_spectrum(filename_time_3002, fs1);
-     Spec_3003->time_spectrum(filename_time_3003, fs1);
-     Spec_5001->time_spectrum(filename_time_5001, fs1);
-     Spec_5002->time_spectrum(filename_time_5002, fs1);
-     Spec_5003->time_spectrum(filename_time_5003, fs1);
+     Spec_1301->time_spectrum(filename_time_1301, fs1, fs1_1);
+     Spec_1302->time_spectrum(filename_time_1302, fs1, fs1_1);
+     Spec_1303->time_spectrum(filename_time_1303, fs1, fs1_1);
+     Spec_2001->time_spectrum(filename_time_2001, fs1, fs1_1);
+     Spec_2002->time_spectrum(filename_time_2002, fs1, fs1_1);
+     Spec_2003->time_spectrum(filename_time_2003, fs1, fs1_1);
+     Spec_3001->time_spectrum(filename_time_3001, fs1, fs1_1);
+     Spec_3002->time_spectrum(filename_time_3002, fs1, fs1_1);
+     Spec_3003->time_spectrum(filename_time_3003, fs1, fs1_1);
+     Spec_5001->time_spectrum(filename_time_5001, fs1, fs1_1);
+     Spec_5002->time_spectrum(filename_time_5002, fs1, fs1_1);
+     Spec_5003->time_spectrum(filename_time_5003, fs1, fs1_1);
      
      fs1->Write();
+     fs1_1->Write();
   
      
      Spec_1301->flux_time(filename_time_1301, fs4);//, fs5);

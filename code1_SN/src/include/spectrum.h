@@ -44,7 +44,7 @@ private:
     double num_Xe_ton = 1.0e6/131.29 * 6.02e23;
     
 public:
-    void time_spectrum(TString filename, TFile *rootfile); // Y: eventrate(number of events/ ton / s)    X: time (s)
+    void time_spectrum(TString filename, TFile *rootfile, TFile *rootfile2); // Y: eventrate(number of events/ ton / s)    X: time (s)
     void flux_time(TString filename, TFile *rootfile);//, TFile *rootfile_spectrum_inter);
     
     void energy_spectrum(TString filename, TFile *rootfile); // Y: eventrate(number of events/ ton / MeV)    X: neu_energy (MeV)

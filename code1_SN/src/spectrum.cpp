@@ -44,7 +44,7 @@ Spectrum::Spectrum(){
 Spectrum::~Spectrum(){
 }
 
-void Spectrum::time_spectrum(TString filename, TFile *rootfile){
+void Spectrum::time_spectrum(TString filename, TFile *rootfile, TFile *rootfile2){//rootfile for e, antie, x spectrums; rootfile2 for total spectrum
     
     TString hist_name1(filename(4,4)); //get 
     
@@ -52,6 +52,7 @@ void Spectrum::time_spectrum(TString filename, TFile *rootfile){
     TString hist_time_name_antie = hist_name1 + "antie";
     TString hist_time_name_x = hist_name1 + "x";
     
+    TString hist_time_name_total = hist_name1 + "total";
 //    TString hist_time_energy_name_e = hist_name1 + "T-E-" + "e";
 //    TString hist_time_energy_name_antie = hist_name1 + "T-E-" + "antie";
 //    TString hist_time_energy_name_x = hist_name1 + "T-E-" + "x";
@@ -59,6 +60,8 @@ void Spectrum::time_spectrum(TString filename, TFile *rootfile){
     TH1D* h_time_e = new TH1D(hist_time_name_e, hist_time_name_e, nbin, tmin, tmax);
     TH1D* h_time_antie = new TH1D(hist_time_name_antie, hist_time_name_antie, nbin, tmin, tmax);
     TH1D* h_time_x = new TH1D(hist_time_name_x, hist_time_name_x, nbin, tmin, tmax);
+    
+    TH1D* h_time_total = new TH1D(hist_time_name_total, hist_time_name_total, nbin, tmin, tmax);
     
 //    TH2D * h_time_energy_e = new TH2D(hist_time_energy_name_e, hist_time_energy_name_e, 500, tmin, tmax, 50, neu_Emin, neu_Emax); 
 //    TH2D * h_time_energy_antie = new TH2D(hist_time_energy_name_e, hist_time_energy_name_e, 500, tmin, tmax, 50, neu_Emin, neu_Emax); 
@@ -68,6 +71,7 @@ void Spectrum::time_spectrum(TString filename, TFile *rootfile){
     h_time_antie->SetDirectory(rootfile);
     h_time_x->SetDirectory(rootfile);
     
+    h_time_total->SetDirectory(rootfile2);
 //    h_time_energy_e->SetDirectory(rootfile);
 //    h_time_energy_antie->SetDirectory(rootfile);
 //    h_time_energy_x->SetDirectory(rootfile);
@@ -129,6 +133,10 @@ void Spectrum::time_spectrum(TString filename, TFile *rootfile){
         h_time_antie->SetBinError(i, 0.0);
         h_time_x->SetBinError(i, 0.0);
     }
+    
+    h_time_total->Add(h_time_e, h_time_antie);
+    h_time_total->Add(h_time_x, 4.0);
+    
 //    h_time_energy_e->Scale(num_Xe_ton);
 //    h_time_energy_antie->Scale(num_Xe_ton);
 //    h_time_energy_x->Scale(num_Xe_ton);
@@ -136,11 +144,12 @@ void Spectrum::time_spectrum(TString filename, TFile *rootfile){
     h_time_e->GetXaxis()->SetTitle("Time (s)");
     h_time_antie->GetXaxis()->SetTitle("Time (s)");
     h_time_x->GetXaxis()->SetTitle("Time (s)");
+    h_time_total->GetXaxis()->SetTitle("Time (s)");
     
     h_time_e->GetYaxis()->SetTitle("Event rate (ton.s)^{-1}");
     h_time_antie->GetYaxis()->SetTitle("Event rate (ton.s)^{-1}");
     h_time_x->GetYaxis()->SetTitle("Event rate (ton.s)^{-1}");
-    
+    h_time_total->GetYaxis()->SetTitle("Event rate (ton.s)^{-1}");
     
     infile.close();
     
@@ -392,7 +401,6 @@ void Spectrum::energy_spectrum(TString filename, TFile *rootfile){
 //flux_neuE in the first n second
 void Spectrum::flux_neuE(TString filename, TFile *rootfile){
     
-    
     TString hist_name2(filename(4,4)); //get 
     
     TString hist_flux_neuE_name_e = hist_name2 + "electron";
@@ -416,23 +424,23 @@ void Spectrum::flux_neuE(TString filename, TFile *rootfile){
      Xsection* xs_calculation = new Xsection();
      double xs;
      
-     double time0 = 0.0;
+     double time0 = -0.05;//the initial time in the database
      
      while(infile >> time)
      {
-         if(time< 1.0){//the first tmax second after SN burst
+         if(time< tmax){//the first tmax second after SN burst
              
             for(int i = 1; i <21; i++)
             {
                 infile >> neu_energy0 >> neu_energy1 >> dN_dE_e >> dN_dE_antie >> dN_dE_x >> temp >> temp >> temp;
              
-                if(time >= 0.0){
+                //if(time >= 0.0){
                     
                     h_flux_neuE_e->Fill( neu_energy1, dN_dE_e * (time - time0) );
                     h_flux_neuE_antie->Fill( neu_energy1, dN_dE_antie * (time - time0) );
                     h_flux_neuE_x->Fill( neu_energy1, dN_dE_x * (time - time0) );
                     
-                }
+                //}
              
             }
         

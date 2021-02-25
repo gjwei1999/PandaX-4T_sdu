@@ -89,7 +89,7 @@ void get_total(TFile * root_name1, TFile * root_name2, TString hist_name_total, 
     TH1D * hist_x = (TH1D *) root_name1->Get(hist_name_x_1);
     
     h_spectrum_recE_total->Add(hist_ele, hist_antie);
-    h_spectrum_recE_total->Add(hist_x, 4);
+    h_spectrum_recE_total->Add(hist_x, 4.0);
     
     //h_spectrum_recE_total->Scale(0.001);//convert the unit from MeV^{-1} to keV^{-1}
     

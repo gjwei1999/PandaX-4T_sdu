@@ -13,8 +13,7 @@
 
 int main(){
     
-    //TString loadpath = "/Users/jiaweiguo/Documents/GitHub/PandaX-4T_sdu/code1_SN/output/1st_second/";
-    TString loadpath = "/Users/jiaweiguo/Documents/GitHub/PandaX-4T_sdu/code1_SN/output/";
+    TString loadpath = "/Users/jiaweiguo/Documents/GitHub/PandaX-4T_sdu/code1_SN/output/1st_second/";
     TFile *fs = new TFile(loadpath + "recE_spec_total.root", "r");
     
     int bin_num_left;
