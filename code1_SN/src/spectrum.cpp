@@ -434,7 +434,7 @@ void Spectrum::flux_neuE(TString filename, TFile *rootfile){
             {
                 infile >> neu_energy0 >> neu_energy1 >> dN_dE_e >> dN_dE_antie >> dN_dE_x >> temp >> temp >> temp;
              
-                //if(time >= 0.0){
+                //if(time >= 0.3){
                     
                     h_flux_neuE_e->Fill( neu_energy1, dN_dE_e * (time - time0) );
                     h_flux_neuE_antie->Fill( neu_energy1, dN_dE_antie * (time - time0) );

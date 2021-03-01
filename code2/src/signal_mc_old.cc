@@ -30,31 +30,17 @@ int main(int argc, char *argv[]) {
   nlohmann::json j;
   fpar >> j;
   
-  
+  double event_rate = 0;
   int total_time = 0;
-  string time_spectrum_file;
-  TH1D * time_spec;
-  bool supernova = j["ifSN"];//if supernoa is true, the simulation is for supernova
-  int num_event;//number of events in 20s
   
-  
+  bool supernova = j["supernova"];//if supernoa is true, the simulation is for supernova
   if(supernova){
       
-      time_spectrum_file = j["supernova"]["time_spectrum"];
-      TFile fs(time_spectrum_file.c_str(),"read");
-      string time_spectrum_name = j["supernova"]["time_spectrumName"];
-      time_spec = (TH1D*) fs.Get(time_spectrum_name.c_str())->Clone();
-      time_spec->SetDirectory(0);
-      fs.Close();
-      
+      event_rate = j["event_rate"];
       total_time = atoi(argv[2]) * 20.0;//20 seconds for every SN burst simulation 
-      num_event = j["supernova"]["events_in_20s"];
+      n = total_time * event_rate;
 
-      n = atoi(argv[2]) * num_event;//num of events
 }
-
-
-    
   
   string homePath=j["home_path"];
   string oname=j["simuRootFile"];
@@ -213,14 +199,12 @@ int main(int argc, char *argv[]) {
   if(supernova){
       tree->Branch("event_time", &event_time, "event_time/D");
       tree->Branch("total_time", &total_time, "total_time/I");//save the total_time which is used as the bin number 
-  }
+}
+
   
-  
-  
-  int i = 0;//the ith event
-  int k = 0;//the kth simulation for supernova
-  
-  for (i = 0; i < n; ++i) {
+
+
+  for (int i = 0; i < n; ++i) {
     if(th1f_e_bool)
       energy = h_energy->GetRandom();
     else
@@ -277,8 +261,7 @@ int main(int argc, char *argv[]) {
       
     if(supernova){
         
-        k = i/num_event;
-        event_time = time_spec->GetRandom() + k*20.0;
+        event_time = gRandom->Uniform(0., total_time);
 //        if(event_time<10.0 && event_time>9.0){
 //        std::cout<<"the event_time is "<<event_time<<std::endl;
 //        }

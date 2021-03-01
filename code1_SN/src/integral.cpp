@@ -82,7 +82,7 @@ void Integral::numerical_int(TString hist_name, TFile * root_name){
     }
     
     h_flux_neuE->GetXaxis()->SetTitle("E_{#nu} (MeV)");
-    h_flux_neuE->GetYaxis()->SetTitle("Flux (s.MeV)^{-1}(cm)^{-2}");
+    h_flux_neuE->GetYaxis()->SetTitle("Flux in 20s (MeV)^{-1}(cm)^{-2}");
     
     Double_t xs;
     Double_t neuE_min;
@@ -124,7 +124,7 @@ void Integral::numerical_int(TString hist_name, TFile * root_name){
     }
     
     h_spectrum_recE->GetXaxis()->SetTitle("E_{r} (keV)");
-    h_spectrum_recE->GetYaxis()->SetTitle("Event rate (ton.s.MeV)^{-1}");
+    h_spectrum_recE->GetYaxis()->SetTitle("Events in 20s (ton.MeV)^{-1}");
     
     std::cout<<"The recoil energy spectrum is finished."<<std::endl;
     

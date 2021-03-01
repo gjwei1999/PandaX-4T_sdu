@@ -16,6 +16,7 @@ int main(){
     //TString loadpath = "/Users/jiaweiguo/Documents/GitHub/PandaX-4T_sdu/code1_SN/output/1st_second/";
     TString loadpath = "/Users/jiaweiguo/Documents/GitHub/PandaX-4T_sdu/code1_SN/output/";
     TFile *fs = new TFile(loadpath + "time_spec.root", "r");
+    TFile *fs1 = new TFile(loadpath + "energy_spec.root", "r");
     
     int bin_num_left;
     int bin_num_right;
@@ -24,8 +25,8 @@ int main(){
     
     //13 solar mass
     //1301
-    TH1D * h1301 = (TH1D *) fs->Get("1301e");
-    num_of_events = h1301->Integral("width");
+    TH1D * h1301_1 = (TH1D *) fs->Get("1301e");
+    num_of_events = h1301_1->Integral("width");
     
     TH1D * h1301_2 = (TH1D *) fs->Get("1301antie");
     num_of_events += h1301_2->Integral("width");
@@ -36,163 +37,393 @@ int main(){
     std::cout<<"The num of events in 20 seconds for 1301 is "<<num_of_events<<" ton-1"<<std::endl;
     std::cout<<"For PandaX-4T, the number of events in 20 seconds is  "<< 4*num_of_events<<std::endl;
     std::cout<<" "<<std::endl;
-    std::cout<<"!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"<<std::endl;
     std::cout<<" "<<std::endl;
     
-    TFile *fs1 = new TFile(loadpath + "energy_spec.root", "r");
     
-    TH1D * h1 = (TH1D *) fs->Get("1301e");
-    num_of_events = h1->Integral("width");
+    TH1D * h1301_1e = (TH1D *) fs->Get("1301e");
+    num_of_events = h1301_1e->Integral("width");
     
-    TH1D * h1_2 = (TH1D *) fs->Get("1301antie");
-    num_of_events += h1_2->Integral("width");
+    TH1D * h1301_2e = (TH1D *) fs->Get("1301antie");
+    num_of_events += h1301_2e->Integral("width");
     
-    TH1D * h1_3 = (TH1D *) fs->Get("1301x");
-    num_of_events += 4 * h1_3->Integral("width");
+    TH1D * h1301_3e = (TH1D *) fs->Get("1301x");
+    num_of_events += 4 * h1301_3e->Integral("width");
     
     std::cout<<"The num of events in 20 seconds for 1301 is "<<num_of_events<<" ton-1"<<std::endl;
     std::cout<<"For PandaX-4T, the number of events in 20 seconds is  "<< 4*num_of_events<<std::endl;
     std::cout<<" "<<std::endl;
-    
-    /*
-    //1302
-    TH1D * h1302 = (TH1D *) fs->Get("1302_total_recoil");
-    
-    bin_num_left = h1302->GetBin(0.0);
-    bin_num_right = h1302->GetBin(100.0);
-    
-    num_of_events = h1302->Integral(bin_num_left, bin_num_right);
-    
-    std::cout<<"The events rate in the first second for 1302 is "<<num_of_events<<" ton-1 s-1"<<std::endl;
-    std::cout<<"For PandaX-4T, the number of events in the first second is  "<< 4*num_of_events<<std::endl;
+    std::cout<<"!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"<<std::endl;
     std::cout<<" "<<std::endl;
+    
+    
+    //1302
+    TH1D * h1302_1 = (TH1D *) fs->Get("1302e");
+    num_of_events = h1302_1->Integral("width");
+    
+    TH1D * h1302_2 = (TH1D *) fs->Get("1302antie");
+    num_of_events += h1302_2->Integral("width");
+    
+    TH1D * h1302_3 = (TH1D *) fs->Get("1302x");
+    num_of_events += 4 * h1302_3->Integral("width");
+    
+    std::cout<<"The num of events in 20 seconds for 1302 is "<<num_of_events<<" ton-1"<<std::endl;
+    std::cout<<"For PandaX-4T, the number of events in 20 seconds is  "<< 4*num_of_events<<std::endl;
+    std::cout<<" "<<std::endl;
+    std::cout<<" "<<std::endl;
+    
+    
+    
+    TH1D * h1302_1e = (TH1D *) fs->Get("1302e");
+    num_of_events = h1302_1e->Integral("width");
+    
+    TH1D * h1302_2e = (TH1D *) fs->Get("1302antie");
+    num_of_events += h1302_2e->Integral("width");
+    
+    TH1D * h1302_3e = (TH1D *) fs->Get("1302x");
+    num_of_events += 4 * h1302_3e->Integral("width");
+    
+    std::cout<<"The num of events in 20 seconds for 1302 is "<<num_of_events<<" ton-1"<<std::endl;
+    std::cout<<"For PandaX-4T, the number of events in 20 seconds is  "<< 4*num_of_events<<std::endl;
+    std::cout<<" "<<std::endl;
+    std::cout<<"!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"<<std::endl;
+    std::cout<<" "<<std::endl;
+    
     
     //1303
-    TH1D * h1303 = (TH1D *) fs->Get("1303_total_recoil");
+    TH1D * h1303_1 = (TH1D *) fs->Get("1303e");
+    num_of_events = h1303_1->Integral("width");
     
-    bin_num_left = h1303->GetBin(0.0);
-    bin_num_right = h1303->GetBin(100.0);
+    TH1D * h1303_2 = (TH1D *) fs->Get("1303antie");
+    num_of_events += h1303_2->Integral("width");
     
-    num_of_events = h1303->Integral(bin_num_left, bin_num_right);
+    TH1D * h1303_3 = (TH1D *) fs->Get("1303x");
+    num_of_events += 4 * h1303_3->Integral("width");
     
-    std::cout<<"The events rate in the first second for 1303 is "<<num_of_events<<" ton-1 s-1"<<std::endl;
-    std::cout<<"For PandaX-4T, the number of events in the first second is  "<< 4*num_of_events<<std::endl;
+    std::cout<<"The num of events in 20 seconds for 1303 is "<<num_of_events<<" ton-1"<<std::endl;
+    std::cout<<"For PandaX-4T, the number of events in 20 seconds is  "<< 4*num_of_events<<std::endl;
+    std::cout<<" "<<std::endl;
     std::cout<<" "<<std::endl;
     
     
-    //20 solar mass
+    
+    TH1D * h1303_1e = (TH1D *) fs->Get("1303e");
+    num_of_events = h1303_1e->Integral("width");
+    
+    TH1D * h1303_2e = (TH1D *) fs->Get("1303antie");
+    num_of_events += h1303_2e->Integral("width");
+    
+    TH1D * h1303_3e = (TH1D *) fs->Get("1303x");
+    num_of_events += 4 * h1303_3e->Integral("width");
+    
+    std::cout<<"The num of events in 20 seconds for 1303 is "<<num_of_events<<" ton-1"<<std::endl;
+    std::cout<<"For PandaX-4T, the number of events in 20 seconds is  "<< 4*num_of_events<<std::endl;
+    std::cout<<" "<<std::endl;
+    std::cout<<"!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"<<std::endl;
+    std::cout<<" "<<std::endl;
+    
+    
     //2001
-    TH1D * h2001 = (TH1D *) fs->Get("2001_total_recoil");
+    TH1D * h2001_1 = (TH1D *) fs->Get("2001e");
+    num_of_events = h2001_1->Integral("width");
     
-    bin_num_left = h2001->GetBin(0.0);
-    bin_num_right = h2001->GetBin(100.0);
+    TH1D * h2001_2 = (TH1D *) fs->Get("2001antie");
+    num_of_events += h2001_2->Integral("width");
     
-    num_of_events = h2001->Integral(bin_num_left, bin_num_right);
+    TH1D * h2001_3 = (TH1D *) fs->Get("2001x");
+    num_of_events += 4 * h2001_3->Integral("width");
     
-    std::cout<<"The events rate in the first second for 2001 is "<<num_of_events<<" ton-1 s-1"<<std::endl;
-    std::cout<<"For PandaX-4T, the number of events in the first second is  "<< 4*num_of_events<<std::endl;
+    std::cout<<"The num of events in 20 seconds for 2001 is "<<num_of_events<<" ton-1"<<std::endl;
+    std::cout<<"For PandaX-4T, the number of events in 20 seconds is  "<< 4*num_of_events<<std::endl;
     std::cout<<" "<<std::endl;
+    std::cout<<" "<<std::endl;
+    
+    
+    
+    TH1D * h2001_1e = (TH1D *) fs->Get("2001e");
+    num_of_events = h2001_1e->Integral("width");
+    
+    TH1D * h2001_2e = (TH1D *) fs->Get("2001antie");
+    num_of_events += h2001_2e->Integral("width");
+    
+    TH1D * h2001_3e = (TH1D *) fs->Get("2001x");
+    num_of_events += 4 * h2001_3e->Integral("width");
+    
+    std::cout<<"The num of events in 20 seconds for 2001 is "<<num_of_events<<" ton-1"<<std::endl;
+    std::cout<<"For PandaX-4T, the number of events in 20 seconds is  "<< 4*num_of_events<<std::endl;
+    std::cout<<" "<<std::endl;
+    std::cout<<"!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"<<std::endl;
+    std::cout<<" "<<std::endl;
+    
+    
     
     //2002
-    TH1D * h2002 = (TH1D *) fs->Get("2002_total_recoil");
+    TH1D * h2002_1 = (TH1D *) fs->Get("2002e");
+    num_of_events = h2002_1->Integral("width");
     
-    bin_num_left = h2002->GetBin(0.0);
-    bin_num_right = h2002->GetBin(100.0);
+    TH1D * h2002_2 = (TH1D *) fs->Get("2002antie");
+    num_of_events += h2002_2->Integral("width");
     
-    num_of_events = h2002->Integral(bin_num_left, bin_num_right);
+    TH1D * h2002_3 = (TH1D *) fs->Get("2002x");
+    num_of_events += 4 * h2002_3->Integral("width");
     
-    std::cout<<"The events rate in the first second for 2002 is "<<num_of_events<<" ton-1 s-1"<<std::endl;
-    std::cout<<"For PandaX-4T, the number of events in the first second is  "<< 4*num_of_events<<std::endl;
+    std::cout<<"The num of events in 20 seconds for 2002 is "<<num_of_events<<" ton-1"<<std::endl;
+    std::cout<<"For PandaX-4T, the number of events in 20 seconds is  "<< 4*num_of_events<<std::endl;
     std::cout<<" "<<std::endl;
+    std::cout<<" "<<std::endl;
+    
+    
+    
+    TH1D * h2002_1e = (TH1D *) fs->Get("2002e");
+    num_of_events = h2002_1e->Integral("width");
+    
+    TH1D * h2002_2e = (TH1D *) fs->Get("2002antie");
+    num_of_events += h2002_2e->Integral("width");
+    
+    TH1D * h2002_3e = (TH1D *) fs->Get("2002x");
+    num_of_events += 4 * h2002_3e->Integral("width");
+    
+    std::cout<<"The num of events in 20 seconds for 2002 is "<<num_of_events<<" ton-1"<<std::endl;
+    std::cout<<"For PandaX-4T, the number of events in 20 seconds is  "<< 4*num_of_events<<std::endl;
+    std::cout<<" "<<std::endl;
+    std::cout<<"!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"<<std::endl;
+    std::cout<<" "<<std::endl;
+    
+    
     
     //2003
-    TH1D * h2003 = (TH1D *) fs->Get("2003_total_recoil");
+    TH1D * h2003_1 = (TH1D *) fs->Get("2003e");
+    num_of_events = h2003_1->Integral("width");
     
-    bin_num_left = h2003->GetBin(0.0);
-    bin_num_right = h2003->GetBin(100.0);
+    TH1D * h2003_2 = (TH1D *) fs->Get("2003antie");
+    num_of_events += h2003_2->Integral("width");
     
-    num_of_events = h2003->Integral(bin_num_left, bin_num_right);
+    TH1D * h2003_3 = (TH1D *) fs->Get("2003x");
+    num_of_events += 4 * h2003_3->Integral("width");
     
-    std::cout<<"The events rate in the first second for 2003 is "<<num_of_events<<" ton-1 s-1"<<std::endl;
-    std::cout<<"For PandaX-4T, the number of events in the first second is  "<< 4*num_of_events<<std::endl;
+    std::cout<<"The num of events in 20 seconds for 2003 is "<<num_of_events<<" ton-1"<<std::endl;
+    std::cout<<"For PandaX-4T, the number of events in 20 seconds is  "<< 4*num_of_events<<std::endl;
+    std::cout<<" "<<std::endl;
     std::cout<<" "<<std::endl;
     
     
-    //30 solar mass
+    
+    TH1D * h2003_1e = (TH1D *) fs->Get("2003e");
+    num_of_events = h2003_1e->Integral("width");
+    
+    TH1D * h2003_2e = (TH1D *) fs->Get("2003antie");
+    num_of_events += h2003_2e->Integral("width");
+    
+    TH1D * h2003_3e = (TH1D *) fs->Get("2003x");
+    num_of_events += 4 * h2003_3e->Integral("width");
+    
+    std::cout<<"The num of events in 20 seconds for 2003 is "<<num_of_events<<" ton-1"<<std::endl;
+    std::cout<<"For PandaX-4T, the number of events in 20 seconds is  "<< 4*num_of_events<<std::endl;
+    std::cout<<" "<<std::endl;
+    std::cout<<"!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"<<std::endl;
+    std::cout<<" "<<std::endl;
+    
+    
+    
     //3001
-    TH1D * h3001 = (TH1D *) fs->Get("3001_total_recoil");
+    TH1D * h3001_1 = (TH1D *) fs->Get("3001e");
+    num_of_events = h3001_1->Integral("width");
     
-    bin_num_left = h3001->GetBin(0.0);
-    bin_num_right = h3001->GetBin(100.0);
+    TH1D * h3001_2 = (TH1D *) fs->Get("3001antie");
+    num_of_events += h3001_2->Integral("width");
     
-    num_of_events = h3001->Integral(bin_num_left, bin_num_right);
+    TH1D * h3001_3 = (TH1D *) fs->Get("3001x");
+    num_of_events += 4 * h3001_3->Integral("width");
     
-    std::cout<<"The events rate in the first second for 3001 is "<<num_of_events<<" ton-1 s-1"<<std::endl;
-    std::cout<<"For PandaX-4T, the number of events in the first second is  "<< 4*num_of_events<<std::endl;
+    std::cout<<"The num of events in 20 seconds for 3001 is "<<num_of_events<<" ton-1"<<std::endl;
+    std::cout<<"For PandaX-4T, the number of events in 20 seconds is  "<< 4*num_of_events<<std::endl;
     std::cout<<" "<<std::endl;
+    std::cout<<" "<<std::endl;
+    
+    
+    
+    TH1D * h3001_1e = (TH1D *) fs->Get("3001e");
+    num_of_events = h3001_1e->Integral("width");
+    
+    TH1D * h3001_2e = (TH1D *) fs->Get("3001antie");
+    num_of_events += h3001_2e->Integral("width");
+    
+    TH1D * h3001_3e = (TH1D *) fs->Get("3001x");
+    num_of_events += 4 * h3001_3e->Integral("width");
+    
+    std::cout<<"The num of events in 20 seconds for 3001 is "<<num_of_events<<" ton-1"<<std::endl;
+    std::cout<<"For PandaX-4T, the number of events in 20 seconds is  "<< 4*num_of_events<<std::endl;
+    std::cout<<" "<<std::endl;
+    std::cout<<"!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"<<std::endl;
+    std::cout<<" "<<std::endl;
+    
     
     //3002
-    TH1D * h3002 = (TH1D *) fs->Get("3002_total_recoil");
+    TH1D * h3002_1 = (TH1D *) fs->Get("3002e");
+    num_of_events = h3002_1->Integral("width");
     
-    bin_num_left = h3002->GetBin(0.0);
-    bin_num_right = h3002->GetBin(100.0);
+    TH1D * h3002_2 = (TH1D *) fs->Get("3002antie");
+    num_of_events += h3002_2->Integral("width");
     
-    num_of_events = h3002->Integral(bin_num_left, bin_num_right);
+    TH1D * h3002_3 = (TH1D *) fs->Get("3002x");
+    num_of_events += 4 * h3002_3->Integral("width");
     
-    std::cout<<"The events rate in the first second for 3002 is "<<num_of_events<<" ton-1 s-1"<<std::endl;
-    std::cout<<"For PandaX-4T, the number of events in the first second is  "<< 4*num_of_events<<std::endl;
+    std::cout<<"The num of events in 20 seconds for 3002 is "<<num_of_events<<" ton-1"<<std::endl;
+    std::cout<<"For PandaX-4T, the number of events in 20 seconds is  "<< 4*num_of_events<<std::endl;
     std::cout<<" "<<std::endl;
+    std::cout<<" "<<std::endl;
+    
+    
+    
+    TH1D * h3002_1e = (TH1D *) fs->Get("3002e");
+    num_of_events = h3002_1e->Integral("width");
+    
+    TH1D * h3002_2e = (TH1D *) fs->Get("3002antie");
+    num_of_events += h3002_2e->Integral("width");
+    
+    TH1D * h3002_3e = (TH1D *) fs->Get("3002x");
+    num_of_events += 4 * h3002_3e->Integral("width");
+    
+    std::cout<<"The num of events in 20 seconds for 3002 is "<<num_of_events<<" ton-1"<<std::endl;
+    std::cout<<"For PandaX-4T, the number of events in 20 seconds is  "<< 4*num_of_events<<std::endl;
+    std::cout<<" "<<std::endl;
+    std::cout<<"!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"<<std::endl;
+    std::cout<<" "<<std::endl;
+    
+    
     
     //3003
-    TH1D * h3003 = (TH1D *) fs->Get("3003_total_recoil");
+    TH1D * h3003_1 = (TH1D *) fs->Get("3003e");
+    num_of_events = h3003_1->Integral("width");
     
-    bin_num_left = h3003->GetBin(0.0);
-    bin_num_right = h3003->GetBin(100.0);
+    TH1D * h3003_2 = (TH1D *) fs->Get("3003antie");
+    num_of_events += h3003_2->Integral("width");
     
-    num_of_events = h3003->Integral(bin_num_left, bin_num_right);
+    TH1D * h3003_3 = (TH1D *) fs->Get("3003x");
+    num_of_events += 4 * h3003_3->Integral("width");
     
-    std::cout<<"The events rate in the first second for 3003 is "<<num_of_events<<" ton-1 s-1"<<std::endl;
-    std::cout<<"For PandaX-4T, the number of events in the first second is  "<< 4*num_of_events<<std::endl;
+    std::cout<<"The num of events in 20 seconds for 3003 is "<<num_of_events<<" ton-1"<<std::endl;
+    std::cout<<"For PandaX-4T, the number of events in 20 seconds is  "<< 4*num_of_events<<std::endl;
+    std::cout<<" "<<std::endl;
     std::cout<<" "<<std::endl;
     
     
-    //50 solar mass
+    
+    TH1D * h3003_1e = (TH1D *) fs->Get("3003e");
+    num_of_events = h3003_1e->Integral("width");
+    
+    TH1D * h3003_2e = (TH1D *) fs->Get("3003antie");
+    num_of_events += h3003_2e->Integral("width");
+    
+    TH1D * h3003_3e = (TH1D *) fs->Get("3003x");
+    num_of_events += 4 * h3003_3e->Integral("width");
+    
+    std::cout<<"The num of events in 20 seconds for 3003 is "<<num_of_events<<" ton-1"<<std::endl;
+    std::cout<<"For PandaX-4T, the number of events in 20 seconds is  "<< 4*num_of_events<<std::endl;
+    std::cout<<" "<<std::endl;
+    std::cout<<"!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"<<std::endl;
+    std::cout<<" "<<std::endl;
+    
+    
+    
     //5001
-    TH1D * h5001 = (TH1D *) fs->Get("5001_total_recoil");
+    TH1D * h5001_1 = (TH1D *) fs->Get("5001e");
+    num_of_events = h5001_1->Integral("width");
     
-    bin_num_left = h5001->GetBin(0.0);
-    bin_num_right = h5001->GetBin(100.0);
+    TH1D * h5001_2 = (TH1D *) fs->Get("5001antie");
+    num_of_events += h5001_2->Integral("width");
     
-    num_of_events = h5001->Integral(bin_num_left, bin_num_right);
+    TH1D * h5001_3 = (TH1D *) fs->Get("5001x");
+    num_of_events += 4 * h5001_3->Integral("width");
     
-    std::cout<<"The events rate in the first second for 5001 is "<<num_of_events<<" ton-1 s-1"<<std::endl;
-    std::cout<<"For PandaX-4T, the number of events in the first second is  "<< 4*num_of_events<<std::endl;
+    std::cout<<"The num of events in 20 seconds for 5001 is "<<num_of_events<<" ton-1"<<std::endl;
+    std::cout<<"For PandaX-4T, the number of events in 20 seconds is  "<< 4*num_of_events<<std::endl;
     std::cout<<" "<<std::endl;
+    std::cout<<" "<<std::endl;
+    
+    
+    
+    TH1D * h5001_1e = (TH1D *) fs->Get("5001e");
+    num_of_events = h5001_1e->Integral("width");
+    
+    TH1D * h5001_2e = (TH1D *) fs->Get("5001antie");
+    num_of_events += h5001_2e->Integral("width");
+    
+    TH1D * h5001_3e = (TH1D *) fs->Get("5001x");
+    num_of_events += 4 * h5001_3e->Integral("width");
+    
+    std::cout<<"The num of events in 20 seconds for 5001 is "<<num_of_events<<" ton-1"<<std::endl;
+    std::cout<<"For PandaX-4T, the number of events in 20 seconds is  "<< 4*num_of_events<<std::endl;
+    std::cout<<" "<<std::endl;
+    std::cout<<"!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"<<std::endl;
+    std::cout<<" "<<std::endl;
+    
     
     //5002
-    TH1D * h5002 = (TH1D *) fs->Get("5002_total_recoil");
+    TH1D * h5002_1 = (TH1D *) fs->Get("5002e");
+    num_of_events = h5002_1->Integral("width");
     
-    bin_num_left = h5002->GetBin(0.0);
-    bin_num_right = h5002->GetBin(100.0);
+    TH1D * h5002_2 = (TH1D *) fs->Get("5002antie");
+    num_of_events += h5002_2->Integral("width");
     
-    num_of_events = h5002->Integral(bin_num_left, bin_num_right);
+    TH1D * h5002_3 = (TH1D *) fs->Get("5002x");
+    num_of_events += 4 * h5002_3->Integral("width");
     
-    std::cout<<"The events rate in the first second for 5002 is "<<num_of_events<<" ton-1 s-1"<<std::endl;
-    std::cout<<"For PandaX-4T, the number of events in the first second is  "<< 4*num_of_events<<std::endl;
+    std::cout<<"The num of events in 20 seconds for 5002 is "<<num_of_events<<" ton-1"<<std::endl;
+    std::cout<<"For PandaX-4T, the number of events in 20 seconds is  "<< 4*num_of_events<<std::endl;
     std::cout<<" "<<std::endl;
+    std::cout<<" "<<std::endl;
+    
+    
+    
+    TH1D * h5002_1e = (TH1D *) fs->Get("5002e");
+    num_of_events = h5002_1e->Integral("width");
+    
+    TH1D * h5002_2e = (TH1D *) fs->Get("5002antie");
+    num_of_events += h5002_2e->Integral("width");
+    
+    TH1D * h5002_3e = (TH1D *) fs->Get("5002x");
+    num_of_events += 4 * h5002_3e->Integral("width");
+    
+    std::cout<<"The num of events in 20 seconds for 5002 is "<<num_of_events<<" ton-1"<<std::endl;
+    std::cout<<"For PandaX-4T, the number of events in 20 seconds is  "<< 4*num_of_events<<std::endl;
+    std::cout<<" "<<std::endl;
+    std::cout<<"!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"<<std::endl;
+    std::cout<<" "<<std::endl;
+    
+    
+    
     
     //5003
-    TH1D * h5003 = (TH1D *) fs->Get("5003_total_recoil");
+    TH1D * h5003_1 = (TH1D *) fs->Get("5003e");
+    num_of_events = h5003_1->Integral("width");
     
-    bin_num_left = h5003->GetBin(0.0);
-    bin_num_right = h5003->GetBin(100.0);
+    TH1D * h5003_2 = (TH1D *) fs->Get("5003antie");
+    num_of_events += h5003_2->Integral("width");
     
-    num_of_events = h5003->Integral(bin_num_left, bin_num_right);
+    TH1D * h5003_3 = (TH1D *) fs->Get("5003x");
+    num_of_events += 4 * h5003_3->Integral("width");
     
-    std::cout<<"The events rate in the first second for 5003 is "<<num_of_events<<" ton-1 s-1"<<std::endl;
-    std::cout<<"For PandaX-4T, the number of events in the first second is  "<< 4*num_of_events<<std::endl;
+    std::cout<<"The num of events in 20 seconds for 5003 is "<<num_of_events<<" ton-1"<<std::endl;
+    std::cout<<"For PandaX-4T, the number of events in 20 seconds is  "<< 4*num_of_events<<std::endl;
     std::cout<<" "<<std::endl;
-    */
+    std::cout<<" "<<std::endl;
+    
+    
+    
+    TH1D * h5003_1e = (TH1D *) fs->Get("5003e");
+    num_of_events = h5003_1e->Integral("width");
+    
+    TH1D * h5003_2e = (TH1D *) fs->Get("5003antie");
+    num_of_events += h5003_2e->Integral("width");
+    
+    TH1D * h5003_3e = (TH1D *) fs->Get("5003x");
+    num_of_events += 4 * h5003_3e->Integral("width");
+    
+    std::cout<<"The num of events in 20 seconds for 5003 is "<<num_of_events<<" ton-1"<<std::endl;
+    std::cout<<"For PandaX-4T, the number of events in 20 seconds is  "<< 4*num_of_events<<std::endl;
+    std::cout<<" "<<std::endl;
+    std::cout<<"!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"<<std::endl;
+    std::cout<<" "<<std::endl;
     
     return 1;
 }
