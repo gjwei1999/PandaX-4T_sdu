@@ -10,12 +10,13 @@
 #include <cmath>
 
 #include "branches.hpp"
-#include "eff_far.hpp"
 
 #include "TString.h"
 #include "TFile.h"
 #include "TMath.h"
-#include "TNtupleD.h"
+#include "TH1D.h"
+#include "TH2D.h"
+
 
 void sort(TTree *tree, TString resorted_root);
 
@@ -35,8 +36,6 @@ int main(int argc, char* argv[]){
     TString path1 = "/Users/jiaweiguo/Documents/GitHub/PandaX-4T_sdu/code3/output/";
     TString result_root = path1 + argv[2] + ".root";
     
-    TString path2 = "/Users/jiaweiguo/Documents/GitHub/PandaX-4T_sdu/code3/output/re-sorted/";
-    TString resorted_root = path2 + argv[2] + "_resort.root";
     
     TFile *fs1 = new TFile(result_root.Data(), "RECREATE");
     
@@ -45,13 +44,9 @@ int main(int argc, char* argv[]){
     TFile *fs = new TFile(input.c_str(), "r");//input data
     TTree *t1 = (TTree*)fs->Get("qmc_tree");
     
-    //sort the entries in the tree according to event_time
-    sort(t1, resorted_root);
-    
-    
     int num_of_events;
     num_of_events = (int)t1->GetEntries();
-    
+
     
     Branches * branch1 = new Branches();
     branch1->init(t1);
@@ -121,27 +116,13 @@ int main(int argc, char* argv[]){
     std::cout<<"detected "<< n_s1d_s2d <<" S1&S2 signal "<<std::endl;
     std::cout<<"The average rate of detected events is "<< n_s1d_s2d/total_time_simu <<std::endl; 
     
-    Eff_far * eff_far1 = new Eff_far();
-    double eff_value;
-    
-    eff_value = eff_far1->trigger_effeciency(2, 1.0, n_s1d_s2d/total_time_simu);
-    std::cout<<"The trigger efficiency for it is "<<eff_value<<"with N_thr = 2, T_SN = 1s"<<std::endl;
-    
-    eff_value = eff_far1->trigger_effeciency(3, 1.0, n_s1d_s2d/total_time_simu);
-    std::cout<<"The trigger efficiency for it is "<<eff_value<<"with N_thr = 3, T_SN = 1s"<<std::endl;
-    
-    eff_value = eff_far1->trigger_effeciency(4, 1.0, n_s1d_s2d/total_time_simu);
-    std::cout<<"The trigger efficiency for it is "<<eff_value<<"with N_thr = 4, T_SN = 1s"<<std::endl;
     
     
+    TString path2 = "/Users/jiaweiguo/Documents/GitHub/PandaX-4T_sdu/code3/output/re-sorted/";
+    TString resorted_root = path2 + argv[2] + "_resort.root";
     
-    
-    
-    
-    
-    
-    
-    
+    //sort the entries in the tree according to event_time
+    sort(t1, resorted_root);
     
     return 1;
 }

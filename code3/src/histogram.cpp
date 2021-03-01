@@ -35,7 +35,6 @@ void Histogram::Fill_detected_event_time(Branches * branch){
         h_detected_event_time->Fill(branch->get_event_time());
     }
     
-    
 }
 
 void Histogram::Fill_logs2s1_s1(Branches * branch){
