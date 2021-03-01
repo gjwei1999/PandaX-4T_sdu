@@ -1,6 +1,6 @@
 # PandaX-4T_sdu
 
-This is a project for PandaX-4T under supervison of Prof. Meng Wang in Shandong University.
+This is a project for PandaX-4T under supervison of Prof. Meng Wang at Shandong University.
 
 ## Introduction
 code1_SN generates the supernova burst neutrino spectrum.
