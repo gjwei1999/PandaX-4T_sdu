@@ -45,7 +45,6 @@ include_directories(${PROJECT_SOURCE_DIR}/src/include)
 #
 file(GLOB sources ${PROJECT_SOURCE_DIR}/src/*.cpp)
 file(GLOB headers ${PROJECT_SOURCE_DIR}/src/include/*.hpp)
-file(GLOB headers2 ${PROJECT_SOURCE_DIR}/src/include/*.h)
 file(GLOB executers ${PROJECT_SOURCE_DIR}/exe/*.cpp)
 
 add_library(code3_lib STATIC ${sources})

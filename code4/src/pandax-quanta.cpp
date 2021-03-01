@@ -1,4 +1,4 @@
-#include "pandax-quanta.h"
+#include "pandax-quanta.hpp"
 
 #include <TRandom.h> // for gRandom
 using namespace std;

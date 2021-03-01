@@ -1,32 +1,21 @@
-#include "det-sim.h"
-#include "pandax-quanta.h"
+/***************************/
+/*                         */
+/*  Created by Jiawei Guo  */
+/*   Shandong University   */
+/*                         */
+/***************************/
 
-#include <iostream>
-#include <sstream>
-#include <fstream>
-#include <vector>
-#include <TFile.h>
-#include <TGraph.h>
-#include <TTree.h>
-#include <TKey.h>
-#include <TH1F.h>
-#include <TH2F.h>
-#include <TF1.h>
-#include <TRandom.h>
+#include "signal_mc.hpp"
 
-#include "json.hpp"
-using namespace std;
+Signal_mc::Signal_mc(){};
+Signal_mc::~Signal_mc(){};
 
-int main(int argc, char *argv[]) {
-  if (argc != 3) {
-    std::cerr << "Usage: " << argv[0] << " confFile n"<<endl;
-    std::cerr << "If SN: " << argv[0] << " 'confFile' 'num of simulation' "<<endl;
-    //std::cerr << "Usage: " << argv[0] << " lifetime_file yield g1g2 outfile run [n]" << std::endl;
-    return 1;
-  }
 
-  ifstream fpar(argv[1]);
-  int n=atoi(argv[2]);
+
+void Signal_mc::run_mc(TString para_file, int num_of_simulation){
+
+  ifstream fpar(para_file.Data());
+  int n;
   nlohmann::json j;
   fpar >> j;
   
@@ -47,10 +36,10 @@ int main(int argc, char *argv[]) {
       time_spec->SetDirectory(0);
       fs.Close();
       
-      total_time = atoi(argv[2]) * 20.0;//20 seconds for every SN burst simulation 
+      total_time = num_of_simulation * 20.0;//20 seconds for every SN burst simulation 
       num_event = j["supernova"]["events_in_20s"];
 
-      n = atoi(argv[2]) * num_event;//num of events
+      n = num_of_simulation * num_event;//num of events
 }
 
 
@@ -314,8 +303,61 @@ int main(int argc, char *argv[]) {
  */
     tree->Fill();
   }
+  
+  
+  Int_t nentries = (Int_t)tree->GetEntries();
+  tree->Draw("event_time","","goff");
+  Int_t *index = new Int_t[nentries];
+  TMath::Sort(nentries,tree->GetV1(),index, false);
+  tree_sorted = (TTree*)tree->CloneTree(0);
+	for (Int_t i=0;i<nentries;i++) {
+		tree->GetEntry(index[i]);
+		tree_sorted->Fill();
+	}
+	
   fout->cd();
-  tree->Write();
+  tree_sorted->Write();
   fout->Close();
-  return 1;
+  
+  delete [] index;
+  
+  std::cout<<""<<std::endl;
+  std::cout<<"The entries are re-sorted."<<std::endl;
+  std::cout<<""<<std::endl;
+
 }
+
+/*
+void Signal_mc::sort(TTree *tree, TFile *fout) {
+	////TFile f("hsimple.root");
+	////TTree *tree = (TTree*)f.Get("ntuple");
+	Int_t nentries = (Int_t)tree->GetEntries();
+	//Drawing variable pz with no graphics option.
+	//variable pz stored in array fV1 (see TTree::Draw)
+	tree->Draw("event_time","","goff");
+	Int_t *index = new Int_t[nentries];
+	//sort array containing pz in decreasing order
+	//The array index contains the entry numbers in decreasing order of pz
+	TMath::Sort(nentries,tree->GetV1(),index, false);
+    
+	//open new file to store the sorted Tree
+    //TFile *f2 = new TFile(resorted_root.Data(), "RECREATE");
+	////TFile f2("hsimple_sorted.root","recreate");
+	//Create an empty clone of the original tree
+	tree_sorted = (TTree*)tree->CloneTree(0);
+	for (Int_t i=0;i<nentries;i++) {
+		tree->GetEntry(index[i]);
+		tree_sorted->Fill();
+	}
+
+    //tsorted->SetDirectory(f2);
+	fout->cd();
+    tree_sorted->Write();
+    fout->Close();
+	delete [] index;
+    
+    std::cout<<""<<std::endl;
+    std::cout<<"The entries are re-sorted."<<std::endl;
+    std::cout<<""<<std::endl;
+}
+*/

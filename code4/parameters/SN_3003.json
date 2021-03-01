@@ -13,7 +13,6 @@
     "s1min": 2, "s1max": 500, "s1u_c": 110, "s2u_c": 10000, 
     "s2minRaw": 400, "s2min": 400, "s2max": 10000,
     "Bin_s1": 120, "Bin_s2": 120,
-    "supernova": true,
     
     "elife":
     {
@@ -36,28 +35,27 @@
       "func": "[&](double *x, double *p) -> double {double e=x[0]; if(e<= p[0]) {return p[4]*exp(e/p[1])+p[2]*e+p[3]*e*e;} else if (e <= p[5]) {return p[9]*exp(e/p[6])+p[7]*e+p[8]*e*e - (p[9]*exp(p[0]/p[6])+p[7]*p[0]+p[8]*pow(p[0],2)) +(p[4]*exp(p[0]/p[1])+p[2]*p[0]+p[3]*pow(p[0],2) ) ;}  else {double f_end = p[10] * (e - p[5]) + 261.65; if( f_end > 0){  return f_end;} else return 0.;} }",
       "par": [23, -5.53154, 5.33664, -0.183386, 423.376, 65, 4.32687, -5.5925, 0.0880627, 4.14918e-05, -73.872],
       "TH1F": true,
-      "TH1Ffile": "/Users/jiaweiguo/Documents/GitHub/PandaX-4T_sdu/code1_SN/output/1st_second/recE_spec_total.root",
+      
+      "TH1Ffile": "/Users/jiaweiguo/Documents/GitHub/PandaX-4T_sdu/code1_SN/output/recE_spec_total.root",
     
-            "TH1Ffile_juno": "/Users/danzhang/pandax-4ddata/AmBe/simu/combined_cut_ana_AmBe_juno_3_0.08_16_eSpec.root",
-    
-      "TH1Fname": "1301_total_recoil"
+      "TH1Fname": "3003_total_recoil"
     },
     
-    "home_path": "/Users/jiaweiguo/Documents/GitHub/PandaX-4T_sdu/code2/output",
+    "home_path": "/Users/jiaweiguo/Documents/GitHub/PandaX-4T_sdu/code4/output/sorted_tree",
+    
+    "ifSN": true,
+    "supernova":
+    {
+     "events_in_20s": 208,
+     "time_spectrum": "/Users/jiaweiguo/Documents/GitHub/PandaX-4T_sdu/code1_SN/output/time_spec_total.root",
+     "time_spectrumName": "3003total"
+    }, 
+
+    "simuRootFile": "3003_simu.root",
     
     
-    "simuRootFile": "1301_simu.root",
-    "event_rate": 6.191,
     
     
-        "lowEQyTxt": "parameters/p4_run1_AmBe_fine.txt",
-        "2dRootFile": "parameters/p4_run1_AmBe_2d_05.root",
-        "calDataRootFile": "data/reduced_ana3_p4_run1_AmBe_05.root",
-        "quantaSimuRootFile": "tmp/quanta_p4_run1_dd.root",
-        
-        "quantaDataRootFile": "tmp/data_quanta_p4_run1_AmBe_05.root",
-        "yieldRootFile": "tmp/yield_test.root",
-        "simuHistPDForRoot": "tmp/simu_hist_AmBe_p4_run1_05_1",
     
     
     "g1g2Map":{

@@ -10,6 +10,7 @@
 #include <cmath>
 
 #include "branches.hpp"
+#include "signal_mc.hpp"
 
 #include "TString.h"
 #include "TFile.h"
@@ -18,14 +19,21 @@
 #include "TH2D.h"
 
 
-void sort(TTree *tree, TString resorted_root);
-
-
 int main(int argc, char* argv[]){
+    
+    int num_of_simu = 10;
+    
+    Signal_mc * SNmc_3003 = new Signal_mc();
+    TString para_file = "/Users/jiaweiguo/Documents/GitHub/PandaX-4T_sdu/code4/parameters/SN_3003.json";
+    
+    SNmc_3003->run_mc(para_file, num_of_simu);
+    
+    
+    
+    /*
     
     //to run the code
     // ./analysis input_file
-
     if(argc != 3){
         std::cout<<"Error. The input parameters are wrong."<<std::endl;
         std::cout<<"Usage: "<<argv[0]<<" input_root_file   output_root_file_name"<<std::endl;
@@ -116,47 +124,7 @@ int main(int argc, char* argv[]){
     std::cout<<"detected "<< n_s1d_s2d <<" S1&S2 signal "<<std::endl;
     std::cout<<"The average rate of detected events is "<< n_s1d_s2d/total_time_simu <<std::endl; 
     
-    
-    
-    TString path2 = "/Users/jiaweiguo/Documents/GitHub/PandaX-4T_sdu/code3/output/re-sorted/";
-    TString resorted_root = path2 + argv[2] + "_resort.root";
-    
-    //sort the entries in the tree according to event_time
-    sort(t1, resorted_root);
-    
+    */
     return 1;
 }
 
-
-void sort(TTree *tree, TString resorted_root) {
-	////TFile f("hsimple.root");
-	////TTree *tree = (TTree*)f.Get("ntuple");
-	Int_t nentries = (Int_t)tree->GetEntries();
-	//Drawing variable pz with no graphics option.
-	//variable pz stored in array fV1 (see TTree::Draw)
-	tree->Draw("event_time","","goff");
-	Int_t *index = new Int_t[nentries];
-	//sort array containing pz in decreasing order
-	//The array index contains the entry numbers in decreasing order of pz
-	TMath::Sort(nentries,tree->GetV1(),index, false);
-    
-	//open new file to store the sorted Tree
-    TFile *f2 = new TFile(resorted_root.Data(), "RECREATE");
-	////TFile f2("hsimple_sorted.root","recreate");
-	//Create an empty clone of the original tree
-	TTree *tsorted = (TTree*)tree->CloneTree(0);
-	for (Int_t i=0;i<nentries;i++) {
-		tree->GetEntry(index[i]);
-		tsorted->Fill();
-	}
-
-    //tsorted->SetDirectory(f2);
-	f2->cd();
-    tsorted->Write();
-    f2->Close();
-	delete [] index;
-    
-    std::cout<<""<<std::endl;
-    std::cout<<"The entries are re-sorted."<<std::endl;
-    std::cout<<""<<std::endl;
-}

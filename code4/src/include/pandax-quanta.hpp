@@ -1,6 +1,6 @@
 #pragma once
 
-#include "general.h"
+#include "general.hpp"
 
 #include <TF1.h>
 #include <TGraph.h>

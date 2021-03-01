@@ -1,4 +1,4 @@
-#include "det-sim.h"
+#include "det-sim.hpp"
 
 #include <TRandom.h>
 
