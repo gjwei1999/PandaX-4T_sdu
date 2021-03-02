@@ -21,15 +21,17 @@
 
 int main(int argc, char* argv[]){
     
-    int num_of_simu = 10;
+    int num_of_simu = 4000;
+    double T_sn = 1.0;
+    double t_refresh = 0.1;
+    int N_thr = 100;
     
     Signal_mc * SNmc_3003 = new Signal_mc();
     TString para_file = "/Users/jiaweiguo/Documents/GitHub/PandaX-4T_sdu/code4/parameters/SN_3003.json";
     
+    SNmc_3003->set_num_simu(num_of_simu);
     SNmc_3003->run_mc(para_file, num_of_simu);
-    
-    
-    
+    SNmc_3003->time_window(3003, T_sn, t_refresh, N_thr);
     /*
     
     //to run the code

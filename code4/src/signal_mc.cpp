@@ -6,10 +6,14 @@
 /***************************/
 
 #include "signal_mc.hpp"
+#include "branches.hpp"
 
 Signal_mc::Signal_mc(){};
 Signal_mc::~Signal_mc(){};
 
+void Signal_mc::set_num_simu(int input_num_of_simu){
+    num_of_simu = input_num_of_simu;
+}
 
 
 void Signal_mc::run_mc(TString para_file, int num_of_simulation){
@@ -327,37 +331,159 @@ void Signal_mc::run_mc(TString para_file, int num_of_simulation){
 
 }
 
-/*
-void Signal_mc::sort(TTree *tree, TFile *fout) {
-	////TFile f("hsimple.root");
-	////TTree *tree = (TTree*)f.Get("ntuple");
-	Int_t nentries = (Int_t)tree->GetEntries();
-	//Drawing variable pz with no graphics option.
-	//variable pz stored in array fV1 (see TTree::Draw)
-	tree->Draw("event_time","","goff");
-	Int_t *index = new Int_t[nentries];
-	//sort array containing pz in decreasing order
-	//The array index contains the entry numbers in decreasing order of pz
-	TMath::Sort(nentries,tree->GetV1(),index, false);
+void Signal_mc::time_window(int loadfile_name, double T_sn, double t_refresh, int N_thr){
+    //load file name includes number only(3003)
     
-	//open new file to store the sorted Tree
-    //TFile *f2 = new TFile(resorted_root.Data(), "RECREATE");
-	////TFile f2("hsimple_sorted.root","recreate");
-	//Create an empty clone of the original tree
-	tree_sorted = (TTree*)tree->CloneTree(0);
-	for (Int_t i=0;i<nentries;i++) {
-		tree->GetEntry(index[i]);
-		tree_sorted->Fill();
-	}
+    TString load_file_name;
+    load_file_name.Form("%d", loadfile_name);
+    
+    TString load_root = loadpath + load_file_name + "_simu.root";
+    TString result_root = outpath + load_file_name + ".root";
+    
+    TFile *load_file = new TFile(load_root.Data(), "r");//input
+    TFile *result_file = new TFile(result_root.Data(), "RECREATE");//output
+    
+    TTree *sorted_tree = (TTree*)load_file->Get("qmc_tree");
+    
+    int num_of_events;
+    num_of_events = (int)sorted_tree->GetEntries();
 
-    //tsorted->SetDirectory(f2);
-	fout->cd();
-    tree_sorted->Write();
-    fout->Close();
-	delete [] index;
+    Branches * branch1 = new Branches();
+    branch1->init(sorted_tree);
     
-    std::cout<<""<<std::endl;
-    std::cout<<"The entries are re-sorted."<<std::endl;
-    std::cout<<""<<std::endl;
+    double total_time_simu;//get the total_time of the simulation
+    sorted_tree->GetEntry(0);
+    total_time_simu = branch1->get_total_time();
+    
+    //histograms
+    TH1D * h_event_time = new TH1D("event_time", "event_time", total_time_simu, 0.0, total_time_simu);
+    TH1D * h_detected_event_time =new  TH1D("detected_event_time", "detected_event_time", total_time_simu, 0.0, total_time_simu);
+    TH2D * h_logs2s1_s1= new TH2D("logs2s1_s1", "", 100, 0.0, 150.0, 100, 1.0, 10.0);
+    
+    int n_s1d = 0;
+    int n_s2d = 0;
+    int n_s1d_s2d = 0;
+    
+    for (int current_event = 0; current_event < num_of_events; current_event++) {
+        
+        // Get current event
+        sorted_tree->GetEntry(current_event);
+        
+        
+        if(branch1->get_S1d() > 0.0){
+            n_s1d++;}
+        
+        if(branch1->get_S2d() > 0.0){
+            n_s2d++;}
+        
+        if((branch1->get_S2d() > 0.0) && (branch1->get_S2d() > 0.0)){
+            n_s1d_s2d++;}
+        
+        //fill histogram
+        h_event_time->Fill(branch1->get_event_time());
+        
+        if((branch1->get_S1d() > 0.0) && (branch1->get_S2d() > 0.0)){
+            h_detected_event_time->Fill(branch1->get_event_time());
+        }
+        
+        //std::cout<<"current event energy is "<<branch1->get_nQuanta()<<std::endl;
+    }
+    
+    //set bin error to 0
+        for(int i; i<total_time_simu; i++){
+            h_event_time->SetBinError(i, 0.0);
+            h_detected_event_time->SetBinError(i, 0.0);
+        }
+        
+    h_event_time->SetDirectory(result_file);
+    h_detected_event_time->SetDirectory(result_file);
+    h_logs2s1_s1->SetDirectory(result_file);
+    
+    result_file->Write();
+    
+    double temp;
+        temp = TMath::Log(branch1->get_S2d()/branch1->get_S1d());
+        h_logs2s1_s1->Fill(branch1->get_S1d(), temp);
+        
+        
+        
+        //sliding time window
+        int event_in_win = 0;//num of events in time window
+        double eventT;
+        double win_left;//lower limit of time window
+        double win_right;// upper limit of time window
+        double next_win_left;//lower limit of next time window
+        bool find_next_win = true;//whether to find next window
+        int k = 0;// the kth simulation
+        int m = 0;//the mth sliding window
+        int index_next_win = 0;//event index for next window left
+        int current_event = 0;//index for curent event
+        int alert_sent = 0;//num of sent alert
+        
+        while(current_event < num_of_events){
+            
+            sorted_tree->GetEntry(current_event);
+            eventT = branch1->get_event_time();
+            
+            win_left = 20.0*k + t_refresh*m;
+            win_right = win_left + T_sn;
+            next_win_left = win_left + t_refresh;
+            
+            
+            if(current_event%100 ==0){
+                    std::cout<<"Now: running "<<current_event<<"th event"<<std::endl;
+            }
+            
+            
+            if(eventT < win_left){
+                current_event++;
+                continue;//go to next loop
+            }
+            
+            
+            if((eventT < win_right) && ( eventT >= win_left)){
+                if((branch1->get_S2d() > 0.0) && (branch1->get_S2d() > 0.0)){
+                    event_in_win++;
+                }
+            }
+            
+            //find next window
+            if(find_next_win){
+                if(eventT > next_win_left){
+                    index_next_win = current_event;
+                    find_next_win = false;
+                    //std::cout<<"The next window left corresponds to "<<index_next_win<<"th event."<<std::endl;
+                }
+            }
+            
+            
+                
+            if(eventT >= win_right){
+                
+                if(event_in_win > N_thr){
+                    event_in_win = 0;//reset the value
+                    alert_sent++;
+                    k++;//go to next 20s-simulation;
+                    m = 0;//reset m
+                    find_next_win = true;
+                }
+                else{
+                    event_in_win = 0;//reset the value
+                    m++;//go to next window
+                    current_event = index_next_win;
+                    find_next_win = true;
+                }
+                
+            }
+            else{
+                current_event++;
+            }
+            
+            
+            
+        }
+        
+        std::cout<<alert_sent<<" alerts are sent in "<<num_of_simu<<" simulations"<<std::endl;
+        std::cout<<"The trigger efficiency is "<<double(alert_sent)/num_of_simu<<std::endl;
+        
 }
-*/
