@@ -111,7 +111,7 @@ void Spectrum::time_spectrum(TString filename, TFile *rootfile, TFile *rootfile2
         N_time[1] = 0.0;
         N_time[2] = 0.0;
         
-        if(k%50==0){std::cout<<"k == "<<k<<std::endl;}
+        //if(k%50==0){std::cout<<"k == "<<k<<std::endl;}
         k++;
     }
     

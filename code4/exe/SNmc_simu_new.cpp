@@ -31,12 +31,14 @@ int main(int argc, char* argv[]){
     double d_min= 10.0;//start from 10kpc
     double d_max = 20.0;
     double d_step = 0.5;
+    int i = 0;
+    double a[21] = {0.0};
     
     TH1D * h_trig_distance = new TH1D("trig_distance", "trig_distance", nbin, d_min, d_max);
     
     while(d_min <= d_max){
     
-    class_spectrum->generate_spec(10.0);
+    class_spectrum->generate_spec(d_min);
     class_spectrum->num_integral();
     class_spectrum->cal_events();
     
@@ -58,8 +60,11 @@ int main(int argc, char* argv[]){
     trigger_eff = SNmc_3003->time_window(3003, T_sn, t_refresh, N_thr);
     
     h_trig_distance->Fill(d_min, trigger_eff);
+    a[i] = trigger_eff;
     
+    std::cout<<"Now distance: "<<d_min<<std::endl;
     d_min += d_step;
+    i++;
     }
     
     h_trig_distance->SetDirectory(fs);

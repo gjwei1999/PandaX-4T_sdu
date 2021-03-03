@@ -38,6 +38,7 @@ void Signal_mc::run_mc(TString para_file, int num_of_simulation, int events_in_2
       string time_spectrum_name = j["supernova"]["time_spectrumName"];
       time_spec = (TH1D*) fs.Get(time_spectrum_name.c_str())->Clone();
       time_spec->SetDirectory(0);
+      fs.Close();
       
       total_time = num_of_simulation * 20.0;//20 seconds for every SN burst simulation 
       num_event = events_in_20s;
