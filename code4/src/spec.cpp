@@ -170,7 +170,19 @@ void Spec::generate_spec(double input_distance){
       Spec_5003->flux_neuE(filename_time_5003, fs3);
       
       fs3->Write();
-    
+      
+      delete Spec_1301;
+      delete Spec_1302;
+      delete Spec_1303;
+      delete Spec_2001;
+      delete Spec_2002;
+      delete Spec_2003;
+      delete Spec_3001;
+      delete Spec_3002;
+      delete Spec_3003;
+      delete Spec_5001;
+      delete Spec_5002;
+      delete Spec_5003;
 }
 
 
@@ -228,6 +240,9 @@ void Spec::num_integral(){
     fs1->Write();
     fs2->Write();
     
+    delete int_1301e;
+    delete int_1301antie;
+    delete int_1301x;
     
 }
 
@@ -257,5 +272,140 @@ void Spec::int_get_total(TFile * root_name1, TFile * root_name2, TString hist_na
 }
 
 
+void Spec::cal_events(){
+    
+    TString loadpath = "/Users/jiaweiguo/Documents/GitHub/PandaX-4T_sdu/code1_SN/output/";
+    TFile *fs = new TFile(loadpath + "recE_spec_total.root", "r");
+    
+    int bin_num_left;
+    int bin_num_right;
+    double num_of_events;
+    
+    
+    //13 solar mass
+    //1301
+    TH1D * h1301 = (TH1D *) fs->Get("1301_total_recoil");
+    num_of_events = h1301->Integral("width");
+    
+    //1302
+    TH1D * h1302 = (TH1D *) fs->Get("1302_total_recoil");
+    num_of_events = h1302->Integral("width");
+    
+    result_cal[0][1] = 4*num_of_events;
+    
+    //1303
+    TH1D * h1303 = (TH1D *) fs->Get("1303_total_recoil");
+    num_of_events = h1303->Integral("width");
+    
+    result_cal[0][2] = 4*num_of_events;
+    
+    //20 solar mass
+    //2001
+    TH1D * h2001 = (TH1D *) fs->Get("2001_total_recoil");
+    num_of_events = h2001->Integral("width");
+    
+    result_cal[1][0] = 4*num_of_events;
+    
+    //2002
+    TH1D * h2002 = (TH1D *) fs->Get("2002_total_recoil");
+    num_of_events = h2002->Integral("width");
+    
+    result_cal[1][1] = 4*num_of_events;
+    
+    //2003
+    TH1D * h2003 = (TH1D *) fs->Get("2003_total_recoil");
+    num_of_events = h2003->Integral("width");
+    
+    result_cal[1][2] = 4*num_of_events;
+    
+    
+    //30 solar mass
+    //3001
+    TH1D * h3001 = (TH1D *) fs->Get("3001_total_recoil");
+    num_of_events = h3001->Integral("width");
+    
+    result_cal[2][0] = 4*num_of_events;
+    
+    //3002
+    TH1D * h3002 = (TH1D *) fs->Get("3002_total_recoil");
+    num_of_events = h3002->Integral("width");
+    
+    result_cal[2][1] = 4*num_of_events;
+    
+    //3003
+    TH1D * h3003 = (TH1D *) fs->Get("3003_total_recoil");
+    num_of_events = h3003->Integral("width");
+    
+    result_cal[2][2] = 4*num_of_events;
+    
+    
+    //50 solar mass
+    //5001
+    TH1D * h5001 = (TH1D *) fs->Get("5001_total_recoil");
+    num_of_events = h5001->Integral("width");
+    
+    result_cal[3][0] = 4*num_of_events;
+    
+    //5002
+    TH1D * h5002 = (TH1D *) fs->Get("5002_total_recoil");
+    num_of_events = h5002->Integral("width");
+    
+    result_cal[3][1] = 4*num_of_events;
+    
+    //5003
+    TH1D * h5003 = (TH1D *) fs->Get("5003_total_recoil");
+    num_of_events = h5003->Integral("width");
+    
+    result_cal[3][2] = 4*num_of_events;
+    
+}
+
+int Spec::get_1301(){
+    return int(result_cal[0][0] + 0.5);
+}
+
+int Spec::get_1302(){
+    return int( result_cal[0][1] + 0.5);
+}
+
+int Spec::get_1303(){
+    return int( result_cal[0][2] + 0.5);
+}
+
+int Spec::get_2001(){
+    return int( result_cal[1][0] + 0.5);
+}
+
+int Spec::get_2002(){
+    return int( result_cal[1][1] + 0.5);
+}
+
+int Spec::get_2003(){
+    return int( result_cal[1][2] + 0.5);
+}
+
+int Spec::get_3001(){
+    return int( result_cal[2][0] + 0.5);
+}
+
+int Spec::get_3002(){
+    return int( result_cal[2][1] + 0.5);
+}
+
+int Spec::get_3003(){
+    return int( result_cal[2][2] + 0.5);
+}
+
+int Spec::get_5001(){
+    return int( result_cal[3][0] + 0.5);
+}
+
+int Spec::get_5002(){
+    return int( result_cal[3][1] + 0.5);
+}
+
+int Spec::get_5003(){
+    return int( result_cal[3][2] + 0.5);
+}
 
 

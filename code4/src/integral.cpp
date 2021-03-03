@@ -110,12 +110,15 @@ void Integral::numerical_int(TString hist_name, TFile * root_name){
             
             temp->Fill(neutrino_E, interpolation->Eval(neutrino_E) * xs);
             
+            delete xs_calculation;
+            
         }
         
         //integral = temp->Integral(temp->GetBin(neuE_min), temp->GetBin(nbin2));
         integral = temp->Integral(temp->FindBin(neuE_min), nbin1, "width");
         h_spectrum_recE->SetBinContent(i, integral*num_Xe_ton/1000.0);//Fill(recoil_E, integral*num_Xe_ton/1000.0); MeV->keV
         
+        temp->SetDirectory(0);
         temp->Reset();
     }
     

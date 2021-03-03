@@ -16,7 +16,7 @@ void Signal_mc::set_num_simu(int input_num_of_simu){
 }
 
 
-void Signal_mc::run_mc(TString para_file, int num_of_simulation){
+void Signal_mc::run_mc(TString para_file, int num_of_simulation, int events_in_20s){
 
   ifstream fpar(para_file.Data());
   int n;
@@ -38,10 +38,9 @@ void Signal_mc::run_mc(TString para_file, int num_of_simulation){
       string time_spectrum_name = j["supernova"]["time_spectrumName"];
       time_spec = (TH1D*) fs.Get(time_spectrum_name.c_str())->Clone();
       time_spec->SetDirectory(0);
-      fs.Close();
       
       total_time = num_of_simulation * 20.0;//20 seconds for every SN burst simulation 
-      num_event = j["supernova"]["events_in_20s"];
+      num_event = events_in_20s;
 
       n = num_of_simulation * num_event;//num of events
 }
@@ -331,7 +330,7 @@ void Signal_mc::run_mc(TString para_file, int num_of_simulation){
 
 }
 
-void Signal_mc::time_window(int loadfile_name, double T_sn, double t_refresh, int N_thr){
+double Signal_mc::time_window(int loadfile_name, double T_sn, double t_refresh, int N_thr){
     //load file name includes number only(3003)
     
     TString load_file_name;
@@ -431,7 +430,7 @@ void Signal_mc::time_window(int loadfile_name, double T_sn, double t_refresh, in
             
             
             if(current_event%100 ==0){
-                    std::cout<<"Now: running "<<current_event<<"th event"<<std::endl;
+                    //std::cout<<"Now: running "<<current_event<<"th event"<<std::endl;
             }
             
             
@@ -483,7 +482,12 @@ void Signal_mc::time_window(int loadfile_name, double T_sn, double t_refresh, in
             
         }
         
-        std::cout<<alert_sent<<" alerts are sent in "<<num_of_simu<<" simulations"<<std::endl;
-        std::cout<<"The trigger efficiency is "<<double(alert_sent)/num_of_simu<<std::endl;
+        double trigger_eff = double(alert_sent)/num_of_simu;
         
+        std::cout<<alert_sent<<" alerts are sent in "<<num_of_simu<<" simulations"<<std::endl;
+        std::cout<<"The trigger efficiency is "<<trigger_eff<<std::endl;
+        
+        delete branch1;
+        
+        return trigger_eff;
 }
