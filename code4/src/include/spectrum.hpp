@@ -37,21 +37,21 @@ private:
     
     int nbin= 5000;
     
-    double D; //= 10.0 * 1000.0 * 206264.8 * 1.49598e11 * 100; //D is the distance between Earth and the SN
+    //double D; //= 10.0 * 1000.0 * 206264.8 * 1.49598e11 * 100; //D is the distance between Earth and the SN
                        //10kpc = 10 * 1k * 206264.8 * 1.49598e11 * 100 cm
     
     //number of Xenon nuclei in 1 ton
     double num_Xe_ton = 1.0e6/131.29 * 6.02e23;
     
 public:
-    void time_spectrum(TString filename, TFile *rootfile, TFile *rootfile2); // Y: eventrate(number of events/ ton / s)    X: time (s)
-    void flux_time(TString filename, TFile *rootfile);//, TFile *rootfile_spectrum_inter);
+    void time_spectrum(TString filename, TFile *rootfile, TFile *rootfile2, double input_distance); // Y: eventrate(number of events/ ton / s)    X: time (s)
+    void flux_time(TString filename, TFile *rootfile, double input_distance);//, TFile *rootfile_spectrum_inter);
     
-    void energy_spectrum(TString filename, TFile *rootfile); // Y: eventrate(number of events/ ton / MeV)    X: neu_energy (MeV)
+    void energy_spectrum(TString filename, TFile *rootfile, double input_distance); // Y: eventrate(number of events/ ton / MeV)    X: neu_energy (MeV)
     
-    void flux_neuE(TString filename, TFile *rootfile); //in the first 1 second, Y: (number of neutrinos /cm^2/MeV) X: neu_energy(MeV)
+    void flux_neuE(TString filename, TFile *rootfile, double input_distance); //in the first 1 second, Y: (number of neutrinos /cm^2/MeV) X: neu_energy(MeV)
     
-    void set_distance(double input_distance);//unit kpc
+    //void set_distance(double input_distance);//unit kpc
 };
 
 #endif        

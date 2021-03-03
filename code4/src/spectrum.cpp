@@ -43,7 +43,9 @@ Spectrum::Spectrum(){
 Spectrum::~Spectrum(){
 }
 
-void Spectrum::time_spectrum(TString filename, TFile *rootfile, TFile *rootfile2){//rootfile for e, antie, x spectrums; rootfile2 for total spectrum
+void Spectrum::time_spectrum(TString filename, TFile *rootfile, TFile *rootfile2, double input_distance){//rootfile for e, antie, x spectrums; rootfile2 for total spectrum
+    
+    double D = input_distance * 1000.0 * 206264.8 * 1.49598e11 * 100;
     
     TString hist_name1(filename(4,4)); //get 
     
@@ -79,7 +81,7 @@ void Spectrum::time_spectrum(TString filename, TFile *rootfile, TFile *rootfile2
      std::ifstream infile(file);
      
      double time, neu_energy0, neu_energy1, dN_dE_e, dN_dE_antie, dN_dE_x, temp;
-     int k=0;
+     //int k=0;
      Xsection* xs_calculation = new Xsection();
      double xs;
      double N_time[3]={0.0}; // 0: electron_neutrino; 1: anti-electron neutrino; 2: x neutrino
@@ -112,7 +114,7 @@ void Spectrum::time_spectrum(TString filename, TFile *rootfile, TFile *rootfile2
         N_time[2] = 0.0;
         
         //if(k%50==0){std::cout<<"k == "<<k<<std::endl;}
-        k++;
+        //k++;
     }
     
     h_time_e->Scale(1/4.0/M_PI/D/D);
@@ -152,14 +154,18 @@ void Spectrum::time_spectrum(TString filename, TFile *rootfile, TFile *rootfile2
     
     infile.close();
     
-    
+    rootfile->Close();
+    rootfile2->Close(); 
 }
 
 
 
 
 
-void Spectrum::flux_time(TString filename, TFile *rootfile){//_flux, TFile *rootfile_spectrum_inter){
+void Spectrum::flux_time(TString filename, TFile *rootfile, double input_distance){//_flux, TFile *rootfile_spectrum_inter){
+    
+    double D = input_distance * 1000.0 * 206264.8 * 1.49598e11 * 100;
+    
     TString hist_name1(filename(4,4)); //get 
     
     TString hist_flux_T_name_e = hist_name1 + "inter-" + "elec";
@@ -193,7 +199,7 @@ void Spectrum::flux_time(TString filename, TFile *rootfile){//_flux, TFile *root
      std::ifstream infile(file);
      
      double time, neu_energy0, neu_energy1, dN_dE_e, dN_dE_antie, dN_dE_x, temp;
-     int k=0;
+     //int k=0;
      
      double N_time[3]={0.0}; // 0: electron_neutrino; 1: anti-electron neutrino; 2: x neutrino
      
@@ -243,8 +249,8 @@ void Spectrum::flux_time(TString filename, TFile *rootfile){//_flux, TFile *root
         N_time[1] = 0.0;
         N_time[2] = 0.0;
         
-        if(k%50==0){std::cout<<"k == "<<k<<std::endl;}
-        k++;
+        //if(k%50==0){std::cout<<"k == "<<k<<std::endl;}
+        //k++;
     }
     
     h_flux_T_e->Scale(1/4.0/M_PI/D/D);
@@ -259,6 +265,11 @@ void Spectrum::flux_time(TString filename, TFile *rootfile){//_flux, TFile *root
         h_flux_T_antie->SetBinError(i, 0.0);
         h_flux_T_x->SetBinError(i, 0.0);
     }
+    
+    rootfile->Close();
+    
+    
+    
 /*
     std::vector<Double_t> time_point_e = {-0.2};
     std::vector<Double_t> flux_point_e = {0.0};
@@ -329,7 +340,9 @@ void Spectrum::flux_time(TString filename, TFile *rootfile){//_flux, TFile *root
 
 
 //average in 20 seconds
-void Spectrum::energy_spectrum(TString filename, TFile *rootfile){
+void Spectrum::energy_spectrum(TString filename, TFile *rootfile, double input_distance){
+    
+    double D = input_distance * 1000.0 * 206264.8 * 1.49598e11 * 100;
     
     TString hist_name2(filename(5,4)); //get 
     
@@ -393,12 +406,16 @@ void Spectrum::energy_spectrum(TString filename, TFile *rootfile){
     
     infile.close();
     
+    rootfile->Close();
+    
 }
 
 
 
 //flux_neuE in the first n second
-void Spectrum::flux_neuE(TString filename, TFile *rootfile){
+void Spectrum::flux_neuE(TString filename, TFile *rootfile, double input_distance){
+    
+    double D = input_distance * 1000.0 * 206264.8 * 1.49598e11 * 100;
     
     TString hist_name2(filename(4,4)); //get 
     
@@ -419,7 +436,7 @@ void Spectrum::flux_neuE(TString filename, TFile *rootfile){
      std::ifstream infile(file);
      
      double time, neu_energy0, neu_energy1, dN_dE_e, dN_dE_antie, dN_dE_x, temp;
-     int k=0;
+     //int k=0;
      Xsection* xs_calculation = new Xsection();
      double xs;
      
@@ -446,8 +463,8 @@ void Spectrum::flux_neuE(TString filename, TFile *rootfile){
             time0 =time;
             
             
-            if(k%50==0){std::cout<<"k == "<<k<<std::endl;}
-            k++;
+            //if(k%50==0){std::cout<<"k == "<<k<<std::endl;}
+            //k++;
          }
          else{break;}
     }
@@ -468,6 +485,8 @@ void Spectrum::flux_neuE(TString filename, TFile *rootfile){
     h_flux_neuE_x->GetYaxis()->SetTitle("Total flux in 20s (MeV)^{-1}(cm)^{-2}");
     
     
+    rootfile->Close();
+    
 //    TF1 *func = new TF1("fit",fitf, neu_Emin, neu_Emax, 2);
     
 //    h_flux_neuE_e->Fit("fit");
@@ -478,7 +497,7 @@ void Spectrum::flux_neuE(TString filename, TFile *rootfile){
 //    c0->Print(savepath + "test.pdf","pdf");//
 }
 
-void Spectrum::set_distance(double input_distance){
-    D = input_distance * 1000.0 * 206264.8 * 1.49598e11 * 100; //D is the distance between Earth and the SN
-    //Dkpc = D * 1k * 206264.8 * 1.49598e11 * 100 cm
-}
+//void Spectrum::set_distance(double input_distance){
+//    D = input_distance * 1000.0 * 206264.8 * 1.49598e11 * 100; //D is the distance between Earth and the SN
+//    //Dkpc = D * 1k * 206264.8 * 1.49598e11 * 100 cm
+//}

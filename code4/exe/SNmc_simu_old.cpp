@@ -27,9 +27,6 @@ int main(int argc, char* argv[]){
     int N_thr = 100;
     
     
-    
-    
-    
     Signal_mc * SNmc_3003 = new Signal_mc();
     TString para_file = "/Users/jiaweiguo/Documents/GitHub/PandaX-4T_sdu/code4/parameters/SN_3003_old.json";
     

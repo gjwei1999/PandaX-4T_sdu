@@ -36,7 +36,7 @@
       "par": [23, -5.53154, 5.33664, -0.183386, 423.376, 65, 4.32687, -5.5925, 0.0880627, 4.14918e-05, -73.872],
       "TH1F": true,
       
-      "TH1Ffile": "/Users/jiaweiguo/Documents/GitHub/PandaX-4T_sdu/code1_SN/output/recE_spec_total.root",
+      "TH1Ffile": "/Users/jiaweiguo/Documents/GitHub/PandaX-4T_sdu/code4/output/spectrum/recE_spec_total.root",
     
       "TH1Fname": "3003_total_recoil"
     },
@@ -46,7 +46,7 @@
     "ifSN": true,
     "supernova":
     {
-     "time_spectrum": "/Users/jiaweiguo/Documents/GitHub/PandaX-4T_sdu/code1_SN/output/time_spec_total.root",
+     "time_spectrum": "/Users/jiaweiguo/Documents/GitHub/PandaX-4T_sdu/code4/output/spectrum/time_spec_total.root",
      "time_spectrumName": "3003total"
     }, 
 

@@ -50,21 +50,6 @@ void Spec::generate_spec(double input_distance){
      Spectrum* Spec_5003 = new Spectrum();
      
      
-     
-     Spec_1301->set_distance(input_distance);
-     Spec_1302->set_distance(input_distance);
-     Spec_1303->set_distance(input_distance);
-     Spec_2001->set_distance(input_distance);
-     Spec_2002->set_distance(input_distance);
-     Spec_2003->set_distance(input_distance);
-     Spec_3001->set_distance(input_distance);
-     Spec_3002->set_distance(input_distance);
-     Spec_3003->set_distance(input_distance);
-     Spec_5001->set_distance(input_distance);
-     Spec_5001->set_distance(input_distance);
-     Spec_5001->set_distance(input_distance);
-     
-     
      // time-related data
      //define filename_time
      TString filename_time_1301 = "intp1301.data";
@@ -83,36 +68,39 @@ void Spec::generate_spec(double input_distance){
      TString filename_time_5002 = "intp5002.data";
      TString filename_time_5003 = "intp5003.data";
      
-     Spec_1301->time_spectrum(filename_time_1301, fs1, fs1_1);
-     Spec_1302->time_spectrum(filename_time_1302, fs1, fs1_1);
-     Spec_1303->time_spectrum(filename_time_1303, fs1, fs1_1);
-     Spec_2001->time_spectrum(filename_time_2001, fs1, fs1_1);
-     Spec_2002->time_spectrum(filename_time_2002, fs1, fs1_1);
-     Spec_2003->time_spectrum(filename_time_2003, fs1, fs1_1);
-     Spec_3001->time_spectrum(filename_time_3001, fs1, fs1_1);
-     Spec_3002->time_spectrum(filename_time_3002, fs1, fs1_1);
-     Spec_3003->time_spectrum(filename_time_3003, fs1, fs1_1);
-     Spec_5001->time_spectrum(filename_time_5001, fs1, fs1_1);
-     Spec_5002->time_spectrum(filename_time_5002, fs1, fs1_1);
-     Spec_5003->time_spectrum(filename_time_5003, fs1, fs1_1);
-     
+/*     Spec_1301->time_spectrum(filename_time_1301, fs1, fs1_1, input_distance);
+     Spec_1302->time_spectrum(filename_time_1302, fs1, fs1_1, input_distance);
+     Spec_1303->time_spectrum(filename_time_1303, fs1, fs1_1, input_distance);
+     Spec_2001->time_spectrum(filename_time_2001, fs1, fs1_1, input_distance);
+     Spec_2002->time_spectrum(filename_time_2002, fs1, fs1_1, input_distance);
+     Spec_2003->time_spectrum(filename_time_2003, fs1, fs1_1, input_distance);
+     Spec_3001->time_spectrum(filename_time_3001, fs1, fs1_1, input_distance);
+     Spec_3002->time_spectrum(filename_time_3002, fs1, fs1_1, input_distance);
+     Spec_3003->time_spectrum(filename_time_3003, fs1, fs1_1, input_distance);
+     Spec_5001->time_spectrum(filename_time_5001, fs1, fs1_1, input_distance);
+     Spec_5002->time_spectrum(filename_time_5002, fs1, fs1_1, input_distance);
+     Spec_5003->time_spectrum(filename_time_5003, fs1, fs1_1, input_distance);
+ */
+     Spec_3003->time_spectrum(filename_time_3003, fs1, fs1_1, input_distance);
+
      fs1->Write();
      fs1_1->Write();
   
-     
-     Spec_1301->flux_time(filename_time_1301, fs4);//, fs5);
-     Spec_1302->flux_time(filename_time_1302, fs4);//, fs5);
-     Spec_1303->flux_time(filename_time_1303, fs4);//, fs5);
-     Spec_2001->flux_time(filename_time_2001, fs4);//, fs5);
-     Spec_2002->flux_time(filename_time_2002, fs4);//, fs5);
-     Spec_2003->flux_time(filename_time_2003, fs4);//, fs5);
-     Spec_3001->flux_time(filename_time_3001, fs4);//, fs5);
-     Spec_3002->flux_time(filename_time_3002, fs4);//, fs5);
-     Spec_3003->flux_time(filename_time_3003, fs4);//, fs5);
-     Spec_5001->flux_time(filename_time_5001, fs4);//, fs5);
-     Spec_5002->flux_time(filename_time_5002, fs4);//, fs5);
-     Spec_5003->flux_time(filename_time_5003, fs4);//, fs5);
-     
+     /*
+     Spec_1301->flux_time(filename_time_1301, fs4, input_distance);//, fs5);
+     Spec_1302->flux_time(filename_time_1302, fs4, input_distance);//, fs5);
+     Spec_1303->flux_time(filename_time_1303, fs4, input_distance);//, fs5);
+     Spec_2001->flux_time(filename_time_2001, fs4, input_distance);//, fs5);
+     Spec_2002->flux_time(filename_time_2002, fs4, input_distance);//, fs5);
+     Spec_2003->flux_time(filename_time_2003, fs4, input_distance);//, fs5);
+     Spec_3001->flux_time(filename_time_3001, fs4, input_distance);//, fs5);
+     Spec_3002->flux_time(filename_time_3002, fs4, input_distance);//, fs5);
+     Spec_3003->flux_time(filename_time_3003, fs4, input_distance);//, fs5);
+     Spec_5001->flux_time(filename_time_5001, fs4, input_distance);//, fs5);
+     Spec_5002->flux_time(filename_time_5002, fs4, input_distance);//, fs5);
+     Spec_5003->flux_time(filename_time_5003, fs4, input_distance);//, fs5);
+     */
+     Spec_3003->flux_time(filename_time_3003, fs4, input_distance);//, fs5);
      
      fs4->Write();
      //fs5->Write();
@@ -136,40 +124,47 @@ void Spec::generate_spec(double input_distance){
      TString filename_energy_5002 = "integ5002.data";
      TString filename_energy_5003 = "integ5003.data";
      
-     
-     Spec_1301->energy_spectrum(filename_energy_1301, fs2);
-     Spec_1302->energy_spectrum(filename_energy_1302, fs2);
-     Spec_1303->energy_spectrum(filename_energy_1303, fs2);
-     Spec_2001->energy_spectrum(filename_energy_2001, fs2);
-     Spec_2002->energy_spectrum(filename_energy_2002, fs2);
-     Spec_2003->energy_spectrum(filename_energy_2003, fs2);
-     Spec_3001->energy_spectrum(filename_energy_3001, fs2);
-     Spec_3002->energy_spectrum(filename_energy_3002, fs2);
-     Spec_3003->energy_spectrum(filename_energy_3003, fs2);
-     Spec_5001->energy_spectrum(filename_energy_5001, fs2);
-     Spec_5002->energy_spectrum(filename_energy_5002, fs2);
-     
-     
-     
-     Spec_5003->energy_spectrum(filename_energy_5003, fs2);
+     /*
+     Spec_1301->energy_spectrum(filename_energy_1301, fs2, input_distance);
+     Spec_1302->energy_spectrum(filename_energy_1302, fs2, input_distance);
+     Spec_1303->energy_spectrum(filename_energy_1303, fs2, input_distance);
+     Spec_2001->energy_spectrum(filename_energy_2001, fs2, input_distance);
+     Spec_2002->energy_spectrum(filename_energy_2002, fs2, input_distance);
+     Spec_2003->energy_spectrum(filename_energy_2003, fs2, input_distance);
+     Spec_3001->energy_spectrum(filename_energy_3001, fs2, input_distance);
+     Spec_3002->energy_spectrum(filename_energy_3002, fs2, input_distance);
+     Spec_3003->energy_spectrum(filename_energy_3003, fs2, input_distance);
+     Spec_5001->energy_spectrum(filename_energy_5001, fs2, input_distance);
+     Spec_5002->energy_spectrum(filename_energy_5002, fs2, input_distance);
+     Spec_5003->energy_spectrum(filename_energy_5003, fs2, input_distance);
+     */
+     Spec_3003->energy_spectrum(filename_energy_3003, fs2, input_distance);
      
       fs2->Write();
       
-      
-      Spec_1301->flux_neuE(filename_time_1301, fs3);
-      Spec_1302->flux_neuE(filename_time_1302, fs3);
-      Spec_1303->flux_neuE(filename_time_1303, fs3);
-      Spec_2001->flux_neuE(filename_time_2001, fs3);
-      Spec_2002->flux_neuE(filename_time_2002, fs3);
-      Spec_2003->flux_neuE(filename_time_2003, fs3);
-      Spec_3001->flux_neuE(filename_time_3001, fs3);
-      Spec_3002->flux_neuE(filename_time_3002, fs3);
-      Spec_3003->flux_neuE(filename_time_3003, fs3);
-      Spec_5001->flux_neuE(filename_time_5001, fs3);
-      Spec_5002->flux_neuE(filename_time_5002, fs3);
-      Spec_5003->flux_neuE(filename_time_5003, fs3);
+      /*
+      Spec_1301->flux_neuE(filename_time_1301, fs3, input_distance);
+      Spec_1302->flux_neuE(filename_time_1302, fs3, input_distance);
+      Spec_1303->flux_neuE(filename_time_1303, fs3, input_distance);
+      Spec_2001->flux_neuE(filename_time_2001, fs3, input_distance);
+      Spec_2002->flux_neuE(filename_time_2002, fs3, input_distance);
+      Spec_2003->flux_neuE(filename_time_2003, fs3, input_distance);
+      Spec_3001->flux_neuE(filename_time_3001, fs3, input_distance);
+      Spec_3002->flux_neuE(filename_time_3002, fs3, input_distance);
+      Spec_3003->flux_neuE(filename_time_3003, fs3, input_distance);
+      Spec_5001->flux_neuE(filename_time_5001, fs3, input_distance);
+      Spec_5002->flux_neuE(filename_time_5002, fs3, input_distance);
+      Spec_5003->flux_neuE(filename_time_5003, fs3, input_distance);
+      */
+      Spec_3003->flux_neuE(filename_time_3003, fs3, input_distance);
       
       fs3->Write();
+      
+      fs1->Close();
+      fs1_1->Close();
+      fs2->Close();
+      fs3->Close();
+      fs4->Close();
       
       delete Spec_1301;
       delete Spec_1302;
@@ -199,9 +194,14 @@ void Spec::num_integral(){
     Integral * int_1301antie = new Integral();
     Integral * int_1301x = new Integral();
     
+    /*
     int name[12] = {1301, 1302, 1303, 2001, 2002, 2003, 3001, 3002, 3003, 5001, 5002, 5003};
     
     for(int i=0; i<12; i++){
+       */
+    int name[1] = {3003};
+    
+    for(int i=0; i<1; i++){
         
         int number = name[i];
         
@@ -240,6 +240,9 @@ void Spec::num_integral(){
     fs1->Write();
     fs2->Write();
     
+    fs1->Close();
+    fs2->Close();
+    
     delete int_1301e;
     delete int_1301antie;
     delete int_1301x;
@@ -274,7 +277,7 @@ void Spec::int_get_total(TFile * root_name1, TFile * root_name2, TString hist_na
 
 void Spec::cal_events(){
     
-    TString loadpath = "/Users/jiaweiguo/Documents/GitHub/PandaX-4T_sdu/code1_SN/output/";
+    TString loadpath = "/Users/jiaweiguo/Documents/GitHub/PandaX-4T_sdu/code4/output/spectrum/";
     TFile *fs = new TFile(loadpath + "recE_spec_total.root", "r");
     
     int bin_num_left;
@@ -284,6 +287,8 @@ void Spec::cal_events(){
     
     //13 solar mass
     //1301
+    
+/*    
     TH1D * h1301 = (TH1D *) fs->Get("1301_total_recoil");
     num_of_events = h1301->Integral("width");
     
@@ -357,6 +362,17 @@ void Spec::cal_events(){
     num_of_events = h5003->Integral("width");
     
     result_cal[3][2] = 4*num_of_events;
+    
+*/
+
+//3003
+    TH1D * h3003 = (TH1D *) fs->Get("3003_total_recoil");
+    num_of_events = h3003->Integral("width");
+    
+    result_cal[2][2] = 4*num_of_events;
+    
+    fs->Close();
+
     
 }
 
