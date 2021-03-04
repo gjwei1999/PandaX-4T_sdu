@@ -116,6 +116,7 @@ void Integral::numerical_int(TString hist_name, TFile * root_name){
         integral = temp->Integral(temp->FindBin(neuE_min), nbin1, "width");
         h_spectrum_recE->SetBinContent(i, integral*num_Xe_ton/1000.0);//Fill(recoil_E, integral*num_Xe_ton/1000.0); MeV->keV
         
+        temp->SetDirectory(0);
         temp->Reset();
     }
     

@@ -131,7 +131,7 @@ void Integral::numerical_int(TString hist_name, TFile * root_name){
     
     std::cout<<"The recoil energy spectrum is finished."<<std::endl;
     
-    root_name->Close();
+    //root_name->Close();
     
     
 }

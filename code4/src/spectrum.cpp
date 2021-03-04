@@ -154,8 +154,8 @@ void Spectrum::time_spectrum(TString filename, TFile *rootfile, TFile *rootfile2
     
     infile.close();
     
-    rootfile->Close();
-    rootfile2->Close(); 
+    //rootfile->Close();
+    //rootfile2->Close(); 
 }
 
 
@@ -266,7 +266,7 @@ void Spectrum::flux_time(TString filename, TFile *rootfile, double input_distanc
         h_flux_T_x->SetBinError(i, 0.0);
     }
     
-    rootfile->Close();
+    //rootfile->Close();
     
     
     
@@ -406,7 +406,7 @@ void Spectrum::energy_spectrum(TString filename, TFile *rootfile, double input_d
     
     infile.close();
     
-    rootfile->Close();
+    //rootfile->Close();
     
 }
 
@@ -485,7 +485,7 @@ void Spectrum::flux_neuE(TString filename, TFile *rootfile, double input_distanc
     h_flux_neuE_x->GetYaxis()->SetTitle("Total flux in 20s (MeV)^{-1}(cm)^{-2}");
     
     
-    rootfile->Close();
+    //rootfile->Close();
     
 //    TF1 *func = new TF1("fit",fitf, neu_Emin, neu_Emax, 2);
     

@@ -25,28 +25,35 @@ int main(int argc, char* argv[]){
     Spec * class_spectrum = new Spec();
     
     TString file = "/Users/jiaweiguo/Documents/GitHub/PandaX-4T_sdu/code4/output/trig_distance.root";
-    TFile * fs = new TFile(file.Data(), "RECREATE");
+    //TFile * fs = new TFile(file.Data(), "RECREATE");
     
     int nbin = 200;
-    double d_min= 10.0;//start from 10kpc
-    double d_max = 20.0;
-    double d_step = 0.1;
+    //double d_min= 10.0;//start from 10kpc
+    //double d_max = 20.0;
+    
+    //double distance[5] = {10.0, 15.0, 20.0, 25.0, 0.0};
+    //double distance[5] = {30.0, 35.0, 40.0, 45.0, 0.0};
+    //double distance[5] = {50.0, 52.0, 54.0, 56.0, 0.0};
+    double distance[5] = {58.0, 60.0, 62.0, 64.0, 0.0};
+    //double distance[5] = {32.0, 34.0, 36.0, 38, 0.0};
+    
+    double trigger_eff[5] = {0};
+    //double d_step = 0.1;
     int i = 0;
-    double a[21] = {0.0};
     
-    TH1D * h_trig_distance = new TH1D("trig_distance", "trig_distance", nbin, d_min, d_max);
+    double D = distance[0];
     
-    while(d_min <= d_max){
+    //TH1D * h_trig_distance = new TH1D("trig_distance", "trig_distance", nbin, d_min, d_max);
     
-        class_spectrum->generate_spec(d_min);
+    while(D != 0.0){
+    
+        class_spectrum->generate_spec(D);
         class_spectrum->num_integral();
-        std::cout<<"!!!!!!!!!!!!!"<<std::endl;
         class_spectrum->cal_events();
-        std::cout<<"???????????"<<std::endl;
+
         
         
         int events_in_20s = 0;
-        double trigger_eff = 0.0;
         
         int num_of_simu = 1000;
         double T_sn = 1.0;
@@ -60,24 +67,26 @@ int main(int argc, char* argv[]){
         
         SNmc_3003->set_num_simu(num_of_simu);
         SNmc_3003->run_mc(para_file, num_of_simu, events_in_20s);
-        trigger_eff = SNmc_3003->time_window(3003, T_sn, t_refresh, N_thr);
+        trigger_eff[i] = SNmc_3003->time_window(3003, T_sn, t_refresh, N_thr);
         
-        h_trig_distance->Fill(d_min, trigger_eff);
+        //h_trig_distance->Fill(d_min, trigger_eff);
         //a[i] = trigger_eff;
         
-        std::cout<<"Now distance: "<<d_min<<std::endl;
-        d_min += d_step;
+        
+        
         i++;
+        D = distance[i];
+    }
+    
+    for(int i =0; i<5; i++){
+        
+        std::cout<<std::endl;
+        std::cout<<"********Summary**********"<<std::endl;
+        std::cout<<"!!!!!!!!!!!!!!!!!!!!!!!!!!!!"<<std::endl;
+        std::cout<<"The trigger efficiency: "<<trigger_eff[i]<<std::endl;
+    
         
     }
-    
-    for(int i=0; i<nbin; i++){
-        h_trig_distance->SetBinError(i, 0);
-    }
-    
-    
-    h_trig_distance->SetDirectory(fs);
-    fs->Write();
     
     delete class_spectrum;
     
