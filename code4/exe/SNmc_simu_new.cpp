@@ -34,8 +34,8 @@ int main(int argc, char* argv[]){
     //double distance[5] = {10.0, 15.0, 20.0, 25.0, 0.0};
     //double distance[5] = {30.0, 35.0, 40.0, 45.0, 0.0};
     //double distance[5] = {50.0, 52.0, 54.0, 56.0, 0.0};
-    double distance[5] = {58.0, 60.0, 62.0, 64.0, 0.0};
-    //double distance[5] = {32.0, 34.0, 36.0, 38, 0.0};
+    //double distance[5] = {58.0, 60.0, 62.0, 64.0, 0.0};
+    double distance[5] = {46.0, 48.0, 42.0, 44.0, 0.0};
     
     double trigger_eff[5] = {0};
     //double d_step = 0.1;
@@ -58,7 +58,7 @@ int main(int argc, char* argv[]){
         int num_of_simu = 1000;
         double T_sn = 1.0;
         double t_refresh = 0.1;
-        int N_thr = 10;
+        int N_thr = 5;
         
         Signal_mc * SNmc_3003 = new Signal_mc();
         TString para_file = "/Users/jiaweiguo/Documents/GitHub/PandaX-4T_sdu/code4/parameters/SN_3003.json";
