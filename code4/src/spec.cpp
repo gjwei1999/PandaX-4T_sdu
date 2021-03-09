@@ -14,170 +14,86 @@ Spec::Spec(){}
 Spec::~Spec(){}
 
 
-void Spec::generate_spec(double input_distance){
+void Spec::generate_spec(double input_distance, int type_of_sn){
     
-    //define path of root
-     TString path2 = "/Users/jiaweiguo/Documents/GitHub/PandaX-4T_sdu/code4/output/spectrum/";
+    
+    
+    TString path2 = "/Users/jiaweiguo/Documents/GitHub/PandaX-4T_sdu/code4/output/spectrum/";
      
-     //define root file name
-     TString root_time_spec = path2 + "time_spec.root";
-     TString root_time_spec_total = path2 + "time_spec_total.root";
-     TString root_energy_spec = path2 + "energy_spec.root";
-     TString root_flux_neuE = path2 + "flux_neuE.root";
-     TString root_flux_time = path2 + "flux.root";
+    //define root file name
+    TString root_time_spec = path2 + "time_spec.root";
+    TString root_time_spec_total = path2 + "time_spec_total.root";
+    TString root_flux_neuE = path2 + "flux_neuE.root";
+
      
-     //files for time and energy spec
-     TFile * fs1 = new TFile(root_time_spec.Data(), "RECREATE");
-     TFile * fs1_1 = new TFile(root_time_spec_total.Data(), "RECREATE");
+    //files for time and energy spec
+    TFile * fs1 = new TFile(root_time_spec.Data(), "RECREATE");
+    TFile * fs1_1 = new TFile(root_time_spec_total.Data(), "RECREATE");
+    TFile * fs3 = new TFile(root_flux_neuE.Data(), "RECREATE");
      
-     TFile * fs2 = new TFile(root_energy_spec.Data(), "RECREATE");
-     TFile * fs3 = new TFile(root_flux_neuE.Data(), "RECREATE");
-     TFile * fs4 = new TFile(root_flux_time.Data(), "RECREATE");
-     //TFile * fs5 = new TFile(root_time_spec_inter.Data(), "RECREATE");
+    //define class for every dataset
+    Spectrum* Spec = new Spectrum();
      
-     //define class for every dataset
-     Spectrum* Spec_1301 = new Spectrum();
-     Spectrum* Spec_1302 = new Spectrum();
-     Spectrum* Spec_1303 = new Spectrum();
-     Spectrum* Spec_2001 = new Spectrum();
-     Spectrum* Spec_2002 = new Spectrum();
-     Spectrum* Spec_2003 = new Spectrum();
-     Spectrum* Spec_3001 = new Spectrum();
-     Spectrum* Spec_3002 = new Spectrum();
-     Spectrum* Spec_3003 = new Spectrum();
-     Spectrum* Spec_5001 = new Spectrum();
-     Spectrum* Spec_5002 = new Spectrum();
-     Spectrum* Spec_5003 = new Spectrum();
+    // time-related data
+    //define filename_time
+    TString filename_time;
      
+    if(type_of_sn == 1301){
+         filename_time = "intp1301.data";
+    }
+    else if(type_of_sn == 1302){
+         filename_time = "intp1302.data";
+    }
+    else if(type_of_sn == 1303){
+        filename_time = "intp1303.data";
+    }
+    else if(type_of_sn == 2001){
+        filename_time = "intp2001.data";
+    }
+    else if(type_of_sn == 2002){
+        filename_time = "intp2002.data";
+    }
+    else if(type_of_sn == 2003){
+        filename_time = "intp2003.data";
+    }
+    else if(type_of_sn == 3001){
+        filename_time = "intp3001.data";
+    }
+    else if(type_of_sn == 3002){
+        filename_time = "intp3002.data";
+    }
+    else if(type_of_sn == 3003){
+        filename_time = "intp3003.data";
+    }
+    else if(type_of_sn == 5001){
+        filename_time = "intp5001.data";
+    }
+    else if(type_of_sn == 5002){
+        filename_time = "intp5002.data";
+    }
+    else if(type_of_sn == 5003){
+        filename_time = "intp5003.data";
+    }
+    else{
+        std::cout<<"'type_of_sn' is wrong!!!"<<std::endl;
+    }
      
-     // time-related data
-     //define filename_time
-     TString filename_time_1301 = "intp1301.data";
-     TString filename_time_1302 = "intp1302.data";
-     TString filename_time_1303 = "intp1303.data";
-     
-     TString filename_time_2001 = "intp2001.data";
-     TString filename_time_2002 = "intp2002.data";
-     TString filename_time_2003 = "intp2003.data";
-     
-     TString filename_time_3001 = "intp3001.data";
-     TString filename_time_3002 = "intp3002.data";
-     TString filename_time_3003 = "intp3003.data";
-     
-     TString filename_time_5001 = "intp5001.data";
-     TString filename_time_5002 = "intp5002.data";
-     TString filename_time_5003 = "intp5003.data";
-     
-/*     Spec_1301->time_spectrum(filename_time_1301, fs1, fs1_1, input_distance);
-     Spec_1302->time_spectrum(filename_time_1302, fs1, fs1_1, input_distance);
-     Spec_1303->time_spectrum(filename_time_1303, fs1, fs1_1, input_distance);
-     Spec_2001->time_spectrum(filename_time_2001, fs1, fs1_1, input_distance);
-     Spec_2002->time_spectrum(filename_time_2002, fs1, fs1_1, input_distance);
-     Spec_2003->time_spectrum(filename_time_2003, fs1, fs1_1, input_distance);
-     Spec_3001->time_spectrum(filename_time_3001, fs1, fs1_1, input_distance);
-     Spec_3002->time_spectrum(filename_time_3002, fs1, fs1_1, input_distance);
-     Spec_3003->time_spectrum(filename_time_3003, fs1, fs1_1, input_distance);
-     Spec_5001->time_spectrum(filename_time_5001, fs1, fs1_1, input_distance);
-     Spec_5002->time_spectrum(filename_time_5002, fs1, fs1_1, input_distance);
-     Spec_5003->time_spectrum(filename_time_5003, fs1, fs1_1, input_distance);
- */
-     Spec_3003->time_spectrum(filename_time_3003, fs1, fs1_1, input_distance);
+        
+     Spec->time_spectrum(filename_time, fs1, fs1_1, input_distance);
 
      fs1->Write();
      fs1_1->Write();
-  
-     /*
-     Spec_1301->flux_time(filename_time_1301, fs4, input_distance);//, fs5);
-     Spec_1302->flux_time(filename_time_1302, fs4, input_distance);//, fs5);
-     Spec_1303->flux_time(filename_time_1303, fs4, input_distance);//, fs5);
-     Spec_2001->flux_time(filename_time_2001, fs4, input_distance);//, fs5);
-     Spec_2002->flux_time(filename_time_2002, fs4, input_distance);//, fs5);
-     Spec_2003->flux_time(filename_time_2003, fs4, input_distance);//, fs5);
-     Spec_3001->flux_time(filename_time_3001, fs4, input_distance);//, fs5);
-     Spec_3002->flux_time(filename_time_3002, fs4, input_distance);//, fs5);
-     Spec_3003->flux_time(filename_time_3003, fs4, input_distance);//, fs5);
-     Spec_5001->flux_time(filename_time_5001, fs4, input_distance);//, fs5);
-     Spec_5002->flux_time(filename_time_5002, fs4, input_distance);//, fs5);
-     Spec_5003->flux_time(filename_time_5003, fs4, input_distance);//, fs5);
-     */
-     Spec_3003->flux_time(filename_time_3003, fs4, input_distance);//, fs5);
      
-     fs4->Write();
-     //fs5->Write();
+     Spec->flux_neuE(filename_time, fs3, input_distance);
      
+     fs3->Write();
      
-     // energy-realted data
-     //define filename energy
-     TString filename_energy_1301 = "integ1301.data";
-     TString filename_energy_1302 = "integ1302.data";
-     TString filename_energy_1303 = "integ1303.data";
-     
-     TString filename_energy_2001 = "integ2001.data";
-     TString filename_energy_2002 = "integ2002.data";
-     TString filename_energy_2003 = "integ2003.data";
-     
-     TString filename_energy_3001 = "integ3001.data";
-     TString filename_energy_3002 = "integ3002.data";
-     TString filename_energy_3003 = "integ3003.data";
-     
-     TString filename_energy_5001 = "integ5001.data";
-     TString filename_energy_5002 = "integ5002.data";
-     TString filename_energy_5003 = "integ5003.data";
-     
-     /*
-     Spec_1301->energy_spectrum(filename_energy_1301, fs2, input_distance);
-     Spec_1302->energy_spectrum(filename_energy_1302, fs2, input_distance);
-     Spec_1303->energy_spectrum(filename_energy_1303, fs2, input_distance);
-     Spec_2001->energy_spectrum(filename_energy_2001, fs2, input_distance);
-     Spec_2002->energy_spectrum(filename_energy_2002, fs2, input_distance);
-     Spec_2003->energy_spectrum(filename_energy_2003, fs2, input_distance);
-     Spec_3001->energy_spectrum(filename_energy_3001, fs2, input_distance);
-     Spec_3002->energy_spectrum(filename_energy_3002, fs2, input_distance);
-     Spec_3003->energy_spectrum(filename_energy_3003, fs2, input_distance);
-     Spec_5001->energy_spectrum(filename_energy_5001, fs2, input_distance);
-     Spec_5002->energy_spectrum(filename_energy_5002, fs2, input_distance);
-     Spec_5003->energy_spectrum(filename_energy_5003, fs2, input_distance);
-     */
-     Spec_3003->energy_spectrum(filename_energy_3003, fs2, input_distance);
-     
-      fs2->Write();
-      
-      /*
-      Spec_1301->flux_neuE(filename_time_1301, fs3, input_distance);
-      Spec_1302->flux_neuE(filename_time_1302, fs3, input_distance);
-      Spec_1303->flux_neuE(filename_time_1303, fs3, input_distance);
-      Spec_2001->flux_neuE(filename_time_2001, fs3, input_distance);
-      Spec_2002->flux_neuE(filename_time_2002, fs3, input_distance);
-      Spec_2003->flux_neuE(filename_time_2003, fs3, input_distance);
-      Spec_3001->flux_neuE(filename_time_3001, fs3, input_distance);
-      Spec_3002->flux_neuE(filename_time_3002, fs3, input_distance);
-      Spec_3003->flux_neuE(filename_time_3003, fs3, input_distance);
-      Spec_5001->flux_neuE(filename_time_5001, fs3, input_distance);
-      Spec_5002->flux_neuE(filename_time_5002, fs3, input_distance);
-      Spec_5003->flux_neuE(filename_time_5003, fs3, input_distance);
-      */
-      Spec_3003->flux_neuE(filename_time_3003, fs3, input_distance);
-      
-      fs3->Write();
-      
-      fs1->Close();
-      fs1_1->Close();
-      fs2->Close();
-      fs3->Close();
-      fs4->Close();
-      
-      delete Spec_1301;
-      delete Spec_1302;
-      delete Spec_1303;
-      delete Spec_2001;
-      delete Spec_2002;
-      delete Spec_2003;
-      delete Spec_3001;
-      delete Spec_3002;
-      delete Spec_3003;
-      delete Spec_5001;
-      delete Spec_5002;
-      delete Spec_5003;
+     fs1->Close();
+     fs1_1->Close();
+     fs3->Close();
+        
+     delete Spec;
+
 }
 
 
@@ -199,16 +115,15 @@ void Spec::num_integral(){
     
     for(int i=0; i<12; i++){
        */
-    int name[1] = {3003};
+    //int name[1] = {3003};
     
-    for(int i=0; i<1; i++){
+    //for(int i=0; i<1; i++){
         
-        int number = name[i];
+        //int number = name[i];
         
-        //for the 1st second
-        std::string hist_name_electron = Form("%delectron", number);
-        std::string hist_name_antielectron = Form("%danti-electron", number);
-        std::string hist_name_x = Form("%dx", number);
+    std::string hist_name_electron = "electron";
+    std::string hist_name_antielectron = "anti-electron";
+    std::string hist_name_x = "x";
     
         //for 20-second average
         //std::string hist_name_electron = Form("%de", number);
@@ -228,20 +143,22 @@ void Spec::num_integral(){
     int_1301x->numerical_int(hist_name_x.c_str(), fs1);
     
     std::cout<<"----------------------------"<<std::endl;
-    std::cout<<number<<" is finished."<<std::endl;
+    std::cout<<"recoil energy spectrum  is finished."<<std::endl;
     std::cout<<"----------------------------"<<std::endl;
     
-    std::string hist_name_total = Form("%d_total", number);
-    
-    int_get_total(fs1, fs2, hist_name_total.c_str(), hist_name_electron.c_str(), hist_name_antielectron.c_str(), hist_name_x.c_str());
+    int_get_total(fs1, fs2);
         
-    }
+    //}
     
     fs1->Write();
     fs2->Write();
     
     fs1->Close();
     fs2->Close();
+    
+    int_1301e->close_file();
+    int_1301antie->close_file();
+    int_1301x->close_file();
     
     delete int_1301e;
     delete int_1301antie;
@@ -250,16 +167,16 @@ void Spec::num_integral(){
 }
 
 
-void Spec::int_get_total(TFile * root_name1, TFile * root_name2, TString hist_name_total, TString hist_name_electron, TString hist_name_antielectron, TString hist_name_x){
+void Spec::int_get_total(TFile * root_name1, TFile * root_name2){
     
-    TString spectrum_recE_name = hist_name_total + "_recoil";
+    TString spectrum_recE_name = "total_recoil";
     
     int nbin2 = 10000;//the value should be equal to "nbin2" of "Integral::numerical_int" in src/integral.cpp
     TH1D * h_spectrum_recE_total = new TH1D(spectrum_recE_name, spectrum_recE_name, nbin2, 1.0e-3, 100.0);//unit keV
     
-    TString hist_name_electron_1 = hist_name_electron + "_recoil";
-    TString hist_name_antielectron_1 = hist_name_antielectron + "_recoil";
-    TString hist_name_x_1 = hist_name_x + "_recoil";
+    TString hist_name_electron_1 = "electron_recoil";
+    TString hist_name_antielectron_1 = + "anti-electron_recoil";
+    TString hist_name_x_1 = "x_recoil";
     
     TH1D * hist_ele = (TH1D *) root_name1->Get(hist_name_electron_1);
     TH1D * hist_antie = (TH1D *) root_name1->Get(hist_name_antielectron_1);
@@ -284,144 +201,19 @@ void Spec::cal_events(){
     int bin_num_right;
     double num_of_events;
     
-    
-    //13 solar mass
-    //1301
-    
-/*    
-    TH1D * h1301 = (TH1D *) fs->Get("1301_total_recoil");
-    num_of_events = h1301->Integral("width");
-    
-    //1302
-    TH1D * h1302 = (TH1D *) fs->Get("1302_total_recoil");
-    num_of_events = h1302->Integral("width");
-    
-    result_cal[0][1] = 4*num_of_events;
-    
-    //1303
-    TH1D * h1303 = (TH1D *) fs->Get("1303_total_recoil");
-    num_of_events = h1303->Integral("width");
-    
-    result_cal[0][2] = 4*num_of_events;
-    
-    //20 solar mass
-    //2001
-    TH1D * h2001 = (TH1D *) fs->Get("2001_total_recoil");
-    num_of_events = h2001->Integral("width");
-    
-    result_cal[1][0] = 4*num_of_events;
-    
-    //2002
-    TH1D * h2002 = (TH1D *) fs->Get("2002_total_recoil");
-    num_of_events = h2002->Integral("width");
-    
-    result_cal[1][1] = 4*num_of_events;
-    
-    //2003
-    TH1D * h2003 = (TH1D *) fs->Get("2003_total_recoil");
-    num_of_events = h2003->Integral("width");
-    
-    result_cal[1][2] = 4*num_of_events;
-    
-    
-    //30 solar mass
-    //3001
-    TH1D * h3001 = (TH1D *) fs->Get("3001_total_recoil");
-    num_of_events = h3001->Integral("width");
-    
-    result_cal[2][0] = 4*num_of_events;
-    
-    //3002
-    TH1D * h3002 = (TH1D *) fs->Get("3002_total_recoil");
-    num_of_events = h3002->Integral("width");
-    
-    result_cal[2][1] = 4*num_of_events;
-    
-    //3003
-    TH1D * h3003 = (TH1D *) fs->Get("3003_total_recoil");
-    num_of_events = h3003->Integral("width");
-    
-    result_cal[2][2] = 4*num_of_events;
-    
-    
-    //50 solar mass
-    //5001
-    TH1D * h5001 = (TH1D *) fs->Get("5001_total_recoil");
-    num_of_events = h5001->Integral("width");
-    
-    result_cal[3][0] = 4*num_of_events;
-    
-    //5002
-    TH1D * h5002 = (TH1D *) fs->Get("5002_total_recoil");
-    num_of_events = h5002->Integral("width");
-    
-    result_cal[3][1] = 4*num_of_events;
-    
-    //5003
-    TH1D * h5003 = (TH1D *) fs->Get("5003_total_recoil");
-    num_of_events = h5003->Integral("width");
-    
-    result_cal[3][2] = 4*num_of_events;
-    
-*/
 
-//3003
-    TH1D * h3003 = (TH1D *) fs->Get("3003_total_recoil");
+    TH1D * h3003 = (TH1D *) fs->Get("total_recoil");
     num_of_events = h3003->Integral("width");
     
-    result_cal[2][2] = 4*num_of_events;
+    result_cal = 4*num_of_events;
     
     fs->Close();
 
     
 }
 
-int Spec::get_1301(){
-    return int(result_cal[0][0] + 0.5);
-}
-
-int Spec::get_1302(){
-    return int( result_cal[0][1] + 0.5);
-}
-
-int Spec::get_1303(){
-    return int( result_cal[0][2] + 0.5);
-}
-
-int Spec::get_2001(){
-    return int( result_cal[1][0] + 0.5);
-}
-
-int Spec::get_2002(){
-    return int( result_cal[1][1] + 0.5);
-}
-
-int Spec::get_2003(){
-    return int( result_cal[1][2] + 0.5);
-}
-
-int Spec::get_3001(){
-    return int( result_cal[2][0] + 0.5);
-}
-
-int Spec::get_3002(){
-    return int( result_cal[2][1] + 0.5);
-}
-
-int Spec::get_3003(){
-    return int( result_cal[2][2] + 0.5);
-}
-
-int Spec::get_5001(){
-    return int( result_cal[3][0] + 0.5);
-}
-
-int Spec::get_5002(){
-    return int( result_cal[3][1] + 0.5);
-}
-
-int Spec::get_5003(){
-    return int( result_cal[3][2] + 0.5);
+int Spec::get_events(){
+    return int(result_cal + 0.5);
 }
 
 

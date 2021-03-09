@@ -38,7 +38,7 @@
       
       "TH1Ffile": "/Users/jiaweiguo/Documents/GitHub/PandaX-4T_sdu/code4/output/spectrum/recE_spec_total.root",
     
-      "TH1Fname": "3003_total_recoil"
+      "TH1Fname": "total_recoil"
     },
     
     "home_path": "/Users/jiaweiguo/Documents/GitHub/PandaX-4T_sdu/code4/output/sorted_tree",
@@ -47,10 +47,10 @@
     "supernova":
     {
      "time_spectrum": "/Users/jiaweiguo/Documents/GitHub/PandaX-4T_sdu/code4/output/spectrum/time_spec_total.root",
-     "time_spectrumName": "3003total"
+     "time_spectrumName": "total"
     }, 
 
-    "simuRootFile": "3003_simu.root",
+    "simuRootFile": "simu_result.root",
     
     
     

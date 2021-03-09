@@ -33,8 +33,8 @@ private:
     
     TTree * tree_sorted;
     
-    TString loadpath = "/Users/jiaweiguo/Documents/GitHub/PandaX-4T_sdu/code4/output/sorted_tree/";
-    TString outpath = "/Users/jiaweiguo/Documents/GitHub/PandaX-4T_sdu/code4/output/event_time_hist/result_";
+    TString loadpath = "/Users/jiaweiguo/Documents/GitHub/PandaX-4T_sdu/code4/output/sorted_tree/simu_result.root";
+    TString outpath = "/Users/jiaweiguo/Documents/GitHub/PandaX-4T_sdu/code4/output/event_time_hist/analysis_result.root";
     
     int num_of_simu;
     
@@ -46,7 +46,7 @@ public:
     void run_mc(TString para_file, int num_of_simulation, int events_in_20s);
     //void sort(TTree *tree, TFile *fout);
     void set_num_simu(int input_num_of_simu);
-    double time_window(int loadfile_name, double T_sn, double t_refresh, int N_thr);
+    double time_window(double T_sn, double t_refresh, int N_thr);
     
 };
 

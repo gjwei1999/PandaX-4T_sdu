@@ -331,19 +331,14 @@ void Signal_mc::run_mc(TString para_file, int num_of_simulation, int events_in_2
 
 }
 
-double Signal_mc::time_window(int loadfile_name, double T_sn, double t_refresh, int N_thr){
-    //load file name includes number only(3003)
+double Signal_mc::time_window(double T_sn, double t_refresh, int N_thr){
+     
     
-    TString load_file_name;
-    load_file_name.Form("%d", loadfile_name);
-    
-    TString load_root = loadpath + load_file_name + "_simu.root";
-    TString result_root = outpath + load_file_name + ".root";
-    
-    TFile *load_file = new TFile(load_root.Data(), "r");//input
-    TFile *result_file = new TFile(result_root.Data(), "RECREATE");//output
+    TFile *load_file = new TFile(loadpath.Data(), "r");//input
+    TFile *result_file = new TFile(outpath.Data(), "RECREATE");//output
     
     TTree *sorted_tree = (TTree*)load_file->Get("qmc_tree");
+    
     
     int num_of_events;
     num_of_events = (int)sorted_tree->GetEntries();
@@ -489,6 +484,7 @@ double Signal_mc::time_window(int loadfile_name, double T_sn, double t_refresh, 
         std::cout<<"The trigger efficiency is "<<trigger_eff<<std::endl;
         
         delete branch1;
+        load_file->Close();
         
         return trigger_eff;
 }

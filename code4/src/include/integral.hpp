@@ -27,11 +27,14 @@ private:
     TH1D * h0;
     
     //in the first second
+    
     TString loadpath = "/Users/jiaweiguo/Documents/GitHub/PandaX-4T_sdu/code4/output/spectrum/flux_neuE.root";
+    
     //20 seconds
     //TString loadpath2 = "/Users/jiaweiguo/Documents/GitHub/PandaX-4T_sdu/code1_SN/output/energy_spec.root";
   
     TFile *fs = new TFile(loadpath, "r");
+    
     //TFile *fs2 = new TFile(loadpath, "r");
     
     //number of Xenon nuclei in 1 ton
@@ -97,7 +100,7 @@ public:
     
     void numerical_int_20s();
     
-    
+    void close_file();
 };
 
 

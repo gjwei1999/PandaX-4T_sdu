@@ -32,7 +32,7 @@ int main(int argc, char* argv[]){
     
     SNmc_3003->set_num_simu(num_of_simu);
     SNmc_3003->run_mc(para_file, num_of_simu, 22);
-    SNmc_3003->time_window(3003, T_sn, t_refresh, N_thr);
+    SNmc_3003->time_window(T_sn, t_refresh, N_thr);
     
    
     return 1;

@@ -35,8 +35,12 @@ Integral::~Integral(){
 }
 
 void Integral::set_hist(TString hist_name){
+    //TString loadpath = "/Users/jiaweiguo/Documents/GitHub/PandaX-4T_sdu/code4/output/spectrum/flux_neuE.root";
+    //TFile *fs = new TFile(loadpath, "r");
+    
     h0 =(TH1D *) fs->Get(hist_name);
     
+    //fs->Close();
 }
 
 
@@ -136,5 +140,8 @@ void Integral::numerical_int(TString hist_name, TFile * root_name){
     
 }
 
-
-
+void Integral::close_file(){
+    
+    fs->Close();
+    
+}

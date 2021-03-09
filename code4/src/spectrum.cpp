@@ -47,13 +47,13 @@ void Spectrum::time_spectrum(TString filename, TFile *rootfile, TFile *rootfile2
     
     double D = input_distance * 1000.0 * 206264.8 * 1.49598e11 * 100;
     
-    TString hist_name1(filename(4,4)); //get 
+    //TString hist_name1(filename(4,4)); //get 
     
-    TString hist_time_name_e = hist_name1 + "e";
-    TString hist_time_name_antie = hist_name1 + "antie";
-    TString hist_time_name_x = hist_name1 + "x";
+    TString hist_time_name_e = "e";
+    TString hist_time_name_antie =  "antie";
+    TString hist_time_name_x = "x";
     
-    TString hist_time_name_total = hist_name1 + "total";
+    TString hist_time_name_total = "total";
 //    TString hist_time_energy_name_e = hist_name1 + "T-E-" + "e";
 //    TString hist_time_energy_name_antie = hist_name1 + "T-E-" + "antie";
 //    TString hist_time_energy_name_x = hist_name1 + "T-E-" + "x";
@@ -154,7 +154,7 @@ void Spectrum::time_spectrum(TString filename, TFile *rootfile, TFile *rootfile2
     
     infile.close();
     
-    //rootfile->Close();
+    rootfile->Write();
     //rootfile2->Close(); 
 }
 
@@ -266,7 +266,7 @@ void Spectrum::flux_time(TString filename, TFile *rootfile, double input_distanc
         h_flux_T_x->SetBinError(i, 0.0);
     }
     
-    //rootfile->Close();
+    rootfile->Write();
     
     
     
@@ -406,7 +406,7 @@ void Spectrum::energy_spectrum(TString filename, TFile *rootfile, double input_d
     
     infile.close();
     
-    //rootfile->Close();
+    rootfile->Write();
     
 }
 
@@ -417,11 +417,11 @@ void Spectrum::flux_neuE(TString filename, TFile *rootfile, double input_distanc
     
     double D = input_distance * 1000.0 * 206264.8 * 1.49598e11 * 100;
     
-    TString hist_name2(filename(4,4)); //get 
+    //TString hist_name2(filename(4,4)); //get 
     
-    TString hist_flux_neuE_name_e = hist_name2 + "electron";
-    TString hist_flux_neuE_name_antie = hist_name2 + "anti-electron";
-    TString hist_flux_neuE_name_x = hist_name2 + "x";
+    TString hist_flux_neuE_name_e = "electron";
+    TString hist_flux_neuE_name_antie = "anti-electron";
+    TString hist_flux_neuE_name_x = "x";
     
     TH1D* h_flux_neuE_e = new TH1D(hist_flux_neuE_name_e, hist_flux_neuE_name_e, 300, neu_Emin, neu_Emax);
     TH1D* h_flux_neuE_antie = new TH1D(hist_flux_neuE_name_antie, hist_flux_neuE_name_antie, 300, neu_Emin, neu_Emax);
@@ -485,7 +485,7 @@ void Spectrum::flux_neuE(TString filename, TFile *rootfile, double input_distanc
     h_flux_neuE_x->GetYaxis()->SetTitle("Total flux in 20s (MeV)^{-1}(cm)^{-2}");
     
     
-    //rootfile->Close();
+    rootfile->Write();
     
 //    TF1 *func = new TF1("fit",fitf, neu_Emin, neu_Emax, 2);
     
