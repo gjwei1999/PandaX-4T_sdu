@@ -129,7 +129,7 @@ int main(int argc, char *argv[]) {
   gRandom->SetSeed(0);
   double lifetime;
   std::vector<double> lifetimes=j["elife"]["lifetime"].get<std::vector<double> >();
-  std::vector<double> durations=j["elife"]["duration"].get<std::vector<double> >();         //duration 是什么
+  std::vector<double> durations=j["elife"]["duration"].get<std::vector<double> >();         
   TH1D *th_duration = new TH1D("dur", "Duration", int(durations.size()), 0, int(durations.size()));
   for (int i = 0; i < int(durations.size()); ++i) {
     th_duration->SetBinContent(i + 1, durations[i]);

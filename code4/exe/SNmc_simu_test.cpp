@@ -75,6 +75,7 @@ int main(int argc, char* argv[]){
     outfile.close();
     
     delete class_spectrum;
+    delete SNmc;
     
     return 1;
 }

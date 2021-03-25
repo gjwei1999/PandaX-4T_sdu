@@ -25,19 +25,17 @@ private:
     double rate_sn_min = 0.0;
     double rate_sn_max = 15;
     
-    
+    double rate_bkg = (7558.48 + 9.20852 + 0.00874182) / 24.0 / 60.0 / 60.0;
 public:
     
     Eff_far();
     virtual ~Eff_far();
     
     double trigger_effeciency(int num_thr, double time_sn, double rate_sn);
+    double false_alert_rate(int num_thr, double time_sn);
     
     void eff_vs_Tsn(int num_thr, double rate_sn, TFile * root_file);
     void eff_vs_rate(int num_thr, double time_sn, TFile * root_file);
-    
-    void far_vs_Tsn(int num_thr, double rate_bkg, double t_delta, TFile * root_file);
-    void far_vs_rate(int num_thr, double time_sn, double t_delta, TFile * root_file);
     
 };
 

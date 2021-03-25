@@ -25,6 +25,13 @@ double Eff_far::trigger_effeciency(int num_thr, double time_sn, double rate_sn){
     return effeciency;
 }
 
+double Eff_far::false_alert_rate(int num_thr, double time_sn){
+    
+    double far = 0.0;
+    far = rate_bkg*3600.0*4.0*7.0*trigger_effeciency(num_thr, time_sn, rate_bkg);
+    
+    return far;
+}
 
 void Eff_far::eff_vs_Tsn(int num_thr, double rate_sn, TFile * root_file){
     
@@ -64,12 +71,4 @@ void Eff_far::eff_vs_rate(int num_thr, double time_sn, TFile * root_file){
     h_eff_Rsn->SetDirectory(root_file);
 }
 
-void Eff_far::far_vs_Tsn(int num_thr, double rate_bkg, double t_delta, TFile * root_file){
-    
-    
-}
 
-void Eff_far::far_vs_rate(int num_thr, double time_sn, double t_delta, TFile * root_file){
-    
-    
-}
