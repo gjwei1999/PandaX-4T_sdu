@@ -18,9 +18,8 @@
 using namespace std;
 
 int main(int argc, char *argv[]) {
-  if (argc != 3) {
-    std::cerr << "Usage: " << argv[0] << " confFile n"<<endl;
-    std::cerr << "If SN: " << argv[0] << " 'confFile' 'num of simulation' "<<endl;
+  if (argc!=3) {
+    std::cerr << "Usage: " << argv[0] << "confFile n"<<endl;
     //std::cerr << "Usage: " << argv[0] << " lifetime_file yield g1g2 outfile run [n]" << std::endl;
     return 1;
   }
@@ -29,23 +28,10 @@ int main(int argc, char *argv[]) {
   int n=atoi(argv[2]);
   nlohmann::json j;
   fpar >> j;
-  
-  double event_rate = 0;
-  int total_time = 0;
-  
-  bool supernova = j["supernova"];//if supernoa is true, the simulation is for supernova
-  if(supernova){
-      
-      event_rate = j["event_rate"];
-      total_time = atoi(argv[2]) * 20.0;//20 seconds for every SN burst simulation 
-      n = total_time * event_rate;
-
-}
-  
   string homePath=j["home_path"];
   string oname=j["simuRootFile"];
-//  string yieldName=j["yieldRootFile"];
-//  string mapName=j["quantaDataRootFile"];
+  string yieldName=j["yieldRootFile"];
+  string mapName=j["quantaDataRootFile"];
   string eSpec=j["energyFunc"]["func"];
   bool th1f_e_bool=j["energyFunc"]["TH1F"];
   string eFileName;
@@ -61,8 +47,8 @@ int main(int argc, char *argv[]) {
   }
   string twoDFile;
   oname=homePath+"/"+oname;
-//  yieldName=homePath+"/"+yieldName;
-//  mapName=homePath+"/"+mapName;
+  yieldName=homePath+"/"+yieldName;
+  mapName=homePath+"/"+mapName;
 
   int run=j["run"];
   bool zle=j["zle"];
@@ -74,7 +60,6 @@ int main(int argc, char *argv[]) {
   double E_eeMax=j["E_eeMax"];
   double E_eeTh=j["E_eeTh"];
   double v_e=j["v_e"];
-  
 
 
   if (NR) 
@@ -90,17 +75,17 @@ int main(int argc, char *argv[]) {
   if (pars.size())f_spec->SetParameters(&pars[0]);
   cout<<"test f_spec "<<f_spec->Eval(1)<<endl;
 
-//  TFile *yieldFile = new TFile(yieldName.c_str(),"read");
-//  TGraph *qy=(TGraph*)yieldFile->Get("qy_g");
-//  TGraph *ly=(TGraph*)yieldFile->Get("ly_g");
-//  TGraph *qy_fluc;
+  TFile *yieldFile = new TFile(yieldName.c_str(),"read");
+  TGraph *qy=(TGraph*)yieldFile->Get("qy_g");
+  TGraph *ly=(TGraph*)yieldFile->Get("ly_g");
+  TGraph *qy_fluc;
 
-//  TFile mapFile(mapName.c_str(),"read");
-//  TF1 *fs1=(TF1*) mapFile.Get("fs1")->Clone();
-//  TF1 *fs2=(TF1*) mapFile.Get("fs2")->Clone();
-//  fs1->SetRange(0,fs1->GetXmax());
-//  fs2->SetRange(0,fs2->GetXmax());
-//  mapFile.Close();
+  TFile mapFile(mapName.c_str(),"read");
+  TF1 *fs1=(TF1*) mapFile.Get("fs1")->Clone();
+  TF1 *fs2=(TF1*) mapFile.Get("fs2")->Clone();
+  fs1->SetRange(0,fs1->GetXmax());
+  fs2->SetRange(0,fs2->GetXmax());
+  mapFile.Close();
 
 
   double pde, eee, seg, s2b_fraction, dpe_ratio,pmt_resolution;
@@ -145,14 +130,14 @@ int main(int argc, char *argv[]) {
 
   namespace px = pandax;
   px::PandaXQuanta pq{field};
-//  pq.SetParaYield(qy,ly);
-//  cout<<yieldFile->Get("fit_fluc_gr")<<endl;
-//  if (yieldFile->Get("fit_fluc_gr"))
-//  {
-//    qy_fluc=(TGraph*)yieldFile->Get("fit_fluc_gr");
-//    cout<<"fluc inputted"<<endl;
-//    pq.SetParaFluc(qy_fluc);
-//  }
+  pq.SetParaYield(qy,ly);
+  cout<<yieldFile->Get("fit_fluc_gr")<<endl;
+  if (yieldFile->Get("fit_fluc_gr")) 
+  {
+    qy_fluc=(TGraph*)yieldFile->Get("fit_fluc_gr");
+    cout<<"fluc inputted"<<endl;
+    pq.SetParaFluc(qy_fluc);
+  }
   //pq.SetParaNr(para);
   double energy{0}, energy_rec, energy_rec_nozle;
   int nQuanta, Nex, Ni, Nph, Ne;
@@ -192,16 +177,10 @@ int main(int argc, char *argv[]) {
   tree->Branch("y", &y, "y/D");
   tree->Branch("x", &x, "x/D");
   tree->Branch("lifetime", &lifetime, "lifetime/D");
-//  tree->Branch("energyRec", &energy_rec, "energyRec/D");
-//  tree->Branch("energyRecNoZLE", &energy_rec_nozle, "energyRecNoZLE/D");
-  
-  double event_time;
-  if(supernova){
-      tree->Branch("event_time", &event_time, "event_time/D");
-      tree->Branch("total_time", &total_time, "total_time/I");//save the total_time which is used as the bin number 
-}
+  tree->Branch("energyRec", &energy_rec, "energyRec/D");
+  tree->Branch("energyRecNoZLE", &energy_rec_nozle, "energyRecNoZLE/D");
 
-  
+
 
 
   for (int i = 0; i < n; ++i) {
@@ -258,16 +237,6 @@ int main(int argc, char *argv[]) {
     //cout<<"s1 s2 "<<S1d<<" "<<S2d<<endl; 
     NphRec=0;
     NeRec=0;
-      
-    if(supernova){
-        
-        event_time = gRandom->Uniform(0., total_time);
-//        if(event_time<10.0 && event_time>9.0){
-//        std::cout<<"the event_time is "<<event_time<<std::endl;
-//        }
-    }
-//no mapname input so cannot do reconstruction
-/*
     if (S1d< fs1->GetMinimum(0,100) || S2d < fs2->GetMinimum(0,1000))
     {
       energy_rec = 0;
@@ -294,7 +263,6 @@ int main(int argc, char *argv[]) {
       Ly=NphRec/energy_rec;
       Qy=NeRec/energy_rec;
     }
- */
     tree->Fill();
   }
   fout->cd();

@@ -8,6 +8,7 @@
 #include <iostream>
 #include <fstream>
 #include <cmath>
+#include "math.h"
 
 #include "branches.hpp"
 #include "eff_far.hpp"
@@ -18,7 +19,6 @@
 #include "TNtupleD.h"
 
 void sort(TTree *tree, TString resorted_root);
-
 
 int main(int argc, char* argv[]){
     
@@ -60,40 +60,94 @@ int main(int argc, char* argv[]){
     t1->GetEntry(0);
     total_time_simu = branch1->get_total_time();
     
+    double num_of_simu = total_time_simu/20.0;
+    if((num_of_simu - floor(num_of_simu))>1e-3){
+        std::cout<<"Error!!! The 'num_of_simu' should be an integer."<<std::endl;
+        return 1;
+    }
+    
     TH1D * h_event_time = new TH1D("event_time", "event_time", total_time_simu, 0.0, total_time_simu);
     TH1D * h_detected_event_time =new  TH1D("detected_event_time", "detected_event_time", total_time_simu, 0.0, total_time_simu);
     
+    int s1_nbin = 100;
+    double s1_min = 0.0;
+    double s1_max = 6.0;
+    double s1_binwidth = (s1_max-s1_min)/s1_nbin;
+    
+    int s2_nbin = 100;
+    double s2_min = 0.0;
+    double s2_max = 600.0;
+    double s2_scale = 100.0;
+    double s2_binwidth = (s2_max-s2_min)/s2_nbin/s2_scale;
+    
+    
+    TH1D * h_s1 = new TH1D("s1_signal", "s1_signal", s1_nbin, s1_min, s1_max);
+    TH1D * h_s2 = new TH1D("s2_signal", "s2_signal", s2_nbin, s2_min/s2_scale, s2_max/s2_scale);
     TH2D * h_logs2s1_s1= new TH2D("logs2s1_s1", "", 100, 0.0, 150.0, 100, 1.0, 10.0);
     
-    
     int n_s1d = 0;
-    int n_s2d = 0;
+    int n_s1d_0 = 0;
+    int n_s1d_1 = 0;
+    int n_s1d_2 = 0;
+    int n_s1d_3 = 0;
+    
+    int n_s2d_0 = 0;
+    int n_s2d_20 = 0;
+    int n_s2d_40 = 0;
+    int n_s2d_60 = 0;
+    int n_s2d_80 = 0;
+    int n_s2d_100 = 0;
+    
     int n_s1d_s2d = 0;
+    
+    int n_s1d_s2d_2_60 = 0;
     
     for (int current_event = 0; current_event < num_of_events; current_event++) {
         
         // Get current event
         t1->GetEntry(current_event);
         
+        n_s1d++;
         
         if(branch1->get_S1d() > 0.0){
-            n_s1d++;
-        }
-        
+            n_s1d_0++;}
+        if(branch1->get_S1d() > 1.0){
+            n_s1d_1++;}
+        if(branch1->get_S1d() > 2.0){
+            n_s1d_2++;}
+        if(branch1->get_S1d() > 3.0){
+            n_s1d_3++;}
+            
         if(branch1->get_S2d() > 0.0){
-            n_s2d++;
+            n_s2d_0++;}
+        if(branch1->get_S2d() > 20.0){
+            n_s2d_20++;}
+        if(branch1->get_S2d() > 40.0){
+            n_s2d_40++;}
+        if(branch1->get_S2d() > 60.0){
+            n_s2d_60++;}
+        if(branch1->get_S2d() > 80.0){
+            n_s2d_80++;}
+        if(branch1->get_S2d() > 100.0){
+            n_s2d_100++;}
+        
+        if( (branch1->get_S1d() > 0.0) && (branch1->get_S2d() > 0.0)){
+            n_s1d_s2d++;
         }
         
-        if( (branch1->get_S2d() > 0.0) && (branch1->get_S2d() > 0.0)){
-            n_s1d_s2d++;
+        if( (branch1->get_S1d() > 2.0) && (branch1->get_S2d() > 60.0)){
+            n_s1d_s2d_2_60++;
         }
         
         //fill histogram
         h_event_time->Fill(branch1->get_event_time());
         
-        if((branch1->get_S1d() > 0.0) && (branch1->get_S2d() > 0.0)){
+        if((branch1->get_S1d() > 0.0) && (branch1->get_S2d() > 80.0)){
             h_detected_event_time->Fill(branch1->get_event_time());
         }
+        
+        h_s1->Fill(branch1->get_S1d());
+        h_s2->Fill(branch1->get_S2d()/s2_scale);
         
         double temp;
         temp = TMath::Log(branch1->get_S2d()/branch1->get_S1d());
@@ -110,6 +164,22 @@ int main(int argc, char* argv[]){
         
     h_event_time->SetDirectory(fs1);
     h_detected_event_time->SetDirectory(fs1);
+    
+    h_s1->Scale(1/s1_binwidth);
+    h_s1->Scale(1/num_of_simu);
+    
+    h_s2->Scale(1/s2_binwidth);
+    h_s2->Scale(1/num_of_simu);
+    
+    //double integral = h_s1->Integral("width");
+    //std::cout<<"*******************************"<<std::endl;
+    //std::cout<<"Integral  = "<<integral<<std::endl;
+    //std::cout<<"*******************************"<<std::endl;
+    
+    
+    
+    h_s1->SetDirectory(fs1);
+    h_s2->SetDirectory(fs1);
     h_logs2s1_s1->SetDirectory(fs1);
     
     fs1->Write();
@@ -118,30 +188,25 @@ int main(int argc, char* argv[]){
     std::cout<<"input "<< num_of_events <<" events "<<std::endl;
     //std::cout<<"detected "<< n_s1d <<" S1 signal "<<std::endl;
     //std::cout<<"detected "<< n_s2d <<" S2 signal "<<std::endl;
-    std::cout<<"detected "<< n_s1d_s2d <<" S1&S2 signal "<<std::endl;
-    std::cout<<"The average rate of detected events is "<< n_s1d_s2d/total_time_simu <<std::endl; 
+    std::cout<<"S1 Only"<<std::endl;
+    std::cout<<"detected "<< n_s1d/num_of_simu <<" S1>=0 events "<<std::endl;
+    std::cout<<"detected "<< n_s1d_0/num_of_simu <<" S1>0 events "<<std::endl;
+    std::cout<<"detected "<< n_s1d_1/num_of_simu <<" S1>1 events "<<std::endl;
+    std::cout<<"detected "<< n_s1d_2/num_of_simu <<" S1>2 events "<<std::endl;
+    std::cout<<"detected "<< n_s1d_3/num_of_simu <<" S1>3 events "<<std::endl;
     
-    Eff_far * eff_far1 = new Eff_far();
-    double eff_value;
+    std::cout<<"S2 Only"<<std::endl;
+    std::cout<<"detected "<< n_s2d_0/num_of_simu <<" S2>0 events "<<std::endl;
+    std::cout<<"detected "<< n_s2d_20/num_of_simu <<" S2>20 events "<<std::endl;
+    std::cout<<"detected "<< n_s2d_40/num_of_simu <<" S2>40 events "<<std::endl;
+    std::cout<<"detected "<< n_s2d_60/num_of_simu <<" S2>60 events "<<std::endl;
+    std::cout<<"detected "<< n_s2d_80/num_of_simu <<" S2>80 events "<<std::endl;
+    std::cout<<"detected "<< n_s2d_100/num_of_simu <<" S2>100 events "<<std::endl;
     
-    eff_value = eff_far1->trigger_effeciency(2, 1.0, n_s1d_s2d/total_time_simu);
-    std::cout<<"The trigger efficiency for it is "<<eff_value<<"with N_thr = 2, T_SN = 1s"<<std::endl;
+    std::cout<<"S1&S2"<<std::endl;
+    std::cout<<"detected "<< n_s1d_s2d_2_60/num_of_simu <<" S1>2, S2>60 events "<<std::endl;
     
-    eff_value = eff_far1->trigger_effeciency(3, 1.0, n_s1d_s2d/total_time_simu);
-    std::cout<<"The trigger efficiency for it is "<<eff_value<<"with N_thr = 3, T_SN = 1s"<<std::endl;
-    
-    eff_value = eff_far1->trigger_effeciency(4, 1.0, n_s1d_s2d/total_time_simu);
-    std::cout<<"The trigger efficiency for it is "<<eff_value<<"with N_thr = 4, T_SN = 1s"<<std::endl;
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+    //std::cout<<"The average rate of detected events is "<< n_s1d_s2d/total_time_simu <<std::endl; 
     
     return 1;
 }

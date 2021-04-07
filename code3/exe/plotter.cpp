@@ -119,15 +119,32 @@ int main(const int argc, const char * argv[]){
         
     }
     
-    //trigger efficiency vs rate with different N_thr
+    //differential rate vs S1 S2
     if(opt == 2){
 
-        TFile *fs = new TFile(loadpath + "eff.root", "r");
+        TString pdfpath = "/Users/jiaweiguo/Documents/GitHub/PandaX-4T_sdu/code3/plots/";
+        TString loadpath = "/Users/jiaweiguo/Documents/GitHub/PandaX-4T_sdu/code3/output/3003_test_10000.root";
         
+        TFile *fs = new TFile(loadpath, "r");
         
+        TH1D * plot_s1 = (TH1D *) fs->Get("s1_signal");
+        TH1D * plot_s2 = (TH1D *) fs->Get("s2_signal");
         
+        TCanvas * c0 = new TCanvas("c0", "", 800, 600);
+        plot_s1->GetXaxis()->SetTitle("S1d[PE]");
+        plot_s1->GetYaxis()->SetTitle("Differential Rate [count/tonne/PE]");
+        plot_s1->SetTitle("#scale[0.9]{#frac{#font[12]{d}R}{#font[12]{d}S1d} vs S1d}");
+        plot_s1->SetAxisRange(0.0, 10.0, "Y");
+        plot_s1->Draw();
+        c0->Print(pdfpath + "s1&s2.pdf(","pdf"); 
         
-        
+        TCanvas * c1 = new TCanvas("c1", "", 800, 600);
+        plot_s2->GetXaxis()->SetTitle("S2d[100PE]");
+        plot_s2->GetYaxis()->SetTitle("Differential Rate [count/tonne/100PE]");
+        plot_s2->SetTitle("#scale[0.9]{#frac{#font[12]{d}R}{#font[12]{d}S2d} vs S2d}");
+        plot_s2->SetAxisRange(0.0, 6.0, "Y");
+        plot_s2->Draw();
+        c1->Print(pdfpath + "s1&s2.pdf)","pdf"); 
         
         
         
