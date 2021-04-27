@@ -655,6 +655,236 @@ int main(const int argc, const char * argv[]){
         
     }
 
+    //flux_neuEnergy with interpolation
+    if(opt == 31){
+        
+        TString path = "/Users/jiaweiguo/Documents/GitHub/PandaX-4T_sdu/code1_SN/output/1st_second/";
+        TString path_s = "/Users/jiaweiguo/Documents/GitHub/PandaX-4T_sdu/code1_SN/plots/1st_second/";
+        
+        
+        TFile *fs = new TFile(path + "recE_spec.root", "r");
+        
+        TH1D * h1301e = (TH1D *) fs->Get("1301electron_flux");
+        TH1D * h1301antie = (TH1D *) fs->Get("1301anti-electron_flux");
+        TH1D * h1301x = (TH1D *) fs->Get("1301x_flux");
+        TH1D * h1302e = (TH1D *) fs->Get("1302electron_flux");
+        TH1D * h1302antie = (TH1D *) fs->Get("1302anti-electron_flux");
+        TH1D * h1302x = (TH1D *) fs->Get("1302x_flux");
+        TH1D * h1303e = (TH1D *) fs->Get("1303electron_flux");
+        TH1D * h1303antie = (TH1D *) fs->Get("1303anti-electron_flux");
+        TH1D * h1303x = (TH1D *) fs->Get("1303x_flux");
+        
+        TH1D * h2001e = (TH1D *) fs->Get("2001electron_flux");
+        TH1D * h2001antie = (TH1D *) fs->Get("2001anti-electron_flux");
+        TH1D * h2001x = (TH1D *) fs->Get("2001x_flux");
+        TH1D * h2002e = (TH1D *) fs->Get("2002electron_flux");
+        TH1D * h2002antie = (TH1D *) fs->Get("2002anti-electron_flux");
+        TH1D * h2002x = (TH1D *) fs->Get("2002x_flux");
+        TH1D * h2003e = (TH1D *) fs->Get("2003electron_flux");
+        TH1D * h2003antie = (TH1D *) fs->Get("2003anti-electron_flux");
+        TH1D * h2003x = (TH1D *) fs->Get("2003x_flux");
+        
+        TH1D * h3001e = (TH1D *) fs->Get("3001electron_flux");
+        TH1D * h3001antie = (TH1D *) fs->Get("3001anti-electron_flux");
+        TH1D * h3001x = (TH1D *) fs->Get("3001x_flux");
+        TH1D * h3002e = (TH1D *) fs->Get("3002electron_flux");
+        TH1D * h3002antie = (TH1D *) fs->Get("3002anti-electron_flux");
+        TH1D * h3002x = (TH1D *) fs->Get("3002x_flux");
+        TH1D * h3003e = (TH1D *) fs->Get("3003electron_flux");
+        TH1D * h3003antie = (TH1D *) fs->Get("3003anti-electron_flux");
+        TH1D * h3003x = (TH1D *) fs->Get("3003x_flux");
+        
+        TH1D * h5001e = (TH1D *) fs->Get("5001electron_flux");
+        TH1D * h5001antie = (TH1D *) fs->Get("5001anti-electron_flux");
+        TH1D * h5001x = (TH1D *) fs->Get("5001x_flux");
+        TH1D * h5002e = (TH1D *) fs->Get("5002electron_flux");
+        TH1D * h5002antie = (TH1D *) fs->Get("5002anti-electron_flux");
+        TH1D * h5002x = (TH1D *) fs->Get("5002x_flux");
+        TH1D * h5003e = (TH1D *) fs->Get("5003electron_flux");
+        TH1D * h5003antie = (TH1D *) fs->Get("5003anti-electron_flux");
+        TH1D * h5003x = (TH1D *) fs->Get("5003x_flux");
+        
+        h1301e->SetLineColor(3); h1301antie->SetLineColor(4); h1301x->SetLineColor(2);
+        h1302e->SetLineColor(3); h1302antie->SetLineColor(4); h1302x->SetLineColor(2);
+        h1303e->SetLineColor(3); h1303antie->SetLineColor(4); h1303x->SetLineColor(2);
+        h3001e->SetLineColor(3); h3001antie->SetLineColor(4); h3001x->SetLineColor(2);
+        h3002e->SetLineColor(3); h3002antie->SetLineColor(4); h3002x->SetLineColor(2);
+        h3003e->SetLineColor(3); h3003antie->SetLineColor(4); h3003x->SetLineColor(2);
+        h2001e->SetLineColor(3); h2001antie->SetLineColor(4); h2001x->SetLineColor(2);
+        h2002e->SetLineColor(3); h2002antie->SetLineColor(4); h2002x->SetLineColor(2);
+        h2003e->SetLineColor(3); h2003antie->SetLineColor(4); h2003x->SetLineColor(2);
+        h5001e->SetLineColor(3); h5001antie->SetLineColor(4); h5001x->SetLineColor(2);
+        h5002e->SetLineColor(3); h5002antie->SetLineColor(4); h5002x->SetLineColor(2);
+        h5003e->SetLineColor(3); h5003antie->SetLineColor(4); h5003x->SetLineColor(2);
+        
+        TLegend * leg = new TLegend(0.7, 0.7, 0.9, 0.9);
+        leg->AddEntry(h1301e, "#nu_{e}", "l");
+        leg->AddEntry(h1301antie, "#bar{#nu_{e}}", "l");
+        leg->AddEntry(h1301x, "#nu_{x}", "l");
+        
+        //gPad->SetLogy();
+        //gPad->SetLogx();
+        
+        TCanvas * c0 = new TCanvas("c0", "", 800, 600);
+        c0->SetLogy();
+        c0->SetLogx();
+        h1301e->GetXaxis()->SetTitle("E_{#nu} (MeV)");
+        h1301e->GetYaxis()->SetTitle("dN/dE_{#nu}  (cm^{-2}s^{-1}MeV^{-1}) ");
+        h1301e->SetTitle("13M_{#odot} , Z=0.02, t_{revive}=100ms");
+        h1301e->SetMaximum(1.0e11);
+        h1301e->GetXaxis()->SetRangeUser(1.0, 300.0);
+        h1301e->DrawClone("same");
+        h1301antie->DrawClone("same");
+        h1301x->DrawClone("same");
+        leg->DrawClone("same");
+        c0->Print(path_s + "flux_neuE_1.pdf(","pdf");//
+        TCanvas * c1 = new TCanvas("c1", "", 800, 600);
+        c1->SetLogy();
+        c1->SetLogx();
+        h1302e->GetXaxis()->SetTitle("E_{#nu} (MeV)");
+        h1302e->GetYaxis()->SetTitle("dN/dE_{#nu}  (cm^{-2}s^{-1}MeV^{-1}) ");
+        h1302e->SetTitle("13M_{#odot} , Z=0.02, t_{revive}=200ms");
+        h1302e->SetMaximum(1.0e11);
+        h1302e->GetXaxis()->SetRangeUser(1.0, 300.0);
+        h1302e->DrawClone("same");
+        h1302antie->DrawClone("same");
+        h1302x->DrawClone("same");
+        leg->DrawClone("same");
+        c1->Print(path_s + "flux_neuE_1.pdf","pdf");//
+        TCanvas * c2 = new TCanvas("c2", "", 800, 600);
+        c2->SetLogy();
+        c2->SetLogx();
+        h1303e->GetXaxis()->SetTitle("E_{#nu} (MeV)");
+        h1303e->GetYaxis()->SetTitle("dN/dE_{#nu}  (cm^{-2}s^{-1}MeV^{-1})");
+        h1303e->SetTitle("13M_{#odot} , Z=0.02, t_{revive}=300ms");
+        h1303e->SetMaximum(1.0e11);
+        h1303e->GetXaxis()->SetRangeUser(1.0, 300.0);
+        h1303e->DrawClone("same");
+        h1303antie->DrawClone("same");
+        h1303x->DrawClone("same");
+        leg->DrawClone("same");
+        c2->Print(path_s + "flux_neuE_1.pdf","pdf");//
+        TCanvas * c3 = new TCanvas("c3", "", 800, 600);
+        c3->SetLogy();
+        c3->SetLogx();
+        h2001e->GetXaxis()->SetTitle("E_{#nu} (MeV)");
+        h2001e->GetYaxis()->SetTitle("dN/dE_{#nu}  (cm^{-2}s^{-1}MeV^{-1}) ");
+        h2001e->SetTitle("20M_{#odot} , Z=0.02, t_{revive}=100ms");
+        h2001e->SetMaximum(1.0e11);
+        h2001e->GetXaxis()->SetRangeUser(1.0, 300.0);
+        h2001e->DrawClone("same");
+        h2001antie->DrawClone("same");
+        h2001x->DrawClone("same");
+        leg->DrawClone("same");
+        c3->Print(path_s + "flux_neuE_1.pdf","pdf");//
+        TCanvas * c4 = new TCanvas("c4", "", 800, 600);
+        c4->SetLogy();
+        c4->SetLogx();
+        h2002e->GetXaxis()->SetTitle("E_{#nu} (MeV)");
+        h2002e->GetYaxis()->SetTitle("dN/dE_{#nu}  (cm^{-2}s^{-1}MeV^{-1}) ");
+        h2002e->SetTitle("20M_{#odot} , Z=0.02, t_{revive}=200ms");
+        h2002e->SetMaximum(1.0e11);
+        h2002e->GetXaxis()->SetRangeUser(1.0, 300.0);
+        h2002e->DrawClone("same");
+        h2002antie->DrawClone("same");
+        h2002x->DrawClone("same");
+        leg->DrawClone("same");
+        c4->Print(path_s + "flux_neuE_1.pdf","pdf");//
+        TCanvas * c5 = new TCanvas("c5", "", 800, 600);
+        c5->SetLogy();
+        c5->SetLogx();
+        h2003e->GetXaxis()->SetTitle("E_{#nu} (MeV)");
+        h2003e->GetYaxis()->SetTitle("dN/dE_{#nu}  (cm^{-2}s^{-1}MeV^{-1}) ");
+        h2003e->SetTitle("20M_{#odot} , Z=0.02, t_{revive}=300ms");
+        h2003e->SetMaximum(1.0e11);
+        h2003e->GetXaxis()->SetRangeUser(1.0, 300.0);
+        h2003e->DrawClone("same");
+        h2003antie->DrawClone("same");
+        h2003x->DrawClone("same");
+        leg->DrawClone("same");
+        c5->Print(path_s + "flux_neuE_1.pdf","pdf");//
+        TCanvas * c6 = new TCanvas("c6", "", 800, 600);
+        c6->SetLogy();
+        c6->SetLogx();
+        h3001e->GetXaxis()->SetTitle("E_{#nu} (MeV)");
+        h3001e->GetYaxis()->SetTitle("dN/dE_{#nu}  (cm^{-2}s^{-1}MeV^{-1}) ");
+        h3001e->SetTitle("30M_{#odot} , Z=0.02, t_{revive}=100ms");
+        h3001e->SetMaximum(1.0e11);
+        h3001e->GetXaxis()->SetRangeUser(1.0, 300.0);
+        h3001e->DrawClone("same");
+        h3001antie->DrawClone("same");
+        h3001x->DrawClone("same");
+        leg->DrawClone("same");
+        c6->Print(path_s + "flux_neuE_1.pdf","pdf");//
+        TCanvas * c7 = new TCanvas("c7", "", 800, 600);
+        c7->SetLogy();
+        c7->SetLogx();
+        h3002e->GetXaxis()->SetTitle("E_{#nu} (MeV)");
+        h3002e->GetYaxis()->SetTitle("dN/dE_{#nu}  (cm^{-2}s^{-1}MeV^{-1}) ");
+        h3002e->SetTitle("30M_{#odot} , Z=0.02, t_{revive}=200ms");
+        h3002e->SetMaximum(1.0e11);
+        h3002e->GetXaxis()->SetRangeUser(1.0, 300.0);
+        h3002e->DrawClone("same");
+        h3002antie->DrawClone("same");
+        h3002x->DrawClone("same");
+        leg->DrawClone("same");
+        c7->Print(path_s + "flux_neuE_1.pdf","pdf");//
+        TCanvas * c8 = new TCanvas("c8", "", 800, 600);
+        c8->SetLogy();
+        c8->SetLogx();
+        h3003e->GetXaxis()->SetTitle("E_{#nu} (MeV)");
+        h3003e->GetYaxis()->SetTitle("dN/dE_{#nu}  (cm^{-2}s^{-1}MeV^{-1}) ");
+        h3003e->SetTitle("30M_{#odot} , Z=0.02, t_{revive}=300ms");
+        h3003e->SetMaximum(1.0e11);
+        h3003e->GetXaxis()->SetRangeUser(1.0, 300.0);
+        h3003e->DrawClone("same");
+        h3003antie->DrawClone("same");
+        h3003x->DrawClone("same");
+        leg->DrawClone("same");
+        c8->Print(path_s + "flux_neuE_1.pdf","pdf");//
+        TCanvas * c9 = new TCanvas("c9", "", 800, 600);
+        c9->SetLogy();
+        c9->SetLogx();
+        h5001e->GetXaxis()->SetTitle("E_{#nu} (MeV)");
+        h5001e->GetYaxis()->SetTitle("dN/dE_{#nu}  (cm^{-2}s^{-1}MeV^{-1}) ");
+        h5001e->SetTitle("50M_{#odot} , Z=0.02, t_{revive}=100ms");
+        h5001e->SetMaximum(1.0e11);
+        h5001e->GetXaxis()->SetRangeUser(1.0, 300.0);
+        h5001e->DrawClone("same");
+        h5001antie->DrawClone("same");
+        h5001x->DrawClone("same");
+        leg->DrawClone("same");
+        c9->Print(path_s + "flux_neuE_1.pdf","pdf");//
+        h5002e->GetXaxis()->SetTitle("E_{#nu} (MeV)");
+        h5002e->GetYaxis()->SetTitle("dN/dE_{#nu}  (cm^{-2}s^{-1}MeV^{-1}) ");
+        TCanvas * c10 = new TCanvas("c10", "", 800, 600);
+        c10->SetLogy();
+        c10->SetLogx();
+        h5002e->SetTitle("50M_{#odot} , Z=0.02, t_{revive}=200ms");
+        h5002e->SetMaximum(1.0e11);
+        h5002e->GetXaxis()->SetRangeUser(1.0, 300.0);
+        h5002e->DrawClone("same");
+        h5002antie->DrawClone("same");
+        h5002x->DrawClone("same");
+        leg->DrawClone("same");
+        c10->Print(path_s + "flux_neuE_1.pdf","pdf");//
+        TCanvas * c11 = new TCanvas("c11", "", 800, 600);
+        c11->SetLogy();
+        c11->SetLogx();
+        h5003e->GetXaxis()->SetTitle("E_{#nu} (MeV)");
+        h5003e->GetYaxis()->SetTitle("dN/dE_{#nu}  (cm^{-2}s^{-1}MeV^{-1}) ");
+        h5003e->SetTitle("50M_{#odot} , Z=0.02, t_{revive}=300ms");
+        h5003e->SetMaximum(1.0e11);
+        h5003e->GetXaxis()->SetRangeUser(1.0, 300.0);
+        h5003e->DrawClone("same");
+        h5003antie->DrawClone("same");
+        h5003x->DrawClone("same");
+        leg->DrawClone("same");
+        c11->Print(path_s + "flux_neuE_1.pdf)","pdf");//
+        
+    }
+    
+    
     //event rate_recoilEnergy with interpolation in the 1st second
     if(opt == 41){
         

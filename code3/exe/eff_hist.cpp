@@ -54,12 +54,15 @@ int main(){
         //std::cout<<"bin["<<i<<"] = "<<bin[i]<<std::endl;
     }
     
-    int rate15 =15;
+    double rate15 =15.0;
     
-    int rate1 = 1;
-    int rate10 =10;
-    int rate100 = 100;
-    int rate1000 = 1000;
+    double rate1 = 1.0;
+    double rate10 =10.0;
+    double rate100 = 100.0;
+    double rate1000 = 1000.0;
+    
+    double rate75 =75.0;
+    double rate30 = 30.0;
     
     double eff_min = TMath::Freq(3);//0.99865010;//3-sigma
     //0.99999971;//5-sigma
@@ -88,20 +91,25 @@ int main(){
     TH2D * eff1000 = new TH2D("eff1000", "eff1000", nbin, bin, nbin, n_thr_min, n_thr_max);
     //TH2D * far1000 = new TH2D("far1000", "far1000", nbin, bin, nbin, n_thr_min, n_thr_max);
     
+    TH2D * eff75 = new TH2D("eff75", "eff75", nbin, bin, nbin, n_thr_min, n_thr_max);
+    TH2D * eff30 = new TH2D("eff30", "eff30", nbin, bin, nbin, n_thr_min, n_thr_max);
+    
+    TH1D * possion30 = new TH1D("possion30", "possion30", nbin, bin);
     
     eff15->SetDirectory(fs1);
     far15->SetDirectory(fs1);
     
     eff1->SetDirectory(fs1);
-    //far1->SetDirectory(fs1);
     eff10->SetDirectory(fs1);
-    //far10->SetDirectory(fs1);
     eff100->SetDirectory(fs1);
-    //far100->SetDirectory(fs1);
     eff1000->SetDirectory(fs1);
-    //far1000->SetDirectory(fs1);
     
-    //for(int i=n_thr_min; i<n_thr_max; i++){
+    eff75->SetDirectory(fs1);
+    eff30->SetDirectory(fs1);
+    
+    possion30->SetDirectory(fs1);
+    
+    double possion_temp;
     for(int i=0; i<nbin; i++){
         
         n_thr = n_thr_min + ((double)n_thr_max-(double)n_thr_min)/nbin*i;
@@ -152,16 +160,26 @@ int main(){
             eff1000->SetBinContent(j, i, efficiency);
             //far1000->SetBinContent(j, i, false_alert);
             
+            //rate = 75
+            efficiency = eff_far1->trigger_effeciency(n_thr, time_window, rate75);
+            eff75->SetBinContent(j, i, efficiency);
+            
+            //rate = 30
+            efficiency = eff_far1->trigger_effeciency(n_thr, time_window, rate30);
+            eff30->SetBinContent(j, i, efficiency);
             
         }
+        
+        possion_temp = rate30*bin[i] - 3*TMath::Sqrt(rate30*bin[i]);
+        possion30->SetBinContent(i, possion_temp);
     }
     
     fs1->Write();
     delete eff_far1;
     
     plot();//draw the plots on pdf
-    contour_3sigma();
-    contour_5sigma();
+    //contour_3sigma();
+    //contour_5sigma();
     
     return 1;
 }
@@ -226,10 +244,10 @@ void plot(){
     far15->SetContour(4, far_con15);
     
     far15->DrawClone("CONT1");
-    latex15.DrawLatex( 0.05, 2.5,"0.1Hz");
-    latex15.DrawLatex( 0.15, 2.5,"1Hz");
-    latex15.DrawLatex( 0.5, 2.5,"10Hz");
-    latex15.DrawLatex( 1.5, 2.5,"100Hz");
+    latex15.DrawLatex( 0.05, 3.0,"0.1/week");
+    latex15.DrawLatex( 0.15, 3.0,"1/week");
+    latex15.DrawLatex( 0.5, 3.0,"10/week");
+    latex15.DrawLatex( 1.5, 3.0,"100/week");
     
     c15_3->Print(pdfpath + "far.pdf)","pdf");
     
@@ -387,12 +405,21 @@ void contour_3sigma(){
     TH2D * eff10 = (TH2D *) fs->Get("eff10");
     TH2D * eff1 = (TH2D *) fs->Get("eff1");
     TH2D * far = (TH2D *) fs->Get("far15");
+    TH2D * eff75 = (TH2D *) fs->Get("eff75");
+    TH2D * eff30 = (TH2D *) fs->Get("eff30");
+    
+    TH1D * possion30 = (TH1D *) fs->Get("possion30");
     
     eff1000->SetLineColor(1);
     eff100->SetLineColor(6);
-    eff10->SetLineColor(7);
-    eff1->SetLineColor(4);
+    eff10->SetLineColor(4);
+    eff1->SetLineColor(7);
     far->SetLineColor(2);
+    eff75->SetLineColor(3);
+    eff30->SetLineColor(28);
+    
+    possion30->SetLineColor(28);
+    possion30->SetLineStyle(2);
     
     double contours1[1] = {TMath::Freq(3)};
     double contours2[1] = {1.0};
@@ -401,16 +428,20 @@ void contour_3sigma(){
     eff10->SetContour(1, contours1);
     eff1->SetContour(1, contours1);
     far->SetContour(1, contours2);
+    eff75->SetContour(1, contours1);
+    eff30->SetContour(1, contours1);
     
     TLegend * leg = new TLegend(0.1, 0.7, 0.3, 0.9);
     leg->AddEntry(eff1000, "1000Hz", "l");
     leg->AddEntry(eff100, "100Hz", "l");
+    leg->AddEntry(eff75, "75Hz", "l");
+    leg->AddEntry(eff30, "30Hz", "l");
     leg->AddEntry(eff10, "10Hz", "l");
     leg->AddEntry(eff1, "1Hz", "l");
     leg->AddEntry(far, "FAR=1/week ", "l");
     
-    TCanvas * c1 = new TCanvas("c1", "", 800, 600);
-    c1->SetLogx();
+    TCanvas * c0 = new TCanvas("c0", "", 800, 600);
+    c0->SetLogx();
     eff1000->GetXaxis()->SetTitle("T_{SN} (s)");
     eff1000->GetYaxis()->SetTitle("N_{thr}");
     eff1000->SetTitle("3#sigma Trigger Efficiency & False Alert Rate ");
@@ -421,13 +452,13 @@ void contour_3sigma(){
     eff10->Draw("CONT3 SAME");
     eff1->Draw("CONT3 SAME");
     far->Draw("CONT3 SAME");
+    eff75->Draw("CONT3 SAME");
+    eff30->Draw("CONT3 SAME");
     
     leg->Draw("SAME");
+    possion30->Draw("SAME");
     
-    //latex.DrawLatex( 0.01, 3.5,"1000Hz");
-    //latex.DrawLatex( 0.08, 2.5,"100Hz");
-    
-    c1->Print(pdfpath + "3sigma.pdf","pdf");   
+    c0->Print(pdfpath + "3sigma.pdf","pdf");   
     
 }
 
@@ -446,12 +477,16 @@ void contour_5sigma(){
     TH2D * eff10 = (TH2D *) fs->Get("eff10");
     TH2D * eff1 = (TH2D *) fs->Get("eff1");
     TH2D * far = (TH2D *) fs->Get("far15");
+    TH2D * eff75 = (TH2D *) fs->Get("eff75");
+    TH2D * eff30 = (TH2D *) fs->Get("eff30");
     
     eff1000->SetLineColor(1);
     eff100->SetLineColor(6);
-    eff10->SetLineColor(7);
-    eff1->SetLineColor(4);
+    eff10->SetLineColor(4);
+    eff1->SetLineColor(7);
     far->SetLineColor(2);
+    eff75->SetLineColor(3);
+    eff30->SetLineColor(28);
     
     double contours1[1] = {TMath::Freq(5)};
     double contours2[1] = {1.0};
@@ -460,10 +495,14 @@ void contour_5sigma(){
     eff10->SetContour(1, contours1);
     eff1->SetContour(1, contours1);
     far->SetContour(1, contours2);
+    eff75->SetContour(1, contours1);
+    eff30->SetContour(1, contours1);
     
     TLegend * leg = new TLegend(0.1, 0.7, 0.3, 0.9);
     leg->AddEntry(eff1000, "1000Hz", "l");
     leg->AddEntry(eff100, "100Hz", "l");
+    //leg->AddEntry(eff75, "75Hz", "l");
+    //leg->AddEntry(eff30, "30Hz", "l");
     leg->AddEntry(eff10, "10Hz", "l");
     leg->AddEntry(eff1, "1Hz", "l");
     leg->AddEntry(far, "FAR=1/week ", "l");
@@ -480,6 +519,8 @@ void contour_5sigma(){
     eff10->Draw("CONT3 SAME");
     eff1->Draw("CONT3 SAME");
     far->Draw("CONT3 SAME");
+    //eff75->Draw("CONT3 SAME");
+    //eff30->Draw("CONT3 SAME");
     
     leg->Draw("SAME");
     

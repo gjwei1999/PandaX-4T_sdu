@@ -132,7 +132,7 @@ int main(const int argc, const char * argv[]){
         
         TCanvas * c0 = new TCanvas("c0", "", 800, 600);
         plot_s1->GetXaxis()->SetTitle("S1d[PE]");
-        plot_s1->GetYaxis()->SetTitle("Differential Rate [count/tonne/PE]");
+        plot_s1->GetYaxis()->SetTitle("Differential Rate [count/ton/PE]");
         plot_s1->SetTitle("#scale[0.9]{#frac{#font[12]{d}R}{#font[12]{d}S1d} vs S1d}");
         plot_s1->SetAxisRange(0.0, 10.0, "Y");
         plot_s1->Draw();
@@ -140,7 +140,7 @@ int main(const int argc, const char * argv[]){
         
         TCanvas * c1 = new TCanvas("c1", "", 800, 600);
         plot_s2->GetXaxis()->SetTitle("S2d[100PE]");
-        plot_s2->GetYaxis()->SetTitle("Differential Rate [count/tonne/100PE]");
+        plot_s2->GetYaxis()->SetTitle("Differential Rate [count/ton/100PE]");
         plot_s2->SetTitle("#scale[0.9]{#frac{#font[12]{d}R}{#font[12]{d}S2d} vs S2d}");
         plot_s2->SetAxisRange(0.0, 6.0, "Y");
         plot_s2->Draw();
