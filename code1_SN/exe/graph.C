@@ -43,6 +43,8 @@ int main(const int argc, const char * argv[]){
     
     TString loadpath1 = "/Users/jiaweiguo/Documents/GitHub/PandaX-4T_sdu/code1_SN/output/1st_second/";
         
+    TString loadpath2 = "/Users/jiaweiguo/Documents/GitHub/PandaX-4T_sdu/code1_SN/output/7s/";
+    
     
     //flux vs time
     if(opt == 1){
@@ -1361,7 +1363,7 @@ int main(const int argc, const char * argv[]){
         h1301->GetXaxis()->SetTitle("E_{r} (keV)");
         h1301->GetYaxis()->SetTitle("Event rate (ton^{-1}s^{-1}keV^{-1})");
         h1301->SetTitle("Total Event Rate");
-        h1301->SetMaximum(16.0);
+        h1301->SetMaximum(10.0);
         h1301->DrawClone("Hist same");
         h1302->DrawClone("Hist same");
         h1303->DrawClone("Hist same");
@@ -1381,7 +1383,7 @@ int main(const int argc, const char * argv[]){
         h1301->GetXaxis()->SetRangeUser(0.0, 10.0);
         h1301->GetYaxis()->SetTitle("Event rate (ton^{-1}s^{-1}keV^{-1})");
         h1301->SetTitle("Total Event Rate");
-        h1301->SetMaximum(16.0);
+        h1301->SetMaximum(10.0);
         h1301->DrawClone("Hist same");
         h1302->DrawClone("Hist same");
         h1303->DrawClone("Hist same");
@@ -1485,8 +1487,108 @@ int main(const int argc, const char * argv[]){
         leg->DrawClone("same");
         c1->Print(savepath + "total_rate_recoilE.pdf)","pdf");//
         
+    }
+    
+    
+    if(opt==52){
+        
+        TFile *fs = new TFile(loadpath2 + "recE_spec_total.root", "r");
+        
+        TH1D * h1301 = (TH1D *) fs->Get("1301_total_recoil");
+        TH1D * h1302 = (TH1D *) fs->Get("1302_total_recoil");
+        TH1D * h1303 = (TH1D *) fs->Get("1303_total_recoil");
+        TH1D * h2001 = (TH1D *) fs->Get("2001_total_recoil");
+        TH1D * h2002 = (TH1D *) fs->Get("2002_total_recoil");
+        TH1D * h2003 = (TH1D *) fs->Get("2003_total_recoil");
+        TH1D * h3001 = (TH1D *) fs->Get("3001_total_recoil");
+        TH1D * h3002 = (TH1D *) fs->Get("3002_total_recoil");
+        TH1D * h3003 = (TH1D *) fs->Get("3003_total_recoil");
+        TH1D * h5001 = (TH1D *) fs->Get("5001_total_recoil");
+        TH1D * h5002 = (TH1D *) fs->Get("5002_total_recoil");
+        TH1D * h5003 = (TH1D *) fs->Get("5003_total_recoil");
+        
+        
+        h1301->SetLineColor(3); h1302->SetLineColor(3); h1303->SetLineColor(3);
+        h2001->SetLineColor(4); h2002->SetLineColor(4); h2003->SetLineColor(4);
+        h3001->SetLineColor(2); h3002->SetLineColor(2); h3003->SetLineColor(2);
+        h5001->SetLineColor(6); h5002->SetLineColor(6); h5003->SetLineColor(6);
+        
+        h1301->SetLineStyle(1); h1302->SetLineStyle(2); h1303->SetLineStyle(4);
+        h2001->SetLineStyle(1); h2002->SetLineStyle(2); h2003->SetLineStyle(4);
+        h3001->SetLineStyle(1); h3002->SetLineStyle(2); h3003->SetLineStyle(4);
+        h5001->SetLineStyle(1); h5002->SetLineStyle(2); h5003->SetLineStyle(4);
+        
+        
+        TLegend * leg = new TLegend(0.7, 0.7, 0.9, 0.9);
+        leg->AddEntry(h1301, "13M, t_{revive}=100ms", "l");
+        leg->AddEntry(h1302, "13M, t_{revive}=200ms", "l");
+        leg->AddEntry(h1303, "13M, t_{revive}=300ms", "l");
+        leg->AddEntry(h2001, "20M, t_{revive}=100ms", "l");
+        leg->AddEntry(h2002, "20M, t_{revive}=200ms", "l");
+        leg->AddEntry(h2003, "20M, t_{revive}=300ms", "l");
+        leg->AddEntry(h3001, "30M, t_{revive}=100ms", "l");
+        leg->AddEntry(h3002, "30M, t_{revive}=200ms", "l");
+        leg->AddEntry(h3003, "30M, t_{revive}=300ms", "l");
+        leg->AddEntry(h5001, "50M, t_{revive}=100ms", "l");
+        leg->AddEntry(h5002, "50M, t_{revive}=200ms", "l");
+        leg->AddEntry(h5003, "50M, t_{revive}=300ms", "l");
+        
+        TCanvas * c0 = new TCanvas("c0", "", 800, 600);
+        //c0->SetLogy();
+        c0->SetLogx();
+        h1301->GetXaxis()->SetTitle("E_{r} (keV)");
+        h1301->GetYaxis()->SetTitle("Events in 7s (ton^{-1}keV^{-1})");
+        h1301->SetTitle("Events in 7s");
+        h1301->SetMaximum(10.0);
+        h1301->DrawClone("Hist same");
+        h1302->DrawClone("Hist same");
+        h1303->DrawClone("Hist same");
+        h2001->DrawClone("Hist same");
+        h2002->DrawClone("Hist same");
+        h2003->DrawClone("Hist same");
+        h3001->DrawClone("Hist same");
+        h3002->DrawClone("Hist same");
+        h3003->DrawClone("Hist same");
+        h5001->DrawClone("Hist same");
+        h5002->DrawClone("Hist same");
+        h5003->DrawClone("Hist same");
+        leg->DrawClone("same");
+        c0->Print(savepath + "7s/total_rate_recoilE.pdf(","pdf");//
+        TCanvas * c1 = new TCanvas("c1", "", 800, 600);
+        h1301->GetXaxis()->SetTitle("E_{r} (keV)");
+        h1301->GetXaxis()->SetRangeUser(0.0, 10.0);
+        h1301->GetYaxis()->SetTitle("Events in 7s (ton^{-1}keV^{-1})");
+        h1301->SetTitle("Events in 7s");
+        h1301->SetMaximum(10.0);
+        h1301->DrawClone("Hist same");
+        h1302->DrawClone("Hist same");
+        h1303->DrawClone("Hist same");
+        h2001->DrawClone("Hist same");
+        h2002->DrawClone("Hist same");
+        h2003->DrawClone("Hist same");
+        h3001->DrawClone("Hist same");
+        h3002->DrawClone("Hist same");
+        h3003->DrawClone("Hist same");
+        h5001->DrawClone("Hist same");
+        h5002->DrawClone("Hist same");
+        h5003->DrawClone("Hist same");
+        leg->DrawClone("same");
+        c1->Print(savepath + "7s/total_rate_recoilE.pdf","pdf");//
+        
+        h3003->SetLineStyle(1);
+        
+        TCanvas * c2 = new TCanvas("c2", "", 800, 600);
+        h3003->GetXaxis()->SetTitle("E_{r} (keV)");
+        h3003->GetXaxis()->SetRangeUser(0.0, 10.0);
+        h3003->GetYaxis()->SetTitle("Events in 7s (ton^{-1}keV^{-1})");
+        h3003->SetTitle("Events in 7s");
+        h3003->SetMaximum(10.0);
+        h3003->DrawClone("Hist same");
+        c2->Print(savepath + "7s/total_rate_recoilE.pdf)","pdf");//
+        
         
     }
+    
     
     if(opt==6){
         
@@ -1548,8 +1650,18 @@ int main(const int argc, const char * argv[]){
         h5002->DrawClone("Hist same");
         h5003->DrawClone("Hist same");
         leg->DrawClone("same");
-        c0->Print(savepath + "total_eventrate_time.pdf","pdf");//
+        c0->Print(savepath + "total_eventrate_time.pdf(","pdf");//
         
         
+        
+        h3003->SetLineStyle(1);
+        
+        TCanvas * c1 = new TCanvas("c1", "", 800, 600);
+        c1->SetLogx();
+        h1301->GetXaxis()->SetTitle("t (s)");
+        h1301->GetYaxis()->SetTitle("Event rate (ton^{-1}s^{-1})");
+        h3003->SetTitle("Event Rate");
+        h3003->DrawClone("Hist same");
+        c1->Print(savepath + "total_eventrate_time.pdf)","pdf");//
     }
 }

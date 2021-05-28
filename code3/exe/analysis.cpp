@@ -113,7 +113,7 @@ int main(int argc, char* argv[]){
             n_s1d_0++;}
         if(branch1->get_S1d() > 1.0){
             n_s1d_1++;}
-        if(branch1->get_S1d() > 2.0){
+        if(branch1->get_S1d() >= 2.0){
             n_s1d_2++;}
         if(branch1->get_S1d() > 3.0){
             n_s1d_3++;}
@@ -124,7 +124,7 @@ int main(int argc, char* argv[]){
             n_s2d_20++;}
         if(branch1->get_S2d() > 40.0){
             n_s2d_40++;}
-        if(branch1->get_S2d() > 60.0){
+        if(branch1->get_S2d() >= 60.0){
             n_s2d_60++;}
         if(branch1->get_S2d() > 80.0){
             n_s2d_80++;}

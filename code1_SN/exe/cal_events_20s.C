@@ -17,6 +17,12 @@ int main(){
     TString loadpath = "/Users/jiaweiguo/Documents/GitHub/PandaX-4T_sdu/code1_SN/output/";
     TFile *fs = new TFile(loadpath + "recE_spec_total.root", "r");
     
+    TString loadpath1 = "/Users/jiaweiguo/Documents/GitHub/PandaX-4T_sdu/code1_SN/output/1st_second/";
+    TFile *fs1 = new TFile(loadpath1 + "recE_spec_total.root", "r");
+    
+    TString loadpath7 = "/Users/jiaweiguo/Documents/GitHub/PandaX-4T_sdu/code1_SN/output/7s/";
+    TFile *fs7 = new TFile(loadpath7 + "recE_spec_total.root", "r");
+    
     int bin_num_left;
     int bin_num_right;
     double num_of_events;
@@ -126,11 +132,29 @@ int main(){
     std::cout<<"For PandaX-4T, the number of events in 20s is  "<< 4*num_of_events<<std::endl;
     std::cout<<" "<<std::endl;
     */
+ 
+ 
+    TH1D * h3003_1 = (TH1D *) fs1->Get("3003_total_recoil");
+    num_of_events = h3003_1->Integral("width");
+    
+    std::cout<<"The num of events in first 1s for 3003 is "<<num_of_events<<" ton-1 s-1"<<std::endl;
+    std::cout<<"For PandaX-4T, the number of events in first 1s is  "<< 4*num_of_events<<std::endl;
+    std::cout<<" "<<std::endl;
+ 
+    
+    TH1D * h3003_7 = (TH1D *) fs7->Get("3003_total_recoil");
+    num_of_events = h3003_7->Integral("width");
+    
+    std::cout<<"The num of events in 7s for 3003 is "<<num_of_events<<" ton-1"<<std::endl;
+    std::cout<<"For PandaX-4T, the number of events in 7s is  "<< 4*num_of_events<<std::endl;
+    std::cout<<" "<<std::endl;
+    
+    
     //3003
     TH1D * h3003 = (TH1D *) fs->Get("3003_total_recoil");
     num_of_events = h3003->Integral("width");
     
-    std::cout<<"The num of events in 20s for 3003 is "<<num_of_events<<" ton-1 s-1"<<std::endl;
+    std::cout<<"The num of events in 20s for 3003 is "<<num_of_events<<" ton-1"<<std::endl;
     std::cout<<"For PandaX-4T, the number of events in 20s is  "<< 4*num_of_events<<std::endl;
     std::cout<<" "<<std::endl;
  

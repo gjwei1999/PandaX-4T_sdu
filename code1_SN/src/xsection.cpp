@@ -42,13 +42,33 @@ double Xsection::xs_recE(double neu_energy, double recoil_energy){//neu_energy i
     //unit: MeV^{-3}
     
     //convert MeV^{-2} to cm^2
-    xs_recE = xs_recE * 0.197e-10 * 0.197e-10;
+    xs_recE = xs_recE * 0.197e-10 * 0.197e-10 * form_factor(recoil_energy)* form_factor(recoil_energy);
     //unit: cm^2/MeV
     
     return xs_recE;
 
 }
 
-
+double Xsection::form_factor(double recoil_energy){//recoil_energy in keV
+    
+    double q2 = 2 * mass_xenon * recoil_energy / 1000.0;//MeV*MeV
+    double q = TMath::Sqrt(q2);//MeV
+    
+    double a = 0.52;//fm
+    double c = 1.23*TMath::Power(131.293, 1.0/3.0) - 0.6;//fm
+    double s = 0.9;//fm
+    
+    double rn2 = c*c +7.0/3.0*M_PI*M_PI*a*a- 5*s*s;//fm*fm
+    double rn = TMath::Sqrt(rn2);//fm
+    
+    double qrn = q*rn * 1.0e-9 / 1.97e-7;
+    
+    double j1 = TMath::Sin(qrn)/(qrn)/(qrn) - TMath::Cos(qrn)/(qrn);
+    double qs = q*s * 1.0e-9 / 1.97e-7;
+    
+    double ffacotr = 3 * j1 / (qrn) * TMath::Exp(-(qs)*(qs)/2.0);
+    
+    return ffacotr;
+}
 
 

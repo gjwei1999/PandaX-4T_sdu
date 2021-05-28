@@ -46,7 +46,7 @@
     "ifSN": true,
     "supernova":
     {
-     "events_in_20s": 47,
+     "events_in_20s": 10,
      "time_spectrum": "/Users/jiaweiguo/Documents/GitHub/PandaX-4T_sdu/code1_SN/output/time_spec_total.root",
      "time_spectrumName": "3003total"
     }, 
