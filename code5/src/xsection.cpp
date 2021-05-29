@@ -31,7 +31,7 @@ double Xsection::cross_section(double neu_energy){
     double xsection_neuE = G_f*G_f * ( Z*(4.0*sin2theta-1.0)+N )*( Z*(4.0*sin2theta-1.0)+N ) * neu_energy * neu_energy /8.0/M_PI;
                  //unit: MeV^{-2}
     //convert MeV^{-2} to cm^2
-    xsection_neuE = xsection_neuE * 0.197e-10 * 0.197e-10 * form_factor(recoil_energy)* form_factor(recoil_energy);;
+    xsection_neuE = xsection_neuE * 0.197e-10 * 0.197e-10;
     
     return xsection_neuE;
 }
@@ -42,7 +42,7 @@ double Xsection::xs_recE(double neu_energy, double recoil_energy){//neu_energy i
     //unit: MeV^{-3}
     
     //convert MeV^{-2} to cm^2
-    xs_recE = xs_recE * 0.197e-10 * 0.197e-10;
+    xs_recE = xs_recE * 0.197e-10 * 0.197e-10 * form_factor(recoil_energy)* form_factor(recoil_energy);
     //unit: cm^2/MeV
     
     return xs_recE;
