@@ -10,3 +10,5 @@ code2 simulates the detection process and generates S1 & S2 signals.
 code3 includes analysis for code2 and research for SN early warning algorithm.
 
 code4 combines code1_SN, code2, and code3.
+
+code5 for adaptive algorithm simulation(algorithm upgrade).
