@@ -35,7 +35,7 @@ int main(int argc, char* argv[]){
     
     int num_of_simu = 1000;
     double T_sn = 1.0;
-    double t_refresh = 0.01;
+    
     int N_thr = 5;
     
     double dis_min = 10.0;
@@ -60,7 +60,7 @@ int main(int argc, char* argv[]){
         events_in_20s = class_spectrum->get_events();
         
         SNmc->set_num_simu(num_of_simu);
-        SNmc->run_mc(para_file, num_of_simu, events_in_20s);
+        SNmc->run_mc(para_file, events_in_20s);
         trigger_eff = SNmc->time_window(T_sn, t_refresh, N_thr);
         
         std::cout<<std::endl;

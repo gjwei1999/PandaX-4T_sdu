@@ -16,7 +16,7 @@ void Signal_mc::set_num_simu(int input_num_of_simu){
 }
 
 
-void Signal_mc::run_mc(TString para_file, int num_of_simulation, int events_in_20s){
+void Signal_mc::run_mc(TString para_file, int events_in_20s){
 
   ifstream fpar(para_file.Data());
   int n;
@@ -40,10 +40,10 @@ void Signal_mc::run_mc(TString para_file, int num_of_simulation, int events_in_2
       time_spec->SetDirectory(0);
       fs.Close();
       
-      total_time = num_of_simulation * 20.0;//20 seconds for every SN burst simulation 
+      total_time = 20.0; //num_of_simulation * 20.0;//20 seconds for every SN burst simulation 
       num_event = events_in_20s;
 
-      n = num_of_simulation * num_event;//num of events
+      n = num_event; //num_of_simulation * num_event;//num of events
 }
 
 
@@ -122,7 +122,7 @@ void Signal_mc::run_mc(TString para_file, int num_of_simulation, int events_in_2
   gRandom->SetSeed(0);
   double lifetime;
   std::vector<double> lifetimes=j["elife"]["lifetime"].get<std::vector<double> >();
-  std::vector<double> durations=j["elife"]["duration"].get<std::vector<double> >();         //duration 是什么
+  std::vector<double> durations=j["elife"]["duration"].get<std::vector<double> >();        
   TH1D *th_duration = new TH1D("dur", "Duration", int(durations.size()), 0, int(durations.size()));
   for (int i = 0; i < int(durations.size()); ++i) {
     th_duration->SetBinContent(i + 1, durations[i]);
@@ -270,8 +270,8 @@ void Signal_mc::run_mc(TString para_file, int num_of_simulation, int events_in_2
       
     if(supernova){
         
-        k = i/num_event;
-        event_time = time_spec->GetRandom() + k*20.0;
+        //k = i/num_event;
+        event_time = time_spec->GetRandom(); //+ k*20.0;
 //        if(event_time<10.0 && event_time>9.0){
 //        std::cout<<"the event_time is "<<event_time<<std::endl;
 //        }
@@ -331,6 +331,10 @@ void Signal_mc::run_mc(TString para_file, int num_of_simulation, int events_in_2
 
 }
 
+
+
+
+
 double Signal_mc::time_window(double T_sn, double t_refresh, int N_thr){
      
     
@@ -365,19 +369,19 @@ double Signal_mc::time_window(double T_sn, double t_refresh, int N_thr){
         sorted_tree->GetEntry(current_event);
         
         
-        if(branch1->get_S1d() > 0.0){
+        if(branch1->get_S1d() > 2.0){
             n_s1d++;}
         
-        if(branch1->get_S2d() > 0.0){
+        if(branch1->get_S2d() > 60.0){
             n_s2d++;}
         
-        if((branch1->get_S2d() > 0.0) && (branch1->get_S2d() > 0.0)){
+        if((branch1->get_S2d() > 2.0) && (branch1->get_S2d() > 60.0)){
             n_s1d_s2d++;}
         
         //fill histogram
         h_event_time->Fill(branch1->get_event_time());
         
-        if((branch1->get_S1d() > 0.0) && (branch1->get_S2d() > 0.0)){
+        if((branch1->get_S1d() > 2.0) && (branch1->get_S2d() > 60.0)){
             h_detected_event_time->Fill(branch1->get_event_time());
         }
         
@@ -397,94 +401,97 @@ double Signal_mc::time_window(double T_sn, double t_refresh, int N_thr){
     result_file->Write();
     
     double temp;
-        temp = TMath::Log(branch1->get_S2d()/branch1->get_S1d());
-        h_logs2s1_s1->Fill(branch1->get_S1d(), temp);
+    temp = TMath::Log(branch1->get_S2d()/branch1->get_S1d());
+    h_logs2s1_s1->Fill(branch1->get_S1d(), temp);
         
         
         
-        //sliding time window
-        int event_in_win = 0;//num of events in time window
-        double eventT;
-        double win_left;//lower limit of time window
-        double win_right;// upper limit of time window
-        double next_win_left;//lower limit of next time window
-        bool find_next_win = true;//whether to find next window
-        int k = 0;// the kth simulation
-        int m = 0;//the mth sliding window
-        int index_next_win = 0;//event index for next window left
-        int current_event = 0;//index for curent event
-        int alert_sent = 0;//num of sent alert
+    //sliding time window
+    int event_in_win = 0;//num of events in time window
+    double eventT;
+    double win_left;//lower limit of time window
+    double win_right;// upper limit of time window
+    double next_win_left;//lower limit of next time window
+    bool find_next_win = true;//whether to find next window
+    int k = 0;// the kth simulation
+    int m = 0;//the mth sliding window
+    int index_next_win = 0;//event index for next window left
+    int current_event = 0;//index for curent event
+    int alert_sent = 0;//num of sent alert
         
-        while(current_event < num_of_events){
+    double t_0 = gRandom->Uniform(0., T_sn);
+        
+        
+    while(current_event < num_of_events){
             
-            sorted_tree->GetEntry(current_event);
-            eventT = branch1->get_event_time();
+        sorted_tree->GetEntry(current_event);
+        eventT = branch1->get_event_time();
+        
+        win_left = 20.0*k + t_refresh*m;
+        win_right = win_left + T_sn;
+        next_win_left = win_left + t_refresh;
+        
+        
+        if(current_event%100 ==0){
+                //std::cout<<"Now: running "<<current_event<<"th event"<<std::endl;
+        }
             
-            win_left = 20.0*k + t_refresh*m;
-            win_right = win_left + T_sn;
-            next_win_left = win_left + t_refresh;
+            
+        if(eventT < win_left){
+            current_event++;
+            continue;//go to next loop
+        }
             
             
-            if(current_event%100 ==0){
-                    //std::cout<<"Now: running "<<current_event<<"th event"<<std::endl;
+        if((eventT < win_right) && ( eventT >= win_left)){
+            if((branch1->get_S2d() > 0.0) && (branch1->get_S2d() > 0.0)){
+                event_in_win++;
             }
+        }
             
-            
-            if(eventT < win_left){
-                current_event++;
-                continue;//go to next loop
+        //find next window
+        if(find_next_win){
+            if(eventT > next_win_left){
+                index_next_win = current_event;
+                find_next_win = false;
+                //std::cout<<"The next window left corresponds to "<<index_next_win<<"th event."<<std::endl;
             }
-            
-            
-            if((eventT < win_right) && ( eventT >= win_left)){
-                if((branch1->get_S2d() > 0.0) && (branch1->get_S2d() > 0.0)){
-                    event_in_win++;
-                }
-            }
-            
-            //find next window
-            if(find_next_win){
-                if(eventT > next_win_left){
-                    index_next_win = current_event;
-                    find_next_win = false;
-                    //std::cout<<"The next window left corresponds to "<<index_next_win<<"th event."<<std::endl;
-                }
-            }
+        }
             
             
                 
-            if(eventT >= win_right){
-                
-                if(event_in_win > N_thr){
-                    event_in_win = 0;//reset the value
-                    alert_sent++;
-                    k++;//go to next 20s-simulation;
-                    m = 0;//reset m
-                    find_next_win = true;
-                }
-                else{
-                    event_in_win = 0;//reset the value
-                    m++;//go to next window
-                    current_event = index_next_win;
-                    find_next_win = true;
-                }
-                
+        if(eventT >= win_right){
+            
+            if(event_in_win > N_thr){
+                event_in_win = 0;//reset the value
+                alert_sent++;
+                k++;//go to next 20s-simulation;
+                m = 0;//reset m
+                find_next_win = true;
             }
             else{
-                current_event++;
+                event_in_win = 0;//reset the value
+                m++;//go to next window
+                current_event = index_next_win;
+                find_next_win = true;
             }
-            
-            
-            
+                
         }
+        else{
+            current_event++;
+        }
+            
+            
+            
+    }
         
-        double trigger_eff = double(alert_sent)/num_of_simu;
+    double trigger_eff = double(alert_sent)/num_of_simu;
         
-        std::cout<<alert_sent<<" alerts are sent in "<<num_of_simu<<" simulations"<<std::endl;
-        std::cout<<"The trigger efficiency is "<<trigger_eff<<std::endl;
+    std::cout<<alert_sent<<" alerts are sent in "<<num_of_simu<<" simulations"<<std::endl;
+    std::cout<<"The trigger efficiency is "<<trigger_eff<<std::endl;
         
-        delete branch1;
-        load_file->Close();
+    delete branch1;
+    load_file->Close();
         
-        return trigger_eff;
+    return trigger_eff;
 }

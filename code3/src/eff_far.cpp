@@ -28,7 +28,7 @@ double Eff_far::trigger_effeciency(int num_thr, double time_sn, double rate_sn){
 double Eff_far::false_alert_rate(int num_thr, double time_sn){
     
     double far = 0.0;
-    far = rate_bkg*3600.0*4.0*7.0*trigger_effeciency(num_thr, time_sn, rate_bkg);
+    far = rate_bkg*3600.0*24.0*7.0*trigger_effeciency(num_thr, time_sn, rate_bkg);
     
     return far;
 }

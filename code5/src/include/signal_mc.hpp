@@ -43,7 +43,7 @@ public:
     virtual ~Signal_mc();
 
     
-    void run_mc(TString para_file, int num_of_simulation, int events_in_20s);
+    void run_mc(TString para_file, int events_in_20s);
     //void sort(TTree *tree, TFile *fout);
     void set_num_simu(int input_num_of_simu);
     double time_window(double T_sn, double t_refresh, int N_thr);
