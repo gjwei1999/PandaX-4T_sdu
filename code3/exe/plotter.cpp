@@ -123,7 +123,7 @@ int main(const int argc, const char * argv[]){
     if(opt == 2){
 
         TString pdfpath = "/Users/jiaweiguo/Documents/GitHub/PandaX-4T_sdu/code3/plots/";
-        TString loadpath = "/Users/jiaweiguo/Documents/GitHub/PandaX-4T_sdu/code3/output/3003_test_10000.root";
+        TString loadpath = "/Users/jiaweiguo/Documents/GitHub/PandaX-4T_sdu/code3/output/3003_7s_10000.root";
         
         TFile *fs = new TFile(loadpath, "r");
         

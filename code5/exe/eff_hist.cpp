@@ -75,6 +75,8 @@ int main(const int argc, const char * argv[]){
     double rate12 =12.0;
     double rate30 = 30.0;
     
+    double rate18 = 18.4;
+    
     double rate_bkg = (7558.48 + 9.20852 + 0.00874182) / 24.0 / 60.0 / 60.0;
     
     double time_window = 0.0;
@@ -110,6 +112,9 @@ int main(const int argc, const char * argv[]){
     TH2D * eff30 = new TH2D("eff30", "eff30", nbin, bin, nbin, n_thr_min, n_thr_max);
     TH2D * eff30_min = new TH2D("eff30_min", "eff30_min", nbin, bin, nbin, n_thr_min, n_thr_max);
 
+    TH2D * eff18 = new TH2D("eff18", "eff18", nbin, bin, nbin, n_thr_min, n_thr_max);
+    TH2D * eff18_min = new TH2D("eff18_min", "eff18_min", nbin, bin, nbin, n_thr_min, n_thr_max);
+    
     
     eff15->SetDirectory(fs1);
     far15->SetDirectory(fs1);
@@ -120,6 +125,7 @@ int main(const int argc, const char * argv[]){
     eff1000->SetDirectory(fs1);
     eff12->SetDirectory(fs1);
     eff30->SetDirectory(fs1);
+    eff18->SetDirectory(fs1);
     
     eff15_min->SetDirectory(fs1);
     eff1_min->SetDirectory(fs1);
@@ -128,7 +134,7 @@ int main(const int argc, const char * argv[]){
     eff1000_min->SetDirectory(fs1);
     eff12_min->SetDirectory(fs1);
     eff30_min->SetDirectory(fs1);
-    
+    eff18_min->SetDirectory(fs1);
     
      for(int i=0; i<nbin; i++){
          
@@ -202,6 +208,12 @@ int main(const int argc, const char * argv[]){
             eff30->SetBinContent(j, i, efficiency);
             eff30_min->SetBinContent(j, i, eff_min);
            
+            //rate = 18.4
+            efficiency = eff_far1->trigger_effeciency(n_thr, time_window, rate18, rate_bkg);
+            eff_min = eff_far1->trigger_eff_min(n_thr, time_window, rate18, rate_bkg);
+            
+            eff18->SetBinContent(j, i, efficiency);
+            eff18_min->SetBinContent(j, i, eff_min);
         }
         
     }
@@ -457,6 +469,7 @@ void contour_3sigma(){
     TH2D * far = (TH2D *) fs->Get("far15");
     TH2D * eff12 = (TH2D *) fs->Get("eff12");
     TH2D * eff30 = (TH2D *) fs->Get("eff30");
+    TH2D * eff18 = (TH2D *) fs->Get("eff18");
     
     TH2D * eff1000_min = (TH2D *) fs->Get("eff1000_min");
     TH2D * eff100_min = (TH2D *) fs->Get("eff100_min");
@@ -464,6 +477,7 @@ void contour_3sigma(){
     TH2D * eff1_min = (TH2D *) fs->Get("eff1_min");
     TH2D * eff12_min = (TH2D *) fs->Get("eff12_min");
     TH2D * eff30_min = (TH2D *) fs->Get("eff30_min");
+    TH2D * eff18_min = (TH2D *) fs->Get("eff18_min");
     
     
     eff1000->SetLineColor(1);         eff1000_min->SetLineColor(1);  
@@ -472,6 +486,7 @@ void contour_3sigma(){
     eff1->SetLineColor(7);               eff1_min->SetLineColor(7);  
     eff12->SetLineColor(3);             eff12_min->SetLineColor(3);  
     eff30->SetLineColor(28);           eff30_min->SetLineColor(28);  
+    eff18->SetLineColor(46);             eff18_min->SetLineColor(46);  
     far->SetLineColor(2);  
     
     eff1000->SetLineStyle(1);          eff1000_min->SetLineStyle(3);
@@ -480,6 +495,7 @@ void contour_3sigma(){
     eff1->SetLineStyle(1);                eff1_min->SetLineStyle(3);
     eff12->SetLineStyle(1);              eff12_min->SetLineStyle(3);
     eff30->SetLineStyle(1);              eff30_min->SetLineStyle(3);
+    eff18->SetLineStyle(1);              eff18_min->SetLineStyle(3);
     far->SetLineStyle(1);  
 
     
@@ -492,6 +508,7 @@ void contour_3sigma(){
     far->SetContour(1, contours2);
     eff12->SetContour(1, contours1);
     eff30->SetContour(1, contours1);
+    eff18->SetContour(1, contours1);
     
     eff1000_min->SetContour(1, contours1);
     eff100_min->SetContour(1, contours1);
@@ -499,7 +516,7 @@ void contour_3sigma(){
     eff1_min->SetContour(1, contours1);
     eff12_min->SetContour(1, contours1);
     eff30_min->SetContour(1, contours1);
-    
+    eff18_min->SetContour(1, contours1);
     
     
     TLegend * leg = new TLegend(0.1, 0.7, 0.3, 0.9);
@@ -509,6 +526,8 @@ void contour_3sigma(){
     leg->AddEntry(eff100_min, "100Hz(min)", "l");
     leg->AddEntry(eff30, "30Hz", "l");
     leg->AddEntry(eff30_min, "30Hz(min)", "l");
+    leg->AddEntry(eff18, "18.4Hz", "l");
+    leg->AddEntry(eff18_min, "18.4Hz(min)", "l");
     leg->AddEntry(eff12, "12Hz", "l");
     leg->AddEntry(eff12_min, "12Hz(min)", "l");
     leg->AddEntry(eff10, "10Hz", "l");
@@ -531,12 +550,15 @@ void contour_3sigma(){
     far->Draw("CONT3 SAME");
     eff12->Draw("CONT3 SAME");
     eff30->Draw("CONT3 SAME");
+    eff18->Draw("CONT3 SAME");
+    
     eff1000_min->Draw("CONT3 SAME");
     eff100_min->Draw("CONT3 SAME");
     eff10_min->Draw("CONT3 SAME");
     eff1_min->Draw("CONT3 SAME");
     eff12_min->Draw("CONT3 SAME");
     eff30_min->Draw("CONT3 SAME");
+    eff18_min->Draw("CONT3 SAME");
     
     leg->Draw("SAME");
 
@@ -562,6 +584,7 @@ void contour_5sigma(){
     TH2D * far = (TH2D *) fs->Get("far15");
     TH2D * eff12 = (TH2D *) fs->Get("eff12");
     TH2D * eff30 = (TH2D *) fs->Get("eff30");
+    TH2D * eff18 = (TH2D *) fs->Get("eff18");
     
     TH2D * eff1000_min = (TH2D *) fs->Get("eff1000_min");
     TH2D * eff100_min = (TH2D *) fs->Get("eff100_min");
@@ -569,13 +592,15 @@ void contour_5sigma(){
     TH2D * eff1_min = (TH2D *) fs->Get("eff1_min");
     TH2D * eff12_min = (TH2D *) fs->Get("eff12_min");
     TH2D * eff30_min = (TH2D *) fs->Get("eff30_min");
+    TH2D * eff18_min = (TH2D *) fs->Get("eff18_min");
     
     eff1000->SetLineColor(1);         eff1000_min->SetLineColor(1);  
     eff100->SetLineColor(6);           eff100_min->SetLineColor(6);  
     eff10->SetLineColor(4);             eff10_min->SetLineColor(4);  
     eff1->SetLineColor(7);               eff1_min->SetLineColor(7);  
     eff12->SetLineColor(3);             eff12_min->SetLineColor(3);  
-    eff30->SetLineColor(28);           eff30_min->SetLineColor(28);  
+    eff30->SetLineColor(28);           eff30_min->SetLineColor(28);
+    eff18->SetLineColor(46);             eff18_min->SetLineColor(46);  
     far->SetLineColor(2);  
     
     eff1000->SetLineStyle(1);          eff1000_min->SetLineStyle(3);
@@ -584,6 +609,7 @@ void contour_5sigma(){
     eff1->SetLineStyle(1);                eff1_min->SetLineStyle(3);
     eff12->SetLineStyle(1);              eff12_min->SetLineStyle(3);
     eff30->SetLineStyle(1);              eff30_min->SetLineStyle(3);
+    eff18->SetLineStyle(1);              eff18_min->SetLineStyle(3);
     far->SetLineStyle(1);  
     
     double contours1[1] = {TMath::Freq(5)};
@@ -595,6 +621,7 @@ void contour_5sigma(){
     far->SetContour(1, contours2);
     eff12->SetContour(1, contours1);
     eff30->SetContour(1, contours1);
+    eff18->SetContour(1, contours1);
     
     eff1000_min->SetContour(1, contours1);
     eff100_min->SetContour(1, contours1);
@@ -602,6 +629,7 @@ void contour_5sigma(){
     eff1_min->SetContour(1, contours1);
     eff12_min->SetContour(1, contours1);
     eff30_min->SetContour(1, contours1);
+    eff18_min->SetContour(1, contours1);
     
     TLegend * leg = new TLegend(0.1, 0.7, 0.3, 0.9);
     leg->AddEntry(eff1000, "1000Hz", "l");
@@ -610,6 +638,8 @@ void contour_5sigma(){
     leg->AddEntry(eff100_min, "100Hz(min)", "l");
     leg->AddEntry(eff30, "30Hz", "l");
     leg->AddEntry(eff30_min, "30Hz(min)", "l");
+    leg->AddEntry(eff18, "18.4Hz", "l");
+    leg->AddEntry(eff18_min, "18.4Hz(min)", "l");
     leg->AddEntry(eff12, "12Hz", "l");
     leg->AddEntry(eff12_min, "12Hz(min)", "l");
     leg->AddEntry(eff10, "10Hz", "l");
@@ -632,12 +662,15 @@ void contour_5sigma(){
     far->Draw("CONT3 SAME");
     eff12->Draw("CONT3 SAME");
     eff30->Draw("CONT3 SAME");
+    eff18->Draw("CONT3 SAME");
+    
     eff1000_min->Draw("CONT3 SAME");
     eff100_min->Draw("CONT3 SAME");
     eff10_min->Draw("CONT3 SAME");
     eff1_min->Draw("CONT3 SAME");
     eff12_min->Draw("CONT3 SAME");
     eff30_min->Draw("CONT3 SAME");
+    eff18_min->Draw("CONT3 SAME");
     
     leg->Draw("SAME");
     

@@ -33,6 +33,16 @@ double Eff_far::trigger_effeciency(int num_thr, double time_sn, double rate_sn, 
     
     double item4 = (1 - Possion(0, time_sn, rate_bkg)) * Average_prob2(num_thr, time_sn, rate_sn);
     
+//     double term34 = 0;
+//     
+//     TF1 *f34 = new TF1("term34",term34_func, 0.0, time_sn, 2);
+//     f34->SetParameters(num_thr, time_sn);
+//     term34 = f34->Integral(0.2, time_sn-0.2);
+//     
+//     term34 = (1 - Possion(0, time_sn, rate_bkg)) * term34 / time_sn;
+//    
+//     efficiency = item1 + item2 + term34;
+    
     efficiency = item1 + item2 + item3 + item4;
     
     
@@ -77,10 +87,17 @@ double Eff_far::Average_prob1(int num_thr, double time_sn, double rate_sn){
     double d = time_sn/500.0;
     double total = 0.0;
     
-    while(t0 <= time_sn){
-        total += Erlang_integral(num_thr-1, time_sn - t0, rate_sn) * d;
+    //while(t0 <= time_sn){
+    //    total += Erlang_integral(num_thr-1, time_sn - t0, rate_sn) * d;
+    //    t0 += d;
+    //}
+    
+    while(t0 < time_sn){
         t0 += d;
+        total += Erlang_integral(num_thr-1, time_sn - t0, rate_sn);
     }
+    total += 0.5*Erlang_integral(num_thr-1, time_sn, rate_sn) + 0.5*Erlang_integral(num_thr-1, 0.0, rate_sn);;
+    total *= d;
     
     total /= time_sn;
     
@@ -99,11 +116,18 @@ double Eff_far::Average_prob2(int num_thr, double time_sn, double rate_sn){
         t0 = 0.0;
         integral = 0.0;
         
-        while(t0 <= time_sn){
-            integral += Possion(j, time_sn - t0, rate_sn) * Erlang_integral(num_thr-j-1, time_sn, rate_sn)*d;
-            t0 += d;
-        }
+        //while(t0 <= time_sn){
+        //    integral += Possion(j, time_sn - t0, rate_sn) * Erlang_integral(num_thr-j-1, time_sn, rate_sn)*d;
+        //    t0 += d;
+        //}
         //std::cout<<"integral = "<<integral<<std::endl;
+        while(t0 < time_sn){
+            t0 += d;
+            integral += Possion(j, time_sn - t0, rate_sn);
+        }
+        integral += 0.5*Possion(j, time_sn, rate_sn) + 0.5*Possion(j, 0.0, rate_sn);
+        integral *= d*Erlang_integral(num_thr-j-1, time_sn, rate_sn);
+        
         total += integral;
     }
         
